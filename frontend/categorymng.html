@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/stylemng.css" rel="stylesheet">
+  </head>
+  <body>
+      <div class="col-sm-11 col-md-11">
+      <!-- Navbar top -->
+      <div class="row row-top">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="span-disclick"><span>20:45 &nbsp &nbsp</span></li>
+              <li class="span-disclick"><span class="fa fa-user"></span> Cashier, <span id="uname">Mail</span></li>
+              <li><a href="#"><span class="fa fa-sign-out"></span> Logout</a></li>
+            </ul>
+            <div class="wrapper-title">
+              <span><h3>Category</h3></span>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- Button circle -->
+      <div class="row btn-add">
+        <button type="button" class="btn btn-default btn-circle col-md-5 col-sm-2" name="button" data-toggle="modal" data-target="#modal-add">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+      <!-- Modal Add-->
+      <div class="modal fade" id="modal-add" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">New Category</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row wrapper-content">
+                    <label for="">ID</label>
+                    <input type="text" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Category Name</label>
+                    <input type="text" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Desc</label>
+                    <input type="text" class="input form-control" name="" value="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Modal Edit-->
+      <div class="modal fade" id="modal-edit" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">New Category</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row wrapper-content">
+                    <label for="">ID</label>
+                    <input type="text" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Category Name</label>
+                    <input type="text" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Desc</label>
+                    <input type="text" class="input form-control" name="" value="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Content -->
+      <div class="row wrapper">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="content">
+              <!-- Search book -->
+              <div class="row-fluid input-group">
+                <span class="input-group-addon sp-icon">
+                  <i class="fa fa-th-list"></i>
+                </span>
+                <input id="uname" type="text" class="form-control" name="" placeholder="Category Name">
+                <span class="input-group-btn">
+                  <button class="btn btn-default btn-search" type="button" name="button">Search</button>
+                </span>
+              </div>
+              <!-- Table book -->
+              <div class="panel panel-default col-md-12 margin5">
+                <div class="panel-body table-responsive" style="max-height:430px;overflow:auto">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Category Name</th>
+                        <th>Desc</th>
+                        <th>Action</th>
+                        <!-- <th> </th> -->
+                      </tr>
+                    </thead>
+                  <!-- </table> -->
+                  <div class="">
+                    <!-- <table class="table"> -->
+                      <tbody>
+                        <tr>
+                          <td id="isbn" class="td-book">Novel_001</td>
+                          <td id="category">Novel</td>
+                          <td id="bookName">
+Category for all kinds of novel books</td>
+                          <td id=""><button class="btn btn-info" type="button" name="button" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></button></td>
+                          <!-- <td id=""><button class="btn btn-danger"><i class="fa fa-times"></i></button></td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Navbar left -->
+    <div class="col-sm-1 col-md-1">
+      <div class="navbar navbar-inverse navbar-fixed-left">
+        <a class="navbar-brand" style="color:white!important"><strong>JOGMEDIA</strong></a>
+        <ul class="nav navbar-nav ul-top">
+          <li><a href="storemng.html"><i class="fa fa-home"></i>&nbsp Store</a></li>
+          <li><a href="bookmng.html"><i class="fa fa-book"></i>&nbsp Book</a></li>
+          <li><a href="discmng.html"><i class="fa fa-product-hunt"></i>&nbsp Discount</a></li>
+          <li><a href="emptymng.html"><i class="fa fa-times-circle"></i>&nbsp Empty Stock</a></li>
+          <li><a href="categorymng.html"><i class="fa fa-th-list"></i>&nbsp Category</a></li>
+          <li><a href="reportmng.html"><i class="fa fa-bar-chart"></i>&nbsp Report</a></li>
+          <li><a href="employeemng.html"><i class="fa fa-user"></i>&nbsp Employee</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/stylemng.js"></script>
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>

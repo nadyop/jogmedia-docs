@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/stylemng.css" rel="stylesheet">
+  </head>
+  <body>
+      <div class="col-sm-11 col-md-11">
+      <!-- Navbar top -->
+      <div class="row row-top">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="span-disclick"><span>20:45 &nbsp &nbsp</span></li>
+              <li class="span-disclick"><span class="fa fa-user"></span> Cashier, <span id="uname">Mail</span></li>
+              <li><a href="#"><span class="fa fa-sign-out"></span> Logout</a></li>
+            </ul>
+            <div class="wrapper-title">
+              <span><h3>Empty Stock</h3></span>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- Content -->
+      <div class="row wrapper">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="content">
+              <!-- Search book -->
+              <div class="row-fluid input-group">
+                <span class="input-group-addon sp-icon">
+                  <i class="fa fa-product-hunt"></i>
+                </span>
+                <input id="disc" type="text" class="form-control" name="" placeholder="Discount">
+                <span class="input-group-btn">
+                  <button class="btn btn-default btn-search" type="button" name="button">Search</button>
+                </span>
+              </div>
+              <!-- Table book -->
+              <div class="panel panel-default col-md-12 margin5">
+                <div class="panel-body table-responsive" style="max-height:430px;overflow:auto">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>ISBN</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Price</th>
+                        <th>Disc</th>
+                        <th>Stock</th>
+                        <th>Loc</th>
+                      </tr>
+                    </thead>
+                  <!-- </table> -->
+                  <div class="">
+                    <!-- <table class="table"> -->
+                      <tbody>
+                        <tr>
+                          <td id="isbn" class="td-book">9876543298736</td>
+                          <td id="category">Novel</td>
+                          <td id="bookName">Merah Jambu</td>
+                          <td id="author">Raditya Dika</td>
+                          <td id="publisher">Gramedia</td>
+                          <td id="priceAfter">80000</td>
+                          <td id="discount">15%</td>
+                          <td id="stock">0</td>
+                          <td id="location">R-20</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Navbar left -->
+    <div class="col-sm-1 col-md-1">
+      <div class="navbar navbar-inverse navbar-fixed-left">
+        <a class="navbar-brand" style="color:white!important"><strong>JOGMEDIA</strong></a>
+        <ul class="nav navbar-nav ul-top">
+          <li><a href="storemng.html"><i class="fa fa-home"></i>&nbsp Store</a></li>
+          <li><a href="bookmng.html"><i class="fa fa-book"></i>&nbsp Book</a></li>
+          <li><a href="discmng.html"><i class="fa fa-product-hunt"></i>&nbsp Discount</a></li>
+          <li><a href="emptymng.html"><i class="fa fa-times-circle"></i>&nbsp Empty Stock</a></li>
+          <li><a href="categorymng.html"><i class="fa fa-th-list"></i>&nbsp Category</a></li>
+          <li><a href="reportmng.html"><i class="fa fa-bar-chart"></i>&nbsp Report</a></li>
+          <li><a href="employeemng.html"><i class="fa fa-user"></i>&nbsp Employee</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/stylemng.js"></script>
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>

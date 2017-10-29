@@ -1,0 +1,50 @@
+<div id="location-picker" class="modal fade in" tabindex="-1" role="dialog" style="display: block;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content full-height">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><strong><span aria-hidden="true">&times;</span></strong></button>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="location-picker-location">Location</label>
+                        <input type="text" class="form-control" id="location-picker-location">
+                    </div>
+                    <div class="form-group">
+                        <label for="location-picker-radius">Radius</label>
+                        <select id="location-picker-radius" selected="5000" class="form-control">
+                            <option>500</option>
+                            <option>1000</option>
+
+                        </select>
+                        <!--<input type="text" class="form-control" id="location-picker-radius">-->
+                    </div>
+                    <div class="form-group">
+                        <label for="location-picker-latitude">Latitude</label>
+                        <input type="text" class="form-control" id="location-picker-latitude" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="location-picker-longitude">Longitude</label>
+                        <input type="text" class="form-control" id="location-picker-longitude" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Controll</label>
+                        <button type="button" id="location-picker-save" class="btn btn-default"/>Save</button>
+                        <button type="button" id="location-picker-clear" class="btn btn-default">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-body full-height">
+                <div class="row full-height">
+                    <div class="col-lg-12 full-height">
+                        <div class="thumbnail full-height">
+                            <div class="alert-danger full-height">This should expand to the rest of free space in dialog, not to overflow its parent</div>
+
+                            <!--<div id="location-picker-placeholder" class="full-height"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
