@@ -12,10 +12,11 @@ public class My_Connection {
     public void makeConnection(){
         System.out.println("Openning database...");
         try{
-            String db_password="password";
-            String username="postgres";
-            String url="jdbc:postgresql://localhost:5432/jogmedia";
-            this.con= DriverManager.getConnection(url, username, db_password);
+            con = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/jogmedia",
+                    "postgres",
+                    "password"
+            );
             System.out.println("Success openning db!");
         }
         catch (Exception e){
