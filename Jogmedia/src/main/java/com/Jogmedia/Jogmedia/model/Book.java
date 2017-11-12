@@ -4,14 +4,17 @@ import java.math.BigDecimal;
 
 public class Book {
 
-    private int book_id;
+    private int book_id, category_id,status,discount;
 
     private String isbn, book_title, author, publisher, location;
-    private double price_after, price_before, discount;
+    private double price_after, price_before;
     public Book(){}
-    public Book(String isbn, String book_title, String author, String publisher, String location, double price_after, double price_before, double discount) {
+    public Book(int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location, int status,double price_after, double price_before, int discount) {
+        this.book_id=book_id;
+        this.category_id=category_id;
         this.isbn = isbn;
         this.book_title = book_title;
+        this.status=status;
         this.author = author;
         this.publisher = publisher;
         this.location = location;
@@ -20,6 +23,25 @@ public class Book {
         this.discount = discount;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
+    }
+
+    public int getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
+    }
 
     public Integer getBook_id() {
         return book_id;
@@ -85,11 +107,11 @@ public class Book {
         this.price_before = price_before;
     }
 
-    public double getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 }
