@@ -4,6 +4,7 @@ import com.Jogmedia.Jogmedia.dao.My_Connection;
 import com.Jogmedia.Jogmedia.dao_api.BookDaoInterface;
 import com.Jogmedia.Jogmedia.model.Book;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Service
 public class BookDao extends My_Connection implements BookDaoInterface{
     @Override
     public List<Book> getAllBooks(){

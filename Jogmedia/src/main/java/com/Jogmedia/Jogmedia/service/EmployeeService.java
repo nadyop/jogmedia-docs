@@ -3,9 +3,11 @@ package com.Jogmedia.Jogmedia.service;
 import com.Jogmedia.Jogmedia.dao_api.EmployeeDaoInterface;
 import com.Jogmedia.Jogmedia.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class EmployeeService {
     @Autowired
     EmployeeDaoInterface employeeDaoInterface;

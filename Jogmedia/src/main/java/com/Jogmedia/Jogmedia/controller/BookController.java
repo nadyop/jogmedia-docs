@@ -3,6 +3,7 @@ package com.Jogmedia.Jogmedia.controller;
 import com.Jogmedia.Jogmedia.model.Book;
 import com.Jogmedia.Jogmedia.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@EnableAutoConfiguration
 public class BookController {
     @Autowired
     private BookService bookService;

@@ -3,9 +3,11 @@ package com.Jogmedia.Jogmedia.service;
 import com.Jogmedia.Jogmedia.dao_api.BookDaoInterface;
 import com.Jogmedia.Jogmedia.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BookService {
     @Autowired
     BookDaoInterface bookDaoInterface;
