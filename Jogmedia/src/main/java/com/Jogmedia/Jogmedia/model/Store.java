@@ -2,9 +2,10 @@ package com.Jogmedia.Jogmedia.model;
 
 public class Store {
     private int store_id;
+    private  int employee_id;
     private String store_name, address, npwp, post_code, email, image;
-
-    public Store(int store_id, String store_name, String address, String npwp, String post_code, String email, String image) {
+    public Store(){}
+    public Store(int store_id,int employee_id, String store_name, String address, String npwp, String post_code, String email, String image) {
         this.store_id = store_id;
         this.store_name = store_name;
         this.address = address;
@@ -12,6 +13,14 @@ public class Store {
         this.post_code = post_code;
         this.email = email;
         this.image = image;
+    }
+
+    public int getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
     public int getStore_id() {
