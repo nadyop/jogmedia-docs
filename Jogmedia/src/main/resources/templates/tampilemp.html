@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SpringBoot - Project</title>
+    <link th:href="@{/css/boostrap.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/starter-template.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Simple CRUD</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="home.html">Home</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="container">
+
+    <h1>Employee Data</h1>
+    <br/><br/><br/>
+    <div th:if="${not #lists.isEmpty(employee)}">
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Birth Date</th>
+                <th>Action</th>
+            </tr>
+            <tr th:each="employee : ${employee}">
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.address}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.birth_date}"></td>
+                <td>
+                    <a th:href="${'/tampilemp/edit/'+employee.id}"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a th:href="${'/tampilemp/hapus/'+employee.id}"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <a class="btn btn-default" href="/tampilemp/create">Add New Employee</a>
+    </div>
+</div>
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/boostrap.js}"></script>
+</body>
+</html>

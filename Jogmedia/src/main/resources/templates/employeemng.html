@@ -18,7 +18,7 @@
               <li><a href="#"><span class="fa fa-sign-out"></span> Logout</a></li>
             </ul>
             <div class="wrapper-title">
-              <span><h3>Category</h3></span>
+              <span><h3>Employee</h3></span>
             </div>
           </div>
         </nav>
@@ -29,7 +29,7 @@
           <i class="fa fa-plus"></i>
         </button>
       </div>
-      <!-- Modal Add-->
+      <!-- Modal add-->
       <div class="modal fade" id="modal-add" role="dialog">
         <div class="modal-dialog">
 
@@ -37,7 +37,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">New Category</h4>
+              <h4 class="modal-title">New Employee</h4>
             </div>
             <div class="modal-body">
               <div class="row">
@@ -47,12 +47,34 @@
                     <input type="text" class="input form-control" name="" value="">
                   </div>
                   <div class="row wrapper-content margin5">
-                    <label for="">Category Name</label>
+                    <label for="">Name</label>
                     <input type="text" class="input form-control" name="" value="">
                   </div>
                   <div class="row wrapper-content margin5">
-                    <label for="">Desc</label>
+                    <label for="">Username</label>
                     <input type="text" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Password</label>
+                    <input type="password" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Role</label>
+                    <div class="form-group">
+                      <select class="form-control" id="sel1">
+                        <option>Cashier</option>
+                        <option>Manager</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row wrapper-content">
+                    <label for="">Status</label>
+                    <div class="form-group">
+                      <select class="form-control" id="sel1">
+                        <option>Active</option>
+                        <option>Non-active</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,7 +86,7 @@
 
         </div>
       </div>
-      <!-- Modal Edit-->
+      <!-- Modal edit -->
       <div class="modal fade" id="modal-edit" role="dialog">
         <div class="modal-dialog">
 
@@ -72,7 +94,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">New Category</h4>
+              <h4 class="modal-title">New Employee</h4>
             </div>
             <div class="modal-body">
               <div class="row">
@@ -82,12 +104,34 @@
                     <input type="text" class="input form-control" name="" value="">
                   </div>
                   <div class="row wrapper-content margin5">
-                    <label for="">Category Name</label>
+                    <label for="">Name</label>
                     <input type="text" class="input form-control" name="" value="">
                   </div>
                   <div class="row wrapper-content margin5">
-                    <label for="">Desc</label>
+                    <label for="">Username</label>
                     <input type="text" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Password</label>
+                    <input type="password" class="input form-control" name="" value="">
+                  </div>
+                  <div class="row wrapper-content margin5">
+                    <label for="">Role</label>
+                    <div class="form-group">
+                      <select class="form-control" id="sel1">
+                        <option>Cashier</option>
+                        <option>Manager</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row wrapper-content">
+                    <label for="">Status</label>
+                    <div class="form-group">
+                      <select class="form-control" id="sel1">
+                        <option>Active</option>
+                        <option>Non-active</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -109,7 +153,7 @@
                 <span class="input-group-addon sp-icon">
                   <i class="fa fa-th-list"></i>
                 </span>
-                <input id="uname" type="text" class="form-control" name="" placeholder="Category Name">
+                <input id="uname" type="text" class="form-control" name="" placeholder="Employee Name">
                 <span class="input-group-btn">
                   <button class="btn btn-default btn-search" type="button" name="button">Search</button>
                 </span>
@@ -121,10 +165,11 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Category Name</th>
-                        <th>Desc</th>
-                        <th>Action</th>
-                        <!-- <th> </th> -->
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th> </th>
                       </tr>
                     </thead>
                   <!-- </table> -->
@@ -132,12 +177,12 @@
                     <!-- <table class="table"> -->
                       <tbody>
                         <tr>
-                          <td id="isbn" class="td-book">Novel_001</td>
-                          <td id="category">Novel</td>
-                          <td id="bookName">
-Category for all kinds of novel books</td>
+                          <td id="employeeId" class="td-book">m_001</td>
+                          <td id="emloyeeName">Sandra Dewi</td>
+                          <td id="uname">c_001</td>
+                          <td id="role">Cashier</td>
+                          <td id="status">Active</td>
                           <td id=""><button class="btn btn-info" type="button" name="button" data-toggle="modal" data-target="#modal-edit"><i class="fa fa-pencil"></i></button></td>
-                          <!-- <td id=""><button class="btn btn-danger"><i class="fa fa-times"></i></button></td> -->
                         </tr>
                       </tbody>
                     </table>
