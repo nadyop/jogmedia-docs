@@ -2,17 +2,19 @@ package com.blibli.model;
 
 public class Book {
 
-    private int book_id, category_id,status,discount;
-
+    private int book_id, category_id, status, discount;
     private String isbn, book_title, author, publisher, location;
     private double price_after, price_before;
-    public Book(){}
-    public Book(int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location, int status,double price_after, double price_before, int discount) {
-        this.book_id=book_id;
-        this.category_id=category_id;
+
+    public Book() {
+    }
+
+    public Book(int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location, int status, double price_after, double price_before, int discount) {
+        this.book_id = book_id;
+        this.category_id = category_id;
         this.isbn = isbn;
         this.book_title = book_title;
-        this.status=status;
+        this.status = status;
         this.author = author;
         this.publisher = publisher;
         this.location = location;

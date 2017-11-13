@@ -7,6 +7,10 @@ primary-text : #212121 ; second-text : #757575 ; divider : #BDBDBD;
     width: 91.66666667%;
   }
 }*/
+/*bc-color*/
+.accent{
+    background: #FF9800!important;
+}
 /*Navbar*/
 .row-top{
     margin-left:10%;
