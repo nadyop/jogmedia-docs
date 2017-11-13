@@ -19,15 +19,15 @@
                     <li><a href="#"><span class="fa fa-sign-out"></span> Logout</a></li>
                 </ul>
                 <div class="wrapper-title">
-                    <span><h3>Book</h3></span>
+                    <span><h3>Employee</h3></span>
                 </div>
             </div>
         </nav>
     </div>
     <!-- Button circle -->
     <div class="row btn-add">
-        <a href="/book/createBook">
-            <button type="button" class="btn btn-default btn-circle col-md-5 col-sm-2" name="button" data-toggle="modal" data-target="#modal-add">
+        <a href="/tampilemp/createEmployee">
+            <button type="button" class="btn btn-default btn-circle col-md-5 col-sm-2" name="button">
                 <i class="fa fa-plus"></i>
             </button>
         </a>
@@ -42,49 +42,39 @@
                         <span class="input-group-addon sp-icon">
                           <i class="fa fa-book"></i>
                         </span>
-                        <input id="uname" type="text" class="form-control" name="" placeholder="Category Name"/>
+                        <input id="uname" type="text" class="form-control" name="" placeholder="Name"/>
                         <span class="input-group-btn">
                           <button class="btn btn-default btn-search" type="button" name="button">Search</button>
                         </span>
                     </div>
-                    <!--Table Book-->
+                    <!--Table Category-->
                     <div class="panel panel-default col-md-12 margin5">
                         <div class="panel-body table-responsive" style="max-height:430px;overflow:auto">
-                            <div th:if="${not #lists.isEmpty(book)}">
+                            <div th:if="${not #lists.isEmpty(employee)}">
                                 <table class="table table-striped">
                                     <tr>
-                                        <!--<th>Book Id</th>-->
-                                        <th>Category Id</th>
-                                        <th>ISBN</th>
-                                        <th>Title</th>
-                                        <th>Author</th>
-                                        <th>Publisher</th>
+                                        <th>Id Pegawai</th>
+                                        <th>Nama</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
+                                        <th>Role</th>
                                         <th>Status</th>
-                                        <th>Price Before</th>
-                                        <!--<th>Harga Sesudah</th>-->
-                                        <th>Diskon</th>
-                                        <th>Location</th>
                                         <th>Action</th>
                                     </tr>
-                                    <tr th:each="book: ${book}">
-                                        <!--<td th:text="${book.book_id}"></td>-->
-                                        <td th:text="${book.category_id}"></td>
-                                        <td th:text="${book.isbn}"></td>
-                                        <td th:text="${book.book_title}"></td>
-                                        <td th:text="${book.author}"></td>
-                                        <td th:text="${book.publisher}"></td>
-                                        <td th:text="${book.status}"></td>
-                                        <td th:text="${book.price_before}"></td>
-                                        <!--<td th:text="${book.price_after}"></td>-->
-                                        <td th:text="${book.discount}"></td>
-                                        <td th:text="${book.location}"></td>
+                                    <tr th:each="employee: ${employee}">
+                                        <td th:text="${employee.employee_id}"></td>
+                                        <td th:text="${employee.employee_name}"></td>
+                                        <td th:text="${employee.employee_uname}"></td>
+                                        <td th:text="${employee.password}"></td>
+                                        <td th:text="${employee.role}"></td>
+                                        <td th:text="${employee.status}"></td>
                                         <td>
-                                            <a th:href="${'/book/editBook/'+book.book_id}">
+                                            <a th:href="${'/tampilemp/edit/'+employee.employee_id}">
                                                 <button>
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </button>
                                             </a>
-                                            <a th:href="${'/book/hapus/'+book.book_id}">
+                                            <a th:href="${'/tampilemp/hapus/'+employee.employee_id}">
                                                 <button>
                                                     <span class="glyphicon glyphicon-remove"></span>
                                                 </button>
@@ -103,19 +93,19 @@
 </div>
 
 <!-- Navbar left -->
-    <div class="col-sm-1 col-md-1">
-        <div class="navbar navbar-inverse navbar-fixed-left">
-            <a class="navbar-brand" style="color:white!important"><strong>JOGMEDIA</strong></a>
-            <ul class="nav navbar-nav ul-top">
-                <li><a href="store.html"><i class="fa fa-home"></i>&nbsp; Store</a></li>
-                <li><a href="book.html"><i class="fa fa-book"></i>&nbsp; Book</a></li>
-                <li><a href="discmng.html"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
-                <li><a href="emptymng.html"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
-                <li><a href="category.html"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
-                <li><a href="reportmng.html"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
-                <li><a href="tampilemp.html"><i class="fa fa-user"></i>&nbsp; Employee</a></li>
-            </ul>
-        </div>
+<div class="col-sm-1 col-md-1">
+    <div class="navbar navbar-inverse navbar-fixed-left">
+        <a class="navbar-brand" style="color:white!important"><strong>JOGMEDIA</strong></a>
+        <ul class="nav navbar-nav ul-top">
+            <li><a href="store.html"><i class="fa fa-home"></i>&nbsp; Store</a></li>
+            <li><a href="book.html"><i class="fa fa-book"></i>&nbsp; Book</a></li>
+            <li><a href="discmng.html"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
+            <li><a href="emptymng.html"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
+            <li><a href="category.html"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
+            <li><a href="reportmng.html"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
+            <li><a href="tampilemp.html"><i class="fa fa-user"></i>&nbsp; Employee</a></li>
+        </ul>
     </div>
+</div>
 </body>
 </html>
