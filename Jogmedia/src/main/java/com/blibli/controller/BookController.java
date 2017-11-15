@@ -45,8 +45,8 @@ public class BookController {
         return "createBook";
     }
     @RequestMapping(value = "/book/search", method = RequestMethod.POST)
-    public String search(Model model, @ModelAttribute("temp") int temp){
-        model.addAttribute("book", bookService.getIdBuku(temp));
+    public String search(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("book", bookService.searchBook(searchKey));
         return "book";
     }
     @RequestMapping(value = "/book/hapus/{id}", method = RequestMethod.GET)
