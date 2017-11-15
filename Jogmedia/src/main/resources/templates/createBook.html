@@ -27,24 +27,14 @@
             </div>
         </nav>
     </div>
-    <!-- Button circle -->
-    <!--<div class="row btn-add">-->
-    <!--<form class="form-horizontal" th:object="${book}" th:action="@{/book/createBook}" method="post">-->
-    <!--<a href="/book/createBook">-->
-    <!--<button type="submit" class="btn btn-default btn-circle col-md-5 col-sm-2" name="button" data-toggle="modal" data-target="#modal-add">-->
-    <!--<i class="fa fa-save"></i>-->
-    <!--</button>-->
-    <!--</a>-->
-    <!--</form>-->
-    <!--</div>-->
-    <!--Content-->
     <div class="row wrapper">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="content">
                     <!--Create Book-->
                     <div class="row">
-                        <form class="form-horizontal" th:object="${book}" th:action="@{/book/createBook}" method="post">
+                        <form class="form-horizontal" th:object="${book}" th:action="@{/book/}" method="post">
+                            <input type="hidden" th:field="*{book_id}"/>
                             <div class="col-md-6 form-group">
                                 <input type="hidden" th:field="*{book_id}"/>
                                 <div class="row wrapper-content">

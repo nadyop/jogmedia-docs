@@ -27,7 +27,7 @@ public class BookController {
         model.addAttribute("book",bookService.showAllBooks());
         return "book";
     }
-    @RequestMapping(value="/book/createBook",method = RequestMethod.POST)
+    @RequestMapping(value="/book/",method = RequestMethod.POST)
     public String simpanDataBook(Model model, @ModelAttribute("buku") Book buku){
         bookService.saveOrdUpdateService(buku);
         return "redirect:/book";
