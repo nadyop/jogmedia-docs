@@ -19,7 +19,7 @@ public class EmployeeController {
         model.addAttribute("employee",employeeService.showAllEmployee());
         return "tampilemp";
     }
-    @RequestMapping(value = "/tampilemp/createEmployee", method = RequestMethod.GET)
+    @RequestMapping(value = "/tampilemp/", method = RequestMethod.GET)
     public String tampilFormCreateEmployee(Model model)
     {
         model.addAttribute("employee",new Employee());

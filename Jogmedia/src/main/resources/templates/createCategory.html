@@ -34,7 +34,7 @@
                 <div class="content">
                     <!--Create Book-->
                     <div class="row">
-                        <form class="form-horizontal" th:object="${category}" th:action="@{/category/createCategory}" method="post">
+                        <form class="form-horizontal" th:object="${category}" th:action="@{/category/}" method="post">
                             <div class="col-md-12 form-group">
                                 <div class="row wrapper-content">
                                     <input type="hidden" th:field="*{category_id}"/>

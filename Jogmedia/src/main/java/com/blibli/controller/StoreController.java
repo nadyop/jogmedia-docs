@@ -19,7 +19,7 @@ public class StoreController {
         model.addAttribute("store",storeService.showStore());
         return "store";
     }
-    @RequestMapping(value = "/store/createStore",method = RequestMethod.GET)
+    @RequestMapping(value = "/store/",method = RequestMethod.GET)
     public String tampilFormStore(Model model){
         model.addAttribute("store",new Store());
         return "createStore";

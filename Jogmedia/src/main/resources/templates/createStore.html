@@ -34,7 +34,7 @@
                 <div class="content">
                     <!--Create Store-->
                     <div class="row">
-                        <form class="form-horizontal" th:object="${store}" th:action="@{/store/createStore}" method="post">
+                        <form class="form-horizontal" th:object="${store}" th:action="@{/store/}" method="post">
                             <div class="col-md-12 form-group">
                                 <input type="hidden" th:field="*{store_id}"/>
                                 <div class="row wrapper-content">
