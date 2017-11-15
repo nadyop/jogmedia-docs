@@ -34,6 +34,7 @@
                     <!--Create Book-->
                     <div class="row">
                         <form class="form-horizontal" th:object="${book}" th:action="@{/book/}" method="post">
+                            <input type="hidden" th:field="*{book_id}"/>
                             <div class="col-md-6 form-group">
                                 <div class="row wrapper-content">
                                     <label>ISBN</label>
