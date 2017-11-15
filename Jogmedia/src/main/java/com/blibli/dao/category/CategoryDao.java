@@ -36,6 +36,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
                             rs.getInt("status")
                     );
                     list.add(category);
+                    System.out.println(category.getStatus());
                 }
             }
             this.disconnect();
