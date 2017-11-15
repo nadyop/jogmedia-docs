@@ -8,7 +8,7 @@ public class Category {
         this.category_id = category_id;
         this.category_name = category_name;
         this.category_desc = category_desc;
-        this.status= this.status;
+        this.status= status;
     }
 
     public Category(){}
