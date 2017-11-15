@@ -9,8 +9,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location,
-                int status, double price_before, double price_after, int discount) {
+    public Book(int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location,int status, double price_before, double price_after, int discount) {
         this.book_id = book_id;
         this.category_id = category_id;
         this.isbn = isbn;

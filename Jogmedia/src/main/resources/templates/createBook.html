@@ -46,6 +46,7 @@
                     <div class="row">
                         <form class="form-horizontal" th:object="${book}" th:action="@{/book/createBook}" method="post">
                             <div class="col-md-6 form-group">
+                                <input type="hidden" th:field="*{book_id}"/>
                                 <div class="row wrapper-content">
                                     <label>ISBN</label>
                                     <input th:field="*{isbn}" type="text" class="input form-control" name="" value=""/>
@@ -83,7 +84,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="row wrapper-content">
-                                    <label>Price Before</label>
+                                    <label>Price </label>
                                     <input th:field="*{price_before}" type="text" class="input form-control" name=""
                                            value=""/>
                                 </div>
@@ -135,13 +136,13 @@
     <div class="navbar navbar-inverse navbar-fixed-left">
         <a class="navbar-brand" style="color:white!important"><strong>JOGMEDIA</strong></a>
         <ul class="nav navbar-nav ul-top">
-            <li><a href="store"><i class="fa fa-home"></i>&nbsp; Store</a></li>
-            <li><a href="book"><i class="fa fa-book"></i>&nbsp; Book</a></li>
-            <li><a href="discmng"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
-            <li><a href="emptymng"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
-            <li><a href="category"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
-            <li><a href="reportmng"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
-            <li><a href="tampilemp"><i class="fa fa-user"></i>&nbsp; Employee</a></li>
+            <li><a href="store.html"><i class="fa fa-home"></i>&nbsp; Store</a></li>
+            <li><a href="book.html"><i class="fa fa-book"></i>&nbsp; Book</a></li>
+            <li><a href="discmng.html"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
+            <li><a href="emptymng.html"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
+            <li><a href="category.html"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
+            <li><a href="reportmng.html"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
+            <li><a href="tampilemp.html"><i class="fa fa-user"></i>&nbsp; Employee</a></li>
         </ul>
     </div>
 </div>

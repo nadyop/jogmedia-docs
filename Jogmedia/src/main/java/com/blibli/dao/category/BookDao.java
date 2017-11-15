@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-@Service
 public class BookDao extends My_Connection implements BookDaoInterface {
     @Override
     public List<Book> getAllBooks(){
@@ -25,7 +24,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
                 while(rs.next()){
-//int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location, double price_after, double price_before, double discount
+
                     Book book= new Book(
                             rs.getInt("book_id"),
                             rs.getInt("category_id"),
@@ -49,6 +48,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         }
         return books;
     }
+
     @Override
     public Book getIdBook(int idBook){
         String psql="Select * from Book where book_id='"+idBook+"';";
@@ -82,23 +82,27 @@ public class BookDao extends My_Connection implements BookDaoInterface {
     @Override
     public void saveBook(Book book){
         String psql;
+        double hitung;
+
         if(book.getBook_id()!=0){
             System.out.println("updating book");
-            psql="UPDATE book SET category_id=?, isbn=?,book_title=?,author=?,publisher=?,status=?,price_before=?,price_after=?,discount=?,location=? where book_id=?";
+            psql="UPDATE book SET isbn=?,book_title=?,author=?,publisher=?,category_id=?,location=?,price_before=?,price_after=?,discount=?, status=? where book_id=?";
             try {
                 this.makeConnection();
                 System.out.println("test update buku");
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-                preparedStatement.setInt(1,book.getCategory_id());
-                preparedStatement.setString(2,book.getIsbn());
-                preparedStatement.setString(3,book.getBook_title());
-                preparedStatement.setString(4,book.getAuthor());
-                preparedStatement.setString(5,book.getPublisher());
-                preparedStatement.setInt(6,book.getStatus());
+                preparedStatement.setString(1,book.getIsbn());
+                preparedStatement.setString(2,book.getBook_title());
+                preparedStatement.setString(3,book.getAuthor());
+                preparedStatement.setString(4,book.getPublisher());
+                preparedStatement.setInt(5,book.getCategory_id());
+                preparedStatement.setString(6,book.getLocation());
                 preparedStatement.setDouble(7,book.getPrice_before());
-                preparedStatement.setDouble(8,book.getPrice_after());
+                hitung=(book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
+
+                preparedStatement.setDouble(8,hitung);
                 preparedStatement.setInt(9,book.getDiscount());
-                preparedStatement.setString(10,book.getLocation());
+                preparedStatement.setInt(10,book.getStatus());
                 preparedStatement.setInt(11,book.getBook_id());
                 preparedStatement.executeUpdate();
                 System.out.println("suskes update="+book.getBook_title());
@@ -122,7 +126,8 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 preparedStatement.setString(5,book.getPublisher());
 
                 preparedStatement.setDouble(6,book.getPrice_before());
-                preparedStatement.setDouble(7,book.getPrice_after());
+                hitung=(book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
+                preparedStatement.setDouble(7,hitung);
                 preparedStatement.setInt(8,book.getDiscount());
                 preparedStatement.setString(9,book.getLocation());
                 preparedStatement.executeQuery();
