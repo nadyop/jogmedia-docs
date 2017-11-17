@@ -25,4 +25,8 @@ public class BookService {
     public void deleteBook(int id){
         bookDaoInterface.deleteBook(id);
     }
+    public List<Book> searchBook(String searchKey){
+        List<Book> books= bookDaoInterface.search(searchKey);
+        return books;
+    }
 }

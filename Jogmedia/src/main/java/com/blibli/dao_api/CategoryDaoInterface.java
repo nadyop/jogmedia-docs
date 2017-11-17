@@ -9,4 +9,5 @@ public interface CategoryDaoInterface {
     Category getIdCategory(int idCategory);
     void insertCategory(Category C);
     void delete (int id);
+
 }
