@@ -73,7 +73,8 @@
                                         <td th:text="${book.book_title}"></td>
                                         <td th:text="${book.author}"></td>
                                         <td th:text="${book.publisher}"></td>
-                                        <td th:text="${book.status}"></td>
+                                        <td th:if="${book.status == 1}" th:text="Active"></td>
+                                        <td th:if="${book.status == 0}" th:text="Noactive"></td>
                                         <td th:text="${book.price_before}"></td>
                                         <!--<td th:text="${book.price_after}"></td>-->
                                         <td th:text="${book.discount}"></td>

@@ -27,10 +27,10 @@ public class BookController {
         model.addAttribute("book",bookService.showAllBooks());
         return "book";
     }
-    @RequestMapping(value="/book/",method = RequestMethod.POST)
+    @RequestMapping(value="/book/createBook",method = RequestMethod.POST)
     public String simpanDataBook(Model model, @ModelAttribute("buku") Book buku){
         bookService.saveOrdUpdateService(buku);
-        return "redirect:/book";
+        return "";
     }
     @RequestMapping(value = "/book/createBook", method = RequestMethod.GET)
     public String tampilFormCreateBook(Model model){
