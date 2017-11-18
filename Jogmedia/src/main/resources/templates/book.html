@@ -37,7 +37,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="content">
-                    <form class="form-horizontal" th:action="@{/book/search}" method="post">
+                    <form class="form-horizontal" th:action="@{/book/}" method="post">
                     <!--Search Book-->
                     <div class="row-fluid input-group">
                         <span class="input-group-addon sp-icon">
@@ -75,15 +75,9 @@
                                         <td th:text="${book.book_title}"></td>
                                         <td th:text="${book.author}"></td>
                                         <td th:text="${book.publisher}"></td>
-<<<<<<< HEAD
                                         <td th:if="${book.status == 1}" th:text="Active"></td>
                                         <td th:if="${book.status == 0}" th:text="Noactive"></td>
                                         <td th:text="${book.price_before}"></td>
-=======
-                                        <td th:if="${book.status == 1}" th:text="Aktif"></td>
-                                        <td th:if="${book.status == 0}" th:text="Tidak Aktif"></td>
-                                        <td th:text="${book.price_after}"></td>
->>>>>>> 581a15b897439375f649cf4a46e0925d07548eae
                                         <!--<td th:text="${book.price_after}"></td>-->
                                         <td th:text="${book.discount}"></td>
                                         <td th:text="${book.location}"></td>

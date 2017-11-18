@@ -161,7 +161,6 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 preparedStatement.setString(3,book.getBook_title());
                 preparedStatement.setString(4,book.getAuthor());
                 preparedStatement.setString(5,book.getPublisher());
-
                 preparedStatement.setDouble(6,book.getPrice_before());
                 hitung=(book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
                 preparedStatement.setDouble(7,hitung);

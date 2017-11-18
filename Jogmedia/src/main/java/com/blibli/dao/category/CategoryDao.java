@@ -2,6 +2,7 @@ package com.blibli.dao.category;
 
 import com.blibli.dao.My_Connection;
 import com.blibli.dao_api.CategoryDaoInterface;
+import com.blibli.model.Book;
 import com.blibli.model.Category;
 import org.springframework.stereotype.Repository;
 
@@ -45,6 +46,36 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             System.out.println("eror "+ e);
         }
         return list;
+    }
+
+    @Override
+    public List<Category> search(String searchKey) {
+        String psql="select * from category where category_name='"+searchKey+"' ORDER BY category_id";
+        List<Category> categories = new ArrayList<>();
+//        System.out.println(searchKey);
+        try {
+            this.makeConnection();
+            Statement statement = this.con.createStatement();
+            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
+
+            ResultSet rs = statement.executeQuery(psql);
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Category category= new Category(
+                            rs.getInt("category_id"),
+                            rs.getString("category_name"),
+                            rs.getString("category_desc"),
+                            rs.getInt("status")
+                    );
+                    categories.add(category);
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return categories;
     }
 
     @Override
