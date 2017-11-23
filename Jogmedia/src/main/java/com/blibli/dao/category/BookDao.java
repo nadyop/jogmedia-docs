@@ -58,7 +58,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             this.makeConnection();
             Statement statement = this.con.createStatement();
             PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-            
+
             ResultSet rs = statement.executeQuery(psql);
 
             if (rs != null) {

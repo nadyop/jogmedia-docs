@@ -36,7 +36,7 @@ public class CategoryController {
     @RequestMapping(value = "/category/editCategory/{id}",method = RequestMethod.GET)
     public String editDataCategory(@PathVariable Integer id, Model model){
         model.addAttribute("category",categoryService.getIdCategory(id));
-        return "editCategory";
+        return "createCategory";
     }
 
     @RequestMapping(value = "/category/hapus/{id}",method = RequestMethod.GET)

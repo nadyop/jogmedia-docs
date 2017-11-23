@@ -63,7 +63,8 @@
                                         <td th:text="${category.category_id}"></td>
                                         <td th:text="${category.category_name}"></td>
                                         <td th:text="${category.category_desc}"></td>
-                                        <td th:text="${category.status}"></td>
+                                        <td th:if="${category.status == 1}" th:text="Active"></td>
+                                        <td th:if="${category.status == 0}" th:text="NonActive"></td>
                                         <td>
                                             <a th:href="${'/category/editCategory/'+category.category_id}">
                                                 <button>
