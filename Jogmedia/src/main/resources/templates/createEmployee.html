@@ -60,8 +60,12 @@
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Status</label>
-                                    <input th:field="*{status}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <div class="form-group">
+                                        <select th:field="*{status}" class="form-control" id="sel1">
+                                            <option th:value="1">Active</option>
+                                            <option th:value="0">Non-active</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div type="submit" class="form-group">
