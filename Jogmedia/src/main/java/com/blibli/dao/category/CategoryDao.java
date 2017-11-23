@@ -2,7 +2,6 @@ package com.blibli.dao.category;
 
 import com.blibli.dao.My_Connection;
 import com.blibli.dao_api.CategoryDaoInterface;
-import com.blibli.model.Book;
 import com.blibli.model.Category;
 import org.springframework.stereotype.Repository;
 
@@ -50,7 +49,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
 
     @Override
     public List<Category> search(String searchKey) {
-        String psql="select * from category where book_title='"+searchKey+"' ORDER BY category_id";
+        String psql="select * from category where category_name='"+searchKey+"' ORDER BY category_id";
         List<Category> categories= new ArrayList<>();
         System.out.println(searchKey);
         try {
