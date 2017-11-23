@@ -48,6 +48,34 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
     }
 
     @Override
+    public List<Category> search(String searchKey) {
+        String psql="select * from category where category_name='"+searchKey+"' ORDER BY category_id";
+        List<Category> categories= new ArrayList<>();
+        System.out.println(searchKey);
+        try {
+            this.makeConnection();
+            Statement statement = this.con.createStatement();
+            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
+            ResultSet rs = statement.executeQuery(psql);
+            if (rs != null) {
+                while (rs.next()) {
+                    Category category= new Category(
+                            rs.getInt("category_id"),
+                            rs.getString("category_name"),
+                            rs.getString("category_desc"),
+                            rs.getInt("status")
+                    );
+                    categories.add(category);
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return categories;
+    }
+
+    @Override
     public Category getIdCategory(int idCategory){
         String psql="Select * from category where category_id='"+idCategory+"';";
         Category category= new Category();

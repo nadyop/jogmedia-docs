@@ -51,9 +51,7 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         String psql;
         System.out.println(E.getEmployee_id());
         if(E.getEmployee_id()!=0){
-            System.out.println("apakah masuk?11");
             try{
-                System.out.println("apakah masuk?");
                 psql="update Employee set employee_name=?, employee_uname=?, password=?,role=?,status=? where employee_id=?";
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);

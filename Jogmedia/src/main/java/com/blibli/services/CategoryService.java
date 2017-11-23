@@ -1,6 +1,7 @@
 package com.blibli.services;
 
 import com.blibli.dao_api.CategoryDaoInterface;
+import com.blibli.model.Book;
 import com.blibli.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,8 @@ public class CategoryService {
         dao.delete(id);
     }
 
-
+    public List<Category> searchCategory(String searchKey){
+        List<Category> categories= dao.search(searchKey);
+        return categories;
+    }
 }

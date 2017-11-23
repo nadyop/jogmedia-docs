@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +39,11 @@ public class CategoryController {
         model.addAttribute("category",categoryService.getIdCategory(id));
         return "createCategory";
     }
-
+    @RequestMapping(value = "/category/search", method = RequestMethod.POST)
+    public String search(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("category", categoryService.searchCategory(searchKey));
+        return "category";
+    }
     @RequestMapping(value = "/category/hapus/{id}",method = RequestMethod.GET)
     public String hapusDataCategory(@PathVariable Integer id,Model model){
         categoryService.deleteCategory(id);

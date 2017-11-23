@@ -75,7 +75,6 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                             rs.getDouble("price_before"),
                             rs.getDouble("price_after"),
                             rs.getInt("discount")
-
                     );
                     books.add(book);
                 }

@@ -20,15 +20,15 @@ public class EmployeeController {
         return "tampilemp";
     }
     @RequestMapping(value = "/tampilemp/", method = RequestMethod.POST)
+    public String simpanDataEmployee(Employee employee){
+        employeeService.save(employee);
+        return "redirect:/tampilemp";
+    }
+    @RequestMapping(value = "/tampilemp/createEmployee", method = RequestMethod.GET)
     public String tampilFormCreateEmployee(Model model)
     {
         model.addAttribute("employee",new Employee());
         return "createEmployee";
-    }
-    @RequestMapping(value = "/tampilemp/createEmployee", method = RequestMethod.POST)
-    public String simpanDataEmployee(Employee employee){
-        employeeService.save(employee);
-        return "redirect:/tampilemp";
     }
     @RequestMapping(value = "/tampilemp/edit/{id}", method = RequestMethod.GET)
     public String editData(@PathVariable Integer id, Model model){
