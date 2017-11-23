@@ -67,8 +67,8 @@
                                         <td th:text="${employee.employee_uname}"></td>
                                         <td th:text="${employee.password}"></td>
                                         <td th:text="${employee.role}"></td>
-                                        <td th:if="${book.status == 1}" th:text="Active"></td>
-                                        <td th:if="${book.status == 0}" th:text="Noactive"></td>
+                                        <td th:if="${employee.status == 1}" th:text="Aktif"></td>
+                                        <td th:if="${employee.status == 0}" th:text="Tidak Aktif"></td>
                                         <td>
                                             <a th:href="${'/tampilemp/edit/'+employee.employee_id}">
                                                 <button>

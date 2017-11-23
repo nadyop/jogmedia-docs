@@ -58,7 +58,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             this.makeConnection();
             Statement statement = this.con.createStatement();
             PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-            
+
             ResultSet rs = statement.executeQuery(psql);
 
             if (rs != null) {
@@ -75,7 +75,6 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                             rs.getDouble("price_before"),
                             rs.getDouble("price_after"),
                             rs.getInt("discount")
-
                     );
                     books.add(book);
                 }
@@ -161,6 +160,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 preparedStatement.setString(3,book.getBook_title());
                 preparedStatement.setString(4,book.getAuthor());
                 preparedStatement.setString(5,book.getPublisher());
+
                 preparedStatement.setDouble(6,book.getPrice_before());
                 hitung=(book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
                 preparedStatement.setDouble(7,hitung);

@@ -27,10 +27,10 @@ public class BookController {
         model.addAttribute("book",bookService.showAllBooks());
         return "book";
     }
-    @RequestMapping(value="/book/createBook",method = RequestMethod.POST)
+    @RequestMapping(value="/book/",method = RequestMethod.POST)
     public String simpanDataBook(Model model, @ModelAttribute("buku") Book buku){
         bookService.saveOrdUpdateService(buku);
-        return "";
+        return "redirect:/book";
     }
     @RequestMapping(value = "/book/createBook", method = RequestMethod.GET)
     public String tampilFormCreateBook(Model model){
@@ -44,7 +44,7 @@ public class BookController {
         model.addAttribute("book",bookService.getIdBuku(id));
         return "createBook";
     }
-    @RequestMapping(value = "/book/", method = RequestMethod.POST)
+    @RequestMapping(value = "/book/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
         model.addAttribute("book", bookService.searchBook(searchKey));
         return "book";

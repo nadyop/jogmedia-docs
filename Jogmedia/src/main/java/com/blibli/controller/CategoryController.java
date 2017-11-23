@@ -37,17 +37,16 @@ public class CategoryController {
     @RequestMapping(value = "/category/editCategory/{id}",method = RequestMethod.GET)
     public String editDataCategory(@PathVariable Integer id, Model model){
         model.addAttribute("category",categoryService.getIdCategory(id));
-        return "createCategory";
+        return "editCategory";
     }
-
+    @RequestMapping(value = "/category/search", method = RequestMethod.POST)
+    public String search(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("category", categoryService.searchCategory(searchKey));
+        return "category";
+    }
     @RequestMapping(value = "/category/hapus/{id}",method = RequestMethod.GET)
     public String hapusDataCategory(@PathVariable Integer id,Model model){
         categoryService.deleteCategory(id);
         return "redirect:/category";
-    }
-    @RequestMapping(value = "/category/", method = RequestMethod.POST)
-    public String search(Model model, @ModelAttribute("searchKey") String searchKey){
-        model.addAttribute("book", categoryService.searchCategory(searchKey));
-        return "category";
     }
 }
