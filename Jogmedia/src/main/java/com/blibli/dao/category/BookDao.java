@@ -50,6 +50,76 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         return books;
     }
     @Override
+    public List<Book> getAllBooksDiscount(){
+        String psql="select * from book where book.discount!=0 and status=1";
+        List<Book> books= new ArrayList<>();
+        try{
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null){
+                while(rs.next()){
+
+                    Book book= new Book(
+                            rs.getInt("book_id"),
+                            rs.getInt("category_id"),
+                            rs.getString("isbn"),
+                            rs.getString("book_title"),
+                            rs.getString("author"),
+                            rs.getString("publisher"),
+                            rs.getString("location"),
+                            rs.getInt("status"),
+                            rs.getDouble("price_before"),
+                            rs.getDouble("price_after"),
+                            rs.getInt("discount")
+
+                    );
+                    books.add(book);
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return books;
+    }
+    @Override
+    public List<Book> getAllBooksEmty(){
+        String psql="select * from book where book.stok==0 and status=1";
+        List<Book> books= new ArrayList<>();
+        try{
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null){
+                while(rs.next()){
+
+                    Book book= new Book(
+                            rs.getInt("book_id"),
+                            rs.getInt("category_id"),
+                            rs.getString("isbn"),
+                            rs.getString("book_title"),
+                            rs.getString("author"),
+                            rs.getString("publisher"),
+                            rs.getString("location"),
+                            rs.getInt("status"),
+                            rs.getDouble("price_before"),
+                            rs.getDouble("price_after"),
+                            rs.getInt("discount")
+
+                    );
+                    books.add(book);
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return books;
+    }
+    @Override
     public  List<Book> search(String searchKey){
         String psql="select * from book where book_title='"+searchKey+"' ORDER BY book_id";
         List<Book> books= new ArrayList<>();

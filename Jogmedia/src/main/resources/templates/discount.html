@@ -19,14 +19,14 @@
                     <li><a href="#"><span class="fa fa-sign-out"></span> Logout</a></li>
                 </ul>
                 <div class="wrapper-title">
-                    <span><h3>Category</h3></span>
+                    <span><h3>Book</h3></span>
                 </div>
             </div>
         </nav>
     </div>
     <!-- Button circle -->
     <div class="row btn-add">
-        <a href="/category/createCategory">
+        <a href="/book/createBook">
             <button type="button" class="btn btn-default btn-circle col-md-5 col-sm-2" name="button" data-toggle="modal" data-target="#modal-add">
                 <i class="fa fa-plus"></i>
             </button>
@@ -37,41 +37,58 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="content">
-                    <!--Search Book-->
-                    <div class="row-fluid input-group">
+                    <form class="form-horizontal" th:action="@{/book/search}" method="post">
+                        <!--Search Book-->
+                        <div class="row-fluid input-group">
                         <span class="input-group-addon sp-icon">
                           <i class="fa fa-book"></i>
                         </span>
-                        <input id="uname" type="text" class="form-control" name="" placeholder="Category Name"/>
-                        <span class="input-group-btn">
-                          <button class="btn btn-default btn-search" type="button" name="button">Search</button>
+                            <input type="text" class="form-control" name="searchKey" th:value="${searchKey}" placeholder="Book Title"/>
+                            <span class="input-group-btn">
+                          <button class="btn btn-default btn-search" type="button" name="button" >Search</button>
                         </span>
-                    </div>
-                    <!--Table Category-->
+                        </div>
+                    </form>
+                    <!--Table Book-->
                     <div class="panel panel-default col-md-12 margin5">
                         <div class="panel-body table-responsive" style="max-height:430px;overflow:auto">
-                            <div th:if="${not #lists.isEmpty(category)}">
+                            <div th:if="${not #lists.isEmpty(book)}">
+
                                 <table class="table table-striped">
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Nama Kategory</th>
-                                        <th>Deskripsi Kategori</th>
+                                        <!--<th>Book Id</th>-->
+                                        <th>Category Id</th>
+                                        <th>ISBN</th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Publisher</th>
                                         <th>Status</th>
+                                        <th>Price</th>
+                                        <!--<th>Harga Sesudah</th>-->
+                                        <th>Diskon</th>
+                                        <th>Location</th>
                                         <th>Action</th>
                                     </tr>
-                                    <tr th:each="category: ${category}">
-                                        <td th:text="${category.category_id}"></td>
-                                        <td th:text="${category.category_name}"></td>
-                                        <td th:text="${category.category_desc}"></td>
-                                        <td th:if="${category.status == 1}" th:text="Active"></td>
-                                        <td th:if="${category.status == 0}" th:text="NoActive"></td>
+                                    <tr th:each="book: ${book}">
+                                        <!--<td th:text="${book.book_id}"></td>-->
+                                        <td th:text="${book.category_id}"></td>
+                                        <td th:text="${book.isbn}"></td>
+                                        <td th:text="${book.book_title}"></td>
+                                        <td th:text="${book.author}"></td>
+                                        <td th:text="${book.publisher}"></td>
+                                        <td th:if="${book.status == 1}" th:text="Active"></td>
+                                        <td th:if="${book.status == 0}" th:text="Noactive"></td>
+                                        <td th:text="${book.price_after}"></td>
+                                        <!--<td th:text="${book.price_after}"></td>-->
+                                        <td th:text="${book.discount}"></td>
+                                        <td th:text="${book.location}"></td>
                                         <td>
-                                            <a th:href="${'/category/editCategory/'+category.category_id}">
+                                            <a th:href="${'/book/editBook/'+book.book_id}">
                                                 <button>
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </button>
                                             </a>
-                                            <a th:href="${'/category/hapus/'+category.category_id}">
+                                            <a th:href="${'/book/hapus/'+book.book_id}">
                                                 <button>
                                                     <span class="glyphicon glyphicon-remove"></span>
                                                 </button>
@@ -96,7 +113,7 @@
         <ul class="nav navbar-nav ul-top">
             <li><a href="store"><i class="fa fa-home"></i>&nbsp; Store</a></li>
             <li><a href="book"><i class="fa fa-book"></i>&nbsp; Book</a></li>
-            <li><a href="discount"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
+            <li><a href="discmng"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
             <li><a href="emptyStok"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
             <li><a href="category"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
             <li><a href="reportmng"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
