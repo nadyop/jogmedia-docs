@@ -17,6 +17,10 @@ public class CategoryService {
         List<Category> temp= dao.getAllCategory();
         return temp;
     }
+    public List<Category> showActiveCategories(){
+        List<Category> temp= dao.getAllActive();
+        return temp;
+    }
     public void save(Category category){
         dao.insertCategory(category);
     }

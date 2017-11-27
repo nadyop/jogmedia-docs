@@ -14,7 +14,37 @@ import java.util.List;
 @Repository
 public class CategoryDao extends My_Connection implements CategoryDaoInterface {
 
-
+    @Override
+    public List<Category> getAllActive(){
+        String psql="select * from Category where status = 1";
+        System.out.println("Show Category");
+        List<Category> list= new ArrayList<>();
+        try{
+            this.makeConnection();
+            Statement statement=this.con.createStatement();
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null){
+                System.out.println("test1");
+                System.out.println("getAll\t:");
+                while (rs.next()){
+                    System.out.println("\t"+rs.getInt("category_id"));
+                    Category category= new Category(
+                            rs.getInt("category_id"),
+                            rs.getString("category_name"),
+                            rs.getString("category_desc"),
+                            rs.getInt("status")
+                    );
+                    list.add(category);
+                    System.out.println(category.getStatus());
+                }
+            }
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println("eror "+ e);
+        }
+        return list;
+    }
     @Override
     public List<Category> getAllCategory() {
         String psql="select * from Category";

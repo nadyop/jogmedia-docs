@@ -44,13 +44,13 @@ public class BookController {
     }
     @RequestMapping(value = "/book/createBook", method = RequestMethod.GET)
     public String tampilFormCreateBook(Model model){
-        model.addAttribute("categories", categoryService.showAllCategory());
+        model.addAttribute("categories", categoryService.showActiveCategories());
         model.addAttribute("book", new Book());
         return "createBook";
     }
     @RequestMapping(value = "/book/editBook/{id}",method = RequestMethod.GET)
     public String editDataCategory(@PathVariable Integer id, Model model){
-        model.addAttribute("categories", categoryService.showAllCategory());
+        model.addAttribute("categories", categoryService.showActiveCategories());
         model.addAttribute("book",bookService.getIdBuku(id));
         return "createBook";
     }
