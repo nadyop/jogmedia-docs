@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="jogmedia_db@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.4">
+    <root id="1"/>
+    <database id="2" parent="1" name="jogmedia_db">
+      <ObjectId>24971</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12401</ObjectId>
+    </database>
+    <database id="4" parent="1" name="test">
+      <ObjectId>16563</ObjectId>
+    </database>
+    <database id="5" parent="1" name="BookStore">
+      <ObjectId>16564</ObjectId>
+    </database>
+    <database id="6" parent="1" name="db_test1">
+      <ObjectId>16570</ObjectId>
+    </database>
+    <database id="7" parent="1" name="db_bookstore">
+      <ObjectId>16579</ObjectId>
+    </database>
+    <database id="8" parent="1" name="db_book">
+      <ObjectId>16583</ObjectId>
+    </database>
+    <database id="9" parent="1" name="gege">
+      <ObjectId>16600</ObjectId>
+    </database>
+    <database id="10" parent="1" name="jogmediaa">
+      <ObjectId>24796</ObjectId>
+    </database>
+    <database id="11" parent="1" name="jogmedia">
+      <ObjectId>24797</ObjectId>
+    </database>
+    <database id="12" parent="1" name="db">
+      <ObjectId>24819</ObjectId>
+    </database>
+    <database id="13" parent="1" name="db_latian">
+      <ObjectId>24891</ObjectId>
+    </database>
+    <database id="14" parent="1" name="db_tokobuku">
+      <ObjectId>24902</ObjectId>
+    </database>
+    <database id="15" parent="1" name="db_buku">
+      <ObjectId>24903</ObjectId>
+    </database>
+    <database id="16" parent="1" name="test1">
+      <ObjectId>24922</ObjectId>
+    </database>
+    <database id="17" parent="1" name="test2">
+      <ObjectId>24933</ObjectId>
+    </database>
+    <database id="18" parent="1" name="test3">
+      <ObjectId>24944</ObjectId>
+    </database>
+    <database id="19" parent="1" name="t_db">
+      <ObjectId>25231</ObjectId>
+    </database>
+    <schema id="20" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-11-27.11:46:13.373</IntrospectionTimestamp>
+      <IntrospectionStateNumber>6995</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="21" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="22" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="23" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="24" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="25" parent="2" name="information_schema">
+      <ObjectId>12113</ObjectId>
+    </schema>
+    <sequence id="26" parent="20" name="book_book_id_seq">
+      <ObjectId>25242</ObjectId>
+      <StateNumber>6993</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="27" parent="20" name="book_id_seq">
+      <ObjectId>25112</ObjectId>
+      <StateNumber>6761</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="28" parent="20" name="book_image_bookimage_id_seq">
+      <ObjectId>25276</ObjectId>
+      <StateNumber>6995</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="29" parent="20" name="bookimg_id_seq">
+      <ObjectId>25127</ObjectId>
+      <StateNumber>6771</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="30" parent="20" name="category_category_id_seq">
+      <ObjectId>25146</ObjectId>
+      <StateNumber>6782</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="31" parent="20" name="category_id_seq">
+      <ObjectId>25115</ObjectId>
+      <StateNumber>6763</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="32" parent="20" name="detil_transaction_detil_id_seq">
+      <ObjectId>25258</ObjectId>
+      <StateNumber>6994</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="33" parent="20" name="dettrans_id_seq">
+      <ObjectId>25124</ObjectId>
+      <StateNumber>6769</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="34" parent="20" name="emp_id_seq">
+      <ObjectId>25109</ObjectId>
+      <StateNumber>6759</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="35" parent="20" name="employee_employee_id_seq">
+      <ObjectId>25138</ObjectId>
+      <StateNumber>6781</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="36" parent="20" name="store_id_seq">
+      <ObjectId>25118</ObjectId>
+      <StateNumber>6765</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="37" parent="20" name="store_store_id_seq">
+      <ObjectId>25157</ObjectId>
+      <StateNumber>6783</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="38" parent="20" name="transaction_id_seq">
+      <ObjectId>25121</ObjectId>
+      <StateNumber>6767</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="39" parent="20" name="transaction_transaction_id_seq">
+      <ObjectId>25170</ObjectId>
+      <StateNumber>6784</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <table id="40" parent="20" name="book">
+      <ObjectId>25244</ObjectId>
+      <StateNumber>6995</StateNumber>
+    </table>
+    <table id="41" parent="20" name="book_image">
+      <ObjectId>25278</ObjectId>
+      <StateNumber>6995</StateNumber>
+    </table>
+    <table id="42" parent="20" name="category">
+      <ObjectId>25148</ObjectId>
+      <StateNumber>6993</StateNumber>
+    </table>
+    <table id="43" parent="20" name="detil_transaction">
+      <ObjectId>25260</ObjectId>
+      <StateNumber>6994</StateNumber>
+    </table>
+    <table id="44" parent="20" name="employee">
+      <ObjectId>25140</ObjectId>
+      <StateNumber>6784</StateNumber>
+    </table>
+    <table id="45" parent="20" name="store">
+      <ObjectId>25159</ObjectId>
+      <StateNumber>6783</StateNumber>
+    </table>
+    <table id="46" parent="20" name="transaction">
+      <ObjectId>25172</ObjectId>
+      <StateNumber>6994</StateNumber>
+    </table>
+    <column id="47" parent="40" name="book_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6993</StateNumber>
+      <SequenceName>book_book_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;book_book_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="48" parent="40" name="category_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="49" parent="40" name="isbn">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="50" parent="40" name="book_title">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="51" parent="40" name="author">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="52" parent="40" name="publisher">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="53" parent="40" name="price_before">
+      <Position>7</Position>
+      <DataType>numeric(19,2)|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="54" parent="40" name="price_after">
+      <Position>8</Position>
+      <DataType>numeric(19,2)|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="55" parent="40" name="discount">
+      <Position>9</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="56" parent="40" name="location">
+      <Position>10</Position>
+      <DataType>varchar(20)|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="57" parent="40" name="stok">
+      <Position>11</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <column id="58" parent="40" name="status">
+      <Position>12</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>6993</StateNumber>
+    </column>
+    <index id="59" parent="40" name="pk_book">
+      <ObjectId>25251</ObjectId>
+      <ColNames>book_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="40" name="pk_book">
+      <ObjectId>25252</ObjectId>
+      <ColNames>book_id</ColNames>
+      <UnderlyingIndexName>pk_book</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="40" name="fk_catid">
+      <ObjectId>25253</ObjectId>
+      <ColNames>category_id</ColNames>
+      <RefTableId>25148</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>category</RefTableName>
+      <RefKeyName>pk_category</RefKeyName>
+      <RefColNames>category_id</RefColNames>
+    </foreign-key>
+    <column id="62" parent="41" name="bookimage_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6995</StateNumber>
+      <SequenceName>book_image_bookimage_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;book_image_bookimage_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="63" parent="41" name="book_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6995</StateNumber>
+    </column>
+    <column id="64" parent="41" name="image_desc">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>6995</StateNumber>
+    </column>
+    <column id="65" parent="41" name="image_add">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>6995</StateNumber>
+    </column>
+    <index id="66" parent="41" name="pk_bookimage">
+      <ObjectId>25282</ObjectId>
+      <ColNames>bookimage_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="67" parent="41" name="pk_bookimage">
+      <ObjectId>25283</ObjectId>
+      <ColNames>bookimage_id</ColNames>
+      <UnderlyingIndexName>pk_bookimage</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="68" parent="41" name="fk_bookid">
+      <ObjectId>25284</ObjectId>
+      <ColNames>book_id</ColNames>
+      <RefTableId>25244</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>book</RefTableName>
+      <RefKeyName>pk_book</RefKeyName>
+      <RefColNames>book_id</RefColNames>
+    </foreign-key>
+    <column id="69" parent="42" name="category_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6782</StateNumber>
+      <SequenceName>category_category_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;category_category_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="70" parent="42" name="category_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>6782</StateNumber>
+    </column>
+    <column id="71" parent="42" name="category_desc">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>6782</StateNumber>
+    </column>
+    <column id="72" parent="42" name="status">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>6782</StateNumber>
+    </column>
+    <index id="73" parent="42" name="pk_category">
+      <ObjectId>25155</ObjectId>
+      <ColNames>category_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="74" parent="42" name="pk_category">
+      <ObjectId>25156</ObjectId>
+      <ColNames>category_id</ColNames>
+      <UnderlyingIndexName>pk_category</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="75" parent="43" name="detil_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6994</StateNumber>
+      <SequenceName>detil_transaction_detil_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;detil_transaction_detil_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="76" parent="43" name="transaction_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6994</StateNumber>
+    </column>
+    <column id="77" parent="43" name="book_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6994</StateNumber>
+    </column>
+    <column id="78" parent="43" name="quantity">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>6994</StateNumber>
+    </column>
+    <column id="79" parent="43" name="unit_price">
+      <Position>5</Position>
+      <DataType>numeric(19,2)|0</DataType>
+      <StateNumber>6994</StateNumber>
+    </column>
+    <column id="80" parent="43" name="discount">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>6994</StateNumber>
+    </column>
+    <index id="81" parent="43" name="pk_detil_transaction">
+      <ObjectId>25264</ObjectId>
+      <ColNames>detil_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="82" parent="43" name="pk_detil_transaction">
+      <ObjectId>25265</ObjectId>
+      <ColNames>detil_id</ColNames>
+      <UnderlyingIndexName>pk_detil_transaction</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="83" parent="43" name="fk_transid">
+      <ObjectId>25266</ObjectId>
+      <ColNames>transaction_id</ColNames>
+      <RefTableId>25172</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>transaction</RefTableName>
+      <RefKeyName>pk_transaction</RefKeyName>
+      <RefColNames>transaction_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="84" parent="43" name="fk_bookid">
+      <ObjectId>25271</ObjectId>
+      <ColNames>book_id</ColNames>
+      <RefTableId>25244</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>book</RefTableName>
+      <RefKeyName>pk_book</RefKeyName>
+      <RefColNames>book_id</RefColNames>
+    </foreign-key>
+    <column id="85" parent="44" name="employee_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6781</StateNumber>
+      <SequenceName>employee_employee_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;employee_employee_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="86" parent="44" name="employee_name">
+      <Position>2</Position>
+      <DataType>varchar(25)|0</DataType>
+      <StateNumber>6781</StateNumber>
+    </column>
+    <column id="87" parent="44" name="employee_uname">
+      <Position>3</Position>
+      <DataType>varchar(15)|0</DataType>
+      <StateNumber>6869</StateNumber>
+    </column>
+    <column id="88" parent="44" name="password">
+      <Position>4</Position>
+      <DataType>varchar(70)|0</DataType>
+      <StateNumber>6868</StateNumber>
+    </column>
+    <column id="89" parent="44" name="role">
+      <Position>5</Position>
+      <DataType>varchar(10)|0</DataType>
+      <StateNumber>6781</StateNumber>
+    </column>
+    <column id="90" parent="44" name="status">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>6781</StateNumber>
+    </column>
+    <index id="91" parent="44" name="pk_employee">
+      <ObjectId>25144</ObjectId>
+      <ColNames>employee_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="92" parent="44" name="pk_employee">
+      <ObjectId>25145</ObjectId>
+      <ColNames>employee_id</ColNames>
+      <UnderlyingIndexName>pk_employee</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="93" parent="45" name="store_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6783</StateNumber>
+      <SequenceName>store_store_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;store_store_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="94" parent="45" name="employee_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6783</StateNumber>
+    </column>
+    <column id="95" parent="45" name="store_name">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>6783</StateNumber>
+    </column>
+    <column id="96" parent="45" name="address">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>6783</StateNumber>
+    </column>
+    <column id="97" parent="45" name="npwp">
+      <Position>5</Position>
+      <DataType>varchar(25)|0</DataType>
+      <StateNumber>6783</StateNumber>
+    </column>
+    <column id="98" parent="45" name="post_code">
+      <Position>6</Position>
+      <DataType>varchar(10)|0</DataType>
+      <StateNumber>6783</StateNumber>
+    </column>
+    <column id="99" parent="45" name="email">
+      <Position>7</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>6783</StateNumber>
+    </column>
+    <column id="100" parent="45" name="image">
+      <Position>8</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>6783</StateNumber>
+    </column>
+    <index id="101" parent="45" name="pk_store">
+      <ObjectId>25163</ObjectId>
+      <ColNames>store_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="102" parent="45" name="pk_store">
+      <ObjectId>25164</ObjectId>
+      <ColNames>store_id</ColNames>
+      <UnderlyingIndexName>pk_store</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="103" parent="45" name="fk_empid">
+      <ObjectId>25165</ObjectId>
+      <ColNames>employee_id</ColNames>
+      <RefTableId>25140</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>employee</RefTableName>
+      <RefKeyName>pk_employee</RefKeyName>
+      <RefColNames>employee_id</RefColNames>
+    </foreign-key>
+    <column id="104" parent="46" name="transaction_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6784</StateNumber>
+      <SequenceName>transaction_transaction_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;transaction_transaction_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="105" parent="46" name="employee_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>6784</StateNumber>
+    </column>
+    <column id="106" parent="46" name="date">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <StateNumber>6784</StateNumber>
+    </column>
+    <column id="107" parent="46" name="total_pembelian">
+      <Position>4</Position>
+      <DataType>numeric(19,2)|0</DataType>
+      <StateNumber>6784</StateNumber>
+    </column>
+    <column id="108" parent="46" name="total_pembayaran">
+      <Position>5</Position>
+      <DataType>numeric(19,2)|0</DataType>
+      <StateNumber>6784</StateNumber>
+    </column>
+    <index id="109" parent="46" name="pk_transaction">
+      <ObjectId>25176</ObjectId>
+      <ColNames>transaction_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="110" parent="46" name="pk_transaction">
+      <ObjectId>25177</ObjectId>
+      <ColNames>transaction_id</ColNames>
+      <UnderlyingIndexName>pk_transaction</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="111" parent="46" name="fk_empid">
+      <ObjectId>25178</ObjectId>
+      <ColNames>employee_id</ColNames>
+      <RefTableId>25140</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>employee</RefTableName>
+      <RefKeyName>pk_employee</RefKeyName>
+      <RefColNames>employee_id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
