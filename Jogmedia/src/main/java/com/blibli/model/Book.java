@@ -2,14 +2,18 @@ package com.blibli.model;
 
 public class Book {
 
-    private int book_id, category_id, status, discount;
+    private int book_id;
+    private int category_id;
+    private int status;
+    private int discount;
+    private int stok;
     private String isbn, book_title, author, publisher, location;
     private double price_after, price_before;
 
     public Book() {
     }
 
-    public Book(int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location,int status, double price_before, double price_after, int discount) {
+    public Book(int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location,int discount, double price_before, double price_after, int stok, int status) {
         this.book_id = book_id;
         this.category_id = category_id;
         this.isbn = isbn;
@@ -21,6 +25,7 @@ public class Book {
         this.price_after = price_after;
         this.price_before = price_before;
         this.discount = discount;
+        this.setStok(stok);
     }
 
     public int getStatus() {
@@ -113,5 +118,13 @@ public class Book {
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public int getStok() {
+        return stok;
+    }
+
+    public void setStok(int stok) {
+        this.stok = stok;
     }
 }

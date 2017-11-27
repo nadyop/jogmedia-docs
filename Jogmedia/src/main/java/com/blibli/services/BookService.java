@@ -16,6 +16,14 @@ public class BookService {
         List<Book> books= bookDaoInterface.getAllBooks();
         return books;
     }
+    public List<Book> showAllBooksbyDiscount(){
+        List<Book> books=bookDaoInterface.getAllBooksDiscount();
+        return books;
+    }
+    public List<Book> showAllBooksbyEmptyStok(){
+        List<Book> books=bookDaoInterface.getAllBooksEmty();
+        return books;
+    }
     public void saveOrdUpdateService(Book book){
         bookDaoInterface.saveBook(book);
     }

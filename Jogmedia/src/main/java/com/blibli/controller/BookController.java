@@ -27,6 +27,16 @@ public class BookController {
         model.addAttribute("book",bookService.showAllBooks());
         return "book";
     }
+    @RequestMapping("/discount")
+    public String BookListDiscount(Model model){
+        model.addAttribute("book",bookService.showAllBooksbyDiscount());
+        return "discount";
+    }
+    @RequestMapping("/emptyStok")
+    public String BookListEmpty(Model model){
+        model.addAttribute("book",bookService.showAllBooksbyEmptyStok());
+        return "emptyStok";
+    }
     @RequestMapping(value="/book/",method = RequestMethod.POST)
     public String simpanDataBook(Model model, @ModelAttribute("buku") Book buku){
         bookService.saveOrdUpdateService(buku);

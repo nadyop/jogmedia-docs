@@ -14,9 +14,44 @@ import java.util.List;
 
 @Repository
 public class BookDao extends My_Connection implements BookDaoInterface {
+
     @Override
     public List<Book> getAllBooks(){
         String psql="select * from book";
+        List<Book> books= new ArrayList<>();
+        try{
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null){
+                while(rs.next()){
+                    Book book= new Book(
+                            rs.getInt("book_id"),
+                            rs.getInt("category_id"),
+                            rs.getString("isbn"),
+                            rs.getString("book_title"),
+                            rs.getString("author"),
+                            rs.getString("publisher"),
+                            rs.getString("location"),
+                            rs.getInt("discount"),
+                            rs.getDouble("price_before"),
+                            rs.getDouble("price_after"),
+                            rs.getInt("stok"),
+                            rs.getInt("status")
+                    );
+                    books.add(book);
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return books;
+    }
+    @Override
+    public List<Book> getAllBooksDiscount(){
+        String psql="select * from book where book.discount!=0 and book.stok!=0";
         List<Book> books= new ArrayList<>();
         try{
             this.makeConnection();
@@ -34,10 +69,48 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                             rs.getString("author"),
                             rs.getString("publisher"),
                             rs.getString("location"),
-                            rs.getInt("status"),
+                            rs.getInt("discount"),
                             rs.getDouble("price_before"),
                             rs.getDouble("price_after"),
-                            rs.getInt("discount")
+                            rs.getInt("stok"),
+                            rs.getInt("status")
+
+                    );
+                    books.add(book);
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return books;
+    }
+
+    @Override
+    public List<Book> getAllBooksEmty(){
+        String psql="select * from book where book.stok=0 ";
+        List<Book> books= new ArrayList<>();
+        try{
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null){
+                while(rs.next()){
+
+                    Book book= new Book(
+                            rs.getInt("book_id"),
+                            rs.getInt("category_id"),
+                            rs.getString("isbn"),
+                            rs.getString("book_title"),
+                            rs.getString("author"),
+                            rs.getString("publisher"),
+                            rs.getString("location"),
+                            rs.getInt("discount"),
+                            rs.getDouble("price_before"),
+                            rs.getDouble("price_after"),
+                            rs.getInt("stok"),
+                            rs.getInt("status")
 
                     );
                     books.add(book);
@@ -71,10 +144,11 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                             rs.getString("author"),
                             rs.getString("publisher"),
                             rs.getString("location"),
-                            rs.getInt("status"),
+                            rs.getInt("discount"),
                             rs.getDouble("price_before"),
                             rs.getDouble("price_after"),
-                            rs.getInt("discount")
+                            rs.getInt("stok"),
+                            rs.getInt("status")
                     );
                     books.add(book);
                 }
@@ -85,6 +159,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         }
         return books;
     }
+
     @Override
     public Book getIdBook(int idBook){
         String psql="Select * from Book where book_id='"+idBook+"';";
@@ -101,11 +176,12 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                     book.setBook_title(rs.getString("book_title"));
                     book.setAuthor(rs.getString("author"));
                     book.setPublisher(rs.getString("publisher"));
-                    book.setStatus(rs.getInt("status"));
+                    book.setLocation(rs.getString("location"));
+                    book.setDiscount(rs.getInt("discount"));
                     book.setPrice_before(rs.getDouble("price_before"));
                     book.setPrice_after(rs.getDouble("price_after"));
-                    book.setDiscount(rs.getInt("discount"));
-                    book.setLocation(rs.getString("location"));
+                    book.setStok(rs.getInt("stok"));
+                    book.setStatus(rs.getInt("status"));
                 }
             }
             this.disconnect();
@@ -119,10 +195,10 @@ public class BookDao extends My_Connection implements BookDaoInterface {
     public void saveBook(Book book){
         String psql;
         double hitung;
-
+//int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location,int discount, double price_before, double price_after, int stok, int status) {
         if(book.getBook_id()!=0){
             System.out.println("updating book");
-            psql="UPDATE book SET isbn=?,book_title=?,author=?,publisher=?,category_id=?,location=?,price_before=?,price_after=?,discount=?, status=? where book_id=?";
+            psql="UPDATE book SET isbn=?,book_title=?,author=?,publisher=?,category_id=?,location=?,price_before=?,price_after=?,discount=?, stok=?,status=? where book_id=?";
             try {
                 this.makeConnection();
                 System.out.println("test update buku");
@@ -138,8 +214,9 @@ public class BookDao extends My_Connection implements BookDaoInterface {
 
                 preparedStatement.setDouble(8,hitung);
                 preparedStatement.setInt(9,book.getDiscount());
-                preparedStatement.setInt(10,book.getStatus());
-                preparedStatement.setInt(11,book.getBook_id());
+                preparedStatement.setInt(10,book.getStok());
+                preparedStatement.setInt(11,book.getStatus());
+                preparedStatement.setInt(12,book.getBook_id());
                 preparedStatement.executeUpdate();
                 System.out.println("suskes update="+book.getBook_title());
                 this.disconnect();
@@ -148,8 +225,8 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 System.out.println(e);
             }
         }else{
-            psql = "Insert into book(category_id, isbn, book_title,author,publisher,price_before,price_after,discount,location,status)"+
-                    " values (?,?,?,?,?,?,?,?,?,1)";
+            psql = "Insert into book(category_id, isbn, book_title,author,publisher,price_before,price_after,discount,location,stok,status)"+
+                    " values (?,?,?,?,?,?,?,?,?,?,1)";
             try {
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
@@ -166,6 +243,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 preparedStatement.setDouble(7,hitung);
                 preparedStatement.setInt(8,book.getDiscount());
                 preparedStatement.setString(9,book.getLocation());
+                preparedStatement.setInt(10,book.getStok());
                 preparedStatement.executeQuery();
                 System.out.println("yey berhasil");
                 this.disconnect();
