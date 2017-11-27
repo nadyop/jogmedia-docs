@@ -84,14 +84,10 @@
                                         <td th:text="${book.location}"></td>
                                         <td>
                                             <a th:href="${'/book/editBook/'+book.book_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                                </button>
+                                                <button class="btn btn-dafault">Edit</button>
                                             </a>
                                             <a th:href="${'/book/hapus/'+book.book_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-remove"></span>
-                                                </button>
+                                                <button class="btn btn-warning">Delete</button>
                                             </a>
                                         </td>
                                     </tr>

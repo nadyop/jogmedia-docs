@@ -67,14 +67,10 @@
                                         <td th:if="${category.status == 0}" th:text="NoActive"></td>
                                         <td>
                                             <a th:href="${'/category/editCategory/'+category.category_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                                </button>
+                                                <button class="btn btn-dafault">Edit</button>
                                             </a>
                                             <a th:href="${'/category/hapus/'+category.category_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-remove"></span>
-                                                </button>
+                                                <button class="btn btn-warning">Delete</button>
                                             </a>
                                         </td>
                                     </tr>

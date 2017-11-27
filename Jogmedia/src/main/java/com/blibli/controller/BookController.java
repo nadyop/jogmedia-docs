@@ -25,6 +25,7 @@ public class BookController {
     @RequestMapping("/book")
     public String BookList(Model model){
         model.addAttribute("book",bookService.showAllBooks());
+        model.addAttribute("categories", categoryService.showAllCategory());
         return "book";
     }
     @RequestMapping("/discount")
