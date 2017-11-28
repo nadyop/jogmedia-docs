@@ -41,6 +41,7 @@ public class CategoryController {
     }
     @RequestMapping(value = "/category/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
+
         model.addAttribute("category", categoryService.searchCategory(searchKey));
         return "category";
     }

@@ -79,7 +79,8 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
 
     @Override
     public List<Category> search(String searchKey) {
-        String psql="select * from category where category_name='"+searchKey+"' ORDER BY category_id";
+
+        String psql="select * from category where lower(category_name)=lower('"+searchKey+"') ORDER BY category_id";
         List<Category> categories= new ArrayList<>();
         System.out.println(searchKey);
         try {
@@ -87,6 +88,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             Statement statement = this.con.createStatement();
             PreparedStatement preparedStatement= this.con.prepareStatement(psql);
             ResultSet rs = statement.executeQuery(psql);
+            System.out.println("test");
             if (rs != null) {
                 while (rs.next()) {
                     Category category= new Category(
