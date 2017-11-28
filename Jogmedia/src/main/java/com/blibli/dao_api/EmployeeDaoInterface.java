@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface EmployeeDaoInterface {
     List<Employee> getAllEmployee();
+    List<Employee> search(String searchKey);
     void insertCategory(Employee E);
     Employee getIdEmployee(int idEmployee);
     void delete(int id);

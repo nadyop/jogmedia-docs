@@ -5,6 +5,7 @@ import com.blibli.services.EmployeeServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,12 @@ public class EmployeeController {
         employeeService.save(employee);
         return "redirect:/tampilemp";
     }
+    @RequestMapping(value = "/tampilemp/search", method = RequestMethod.POST)
+    public String search(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("employee", employeeService.search(searchKey));
+        return "tampilemp";
+    }
+
     @RequestMapping(value = "/tampilemp/createEmployee", method = RequestMethod.GET)
     public String tampilFormCreateEmployee(Model model)
     {

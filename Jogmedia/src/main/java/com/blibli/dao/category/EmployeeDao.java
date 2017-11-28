@@ -46,6 +46,7 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         return list;
     }
 
+
     @Override
     public void insertCategory(Employee E){
         String psql;
@@ -88,6 +89,38 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
                 System.out.println("terdapat error: "+e);
             }
         }
+    }
+    @Override
+    public List<Employee> search(String searchKey){
+        String psql ="Select * from Employee WHERE LOWER(employee_name)=lower('"+searchKey+"') order by employee_id";
+
+        List<Employee> list=new ArrayList<>();
+        try{
+            this.makeConnection();
+            Statement statement=this.con.createStatement();
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null){
+                System.out.println("getAll\t:");
+                while (rs.next()){
+                    System.out.println("\t"+rs.getInt("employee_id"));
+                    Employee employee= new Employee(
+
+                            rs.getInt("employee_id"),
+                            rs.getString("employee_name"),
+                            rs.getString("employee_uname"),
+                            rs.getString("password"),
+                            rs.getString("role"),
+                            rs.getInt("status")
+                    );
+                    list.add(employee);
+                }
+            }
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println("Terdapat kesalahan eror : "+e);
+        }
+        return list;
     }
     @Override
     public Employee getIdEmployee(int idEmployee){

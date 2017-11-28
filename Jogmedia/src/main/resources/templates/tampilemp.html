@@ -37,16 +37,18 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="content">
+                    <form class="form-horizontal" th:action="@{/tampilemp/search}" method="post">
                     <!--Search Emp-->
                     <div class="row-fluid input-group">
                         <span class="input-group-addon sp-icon">
                           <i class="fa fa-book"></i>
                         </span>
-                        <input id="uname" type="text" class="form-control" name="" placeholder="Name"/>
+                        <input type="text" class="form-control" name="searchKey" th:value="${searchKey}" placeholder="Employee Name"/>
                         <span class="input-group-btn">
                           <button class="btn btn-default btn-search" type="button" name="button">Search</button>
                         </span>
                     </div>
+                    </form>
                     <!--Table Category-->
                     <div class="panel panel-default col-md-12 margin5">
                         <div class="panel-body table-responsive" style="max-height:430px;overflow:auto">

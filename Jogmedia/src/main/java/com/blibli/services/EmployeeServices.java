@@ -15,6 +15,11 @@ public class EmployeeServices {
         List<Employee> temp=employeeDaoInterface.getAllEmployee();
         return temp;
     }
+
+    public List<Employee> search(String searchKey){
+        List<Employee> temp=employeeDaoInterface.search(searchKey);
+        return temp;
+    }
     public void save(Employee e){
         employeeDaoInterface.insertCategory(e);
 
@@ -26,4 +31,5 @@ public class EmployeeServices {
     public void deleteEmployee(Integer id){
         employeeDaoInterface.delete(id);
     }
+
 }
