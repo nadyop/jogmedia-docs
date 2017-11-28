@@ -53,14 +53,14 @@
                             <div th:if="${not #lists.isEmpty(category)}">
                                 <table class="table table-striped">
                                     <tr>
-                                        <th>Id</th>
+
                                         <th>Nama Kategory</th>
                                         <th>Deskripsi Kategori</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     <tr th:each="category: ${category}">
-                                        <td th:text="${category.category_id}"></td>
+                                        
                                         <td th:text="${category.category_name}"></td>
                                         <td th:text="${category.category_desc}"></td>
                                         <td th:if="${category.status == 1}" th:text="Active"></td>
