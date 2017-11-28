@@ -80,7 +80,7 @@
                                         <td th:each="cat : ${categories}"
                                             th:if="${book.category_id==cat.category_id}" th:text="${cat.category_name}"></td>
                                         <td th:if="${book.status == 1}" th:text="Active"></td>
-                                        <td th:if="${book.status == 0}" th:text="Noactive"></td>
+                                        <td th:if="${book.status == 0}" th:text="Non-Active"></td>
                                         <td th:text="${book.price_after}"></td>
                                         <td th:text="${book.stok}"></td>
                                         <td th:text="${book.discount}"></td>
