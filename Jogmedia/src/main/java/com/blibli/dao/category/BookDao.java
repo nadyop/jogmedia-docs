@@ -17,7 +17,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
 
     @Override
     public List<Book> getAllBooks(){
-        String psql="select * from book";
+        String psql="select * from book ";
         List<Book> books= new ArrayList<>();
         try{
             this.makeConnection();
@@ -124,7 +124,10 @@ public class BookDao extends My_Connection implements BookDaoInterface {
     }
     @Override
     public  List<Book> search(String searchKey){
-        String psql="select * from book where lower(book_title)=LOWER('"+searchKey+"') ORDER BY book_id";
+        // select * from book where book_title like ' B%';
+        //String psql="select * from book where lower(book_title)=LOWER('"+searchKey+"') and book_title like '% '"+"a"+"' %'  ORDER BY book_id";
+        String test="'%"+searchKey+"%'";
+        String psql="select * from book where lower(book_title)=LOWER('"+searchKey+"')   ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
         try {

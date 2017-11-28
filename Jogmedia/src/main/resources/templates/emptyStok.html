@@ -67,7 +67,7 @@
                                         <!--<th>Harga Sesudah</th>-->
 
                                         <th>Location</th>
-                                        <th>Action</th>
+                                        
                                     </tr>
                                     <tr th:each="book: ${book}">
                                         <!--<td th:text="${book.book_id}"></td>-->
@@ -80,18 +80,7 @@
                                         <td th:if="${book.status == 0}" th:text="Noactive"></td>
                                         <td th:text="${book.price_after}"></td>
                                         <td th:text="${book.location}"></td>
-                                        <td>
-                                            <a th:href="${'/book/editBook/'+book.book_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                                </button>
-                                            </a>
-                                            <a th:href="${'/book/hapus/'+book.book_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-remove"></span>
-                                                </button>
-                                            </a>
-                                        </td>
+
                                     </tr>
                                 </table>
                             </div>
