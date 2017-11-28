@@ -53,7 +53,7 @@
                             <div th:if="${not #lists.isEmpty(employee)}">
                                 <table class="table table-striped">
                                     <tr>
-                                        <th>Id Pegawai</th>
+
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>Password</th>
@@ -62,14 +62,14 @@
                                         <th>Action</th>
                                     </tr>
                                     <tr th:each="employee: ${employee}">
-                                        <td th:text="${employee.employee_id}"></td>
+
                                         <td th:text="${employee.employee_name}"></td>
                                         <td th:text="${employee.employee_uname}"></td>
                                         <td th:text="${employee.password}"></td>
                                         <td th:text="${employee.role}"></td>
-                                        <td th:if="${employee.status == 1}" th:text="Aktif"></td>
-                                        <td th:if="${employee.status == 0}" th:text="Tidak_Aktif"></td>
-                                        
+                                        <td th:if="${employee.status == 1}" th:text="Active"></td>
+                                        <td th:if="${employee.status == 0}" th:text="Non-Active"></td>
+
                                         <td>
                                             <a th:href="${'/tampilemp/edit/'+employee.employee_id}">
                                                 <button class="btn btn-dafault">Edit</button>
