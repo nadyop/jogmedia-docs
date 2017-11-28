@@ -37,6 +37,7 @@ public class BookController {
     @RequestMapping("/emptyStok")
     public String BookListEmpty(Model model){
         model.addAttribute("book",bookService.showAllBooksbyEmptyStok());
+        model.addAttribute("categories", categoryService.showAllCategory());
         return "emptyStok";
     }
     @RequestMapping(value="/book/",method = RequestMethod.POST)

@@ -56,11 +56,12 @@
                                 <table class="table table-striped">
                                     <tr>
                                         <!--<th>Book Id</th>-->
-                                        <th>Category Name</th>
+
                                         <th>ISBN</th>
                                         <th>Title</th>
                                         <th>Author</th>
                                         <th>Publisher</th>
+                                        <th>Category Name</th>
                                         <th>Status</th>
                                         <th>Price</th>
                                         <th>Stok</th>
@@ -71,12 +72,13 @@
                                     </tr>
                                     <tr th:each="book: ${book}">
                                         <!--<td th:text="${book.book_id}"></td>-->
-                                        <td th:each="cat : ${categories}"
-                                                th:if="${book.category_id==cat.category_id}" th:text="${cat.category_name}"></td>
+
                                         <td th:text="${book.isbn}"></td>
                                         <td th:text="${book.book_title}"></td>
                                         <td th:text="${book.author}"></td>
                                         <td th:text="${book.publisher}"></td>
+                                        <td th:each="cat : ${categories}"
+                                            th:if="${book.category_id==cat.category_id}" th:text="${cat.category_name}"></td>
                                         <td th:if="${book.status == 1}" th:text="Active"></td>
                                         <td th:if="${book.status == 0}" th:text="Noactive"></td>
                                         <td th:text="${book.price_after}"></td>
