@@ -69,16 +69,13 @@
                                         <td th:text="${employee.role}"></td>
                                         <td th:if="${employee.status == 1}" th:text="Aktif"></td>
                                         <td th:if="${employee.status == 0}" th:text="Tidak_Aktif"></td>
+                                        
                                         <td>
                                             <a th:href="${'/tampilemp/edit/'+employee.employee_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                                </button>
+                                                <button class="btn btn-dafault">Edit</button>
                                             </a>
                                             <a th:href="${'/tampilemp/hapus/'+employee.employee_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-remove"></span>
-                                                </button>
+                                                <button class="btn btn-warning">Delete</button>
                                             </a>
                                         </td>
                                     </tr>
