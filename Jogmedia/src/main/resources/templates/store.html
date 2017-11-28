@@ -43,29 +43,28 @@
                             <div th:if="${not #lists.isEmpty(store)}">
                                 <table class="table table-striped">
                                     <tr>
-                                        <th>Store Id</th>
+
                                         <th>Employe Id</th>
                                         <th>Nama Toko Buku</th>
                                         <th>Alamat</th>
                                         <th>NPWP</th>
                                         <th>Kode Pos</th>
                                         <th>Email</th>
-                                        <th>Image</th>
+                                        <th>Action</th>
+
                                     </tr>
                                     <tr th:each="store: ${store}">
-                                        <td th:text="${store.store_id}"></td>
+
                                         <td th:text="${store.employee_id}"></td>
                                         <td th:text="${store.store_name}"></td>
                                         <td th:text="${store.address}"></td>
                                         <td th:text="${store.npwp}"></td>
                                         <td th:text="${store.post_code}"></td>
                                         <td th:text="${store.email}"></td>
-                                        <td th:text="${store.image}"></td>
+
                                         <td>
                                             <a th:href="${'/store/edit/'+store.store_id}">
-                                                <button>
-                                                    <span class="glyphicon glyphicon-edit"></span>
-                                                </button>
+                                                <button class="btn btn-dafault">Edit</button>
                                             </a>
                                         </td>
                                     </tr>
