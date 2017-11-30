@@ -80,7 +80,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
     @Override
     public List<Category> search(String searchKey) {
 
-        String psql="select * from category where lower(category_name)=lower('"+searchKey+"') ORDER BY category_id";
+        String psql="select * from category where lower(category_name) like lower('%" + searchKey+ "%') ORDER BY category_id";
         List<Category> categories= new ArrayList<>();
         System.out.println(searchKey);
         try {
