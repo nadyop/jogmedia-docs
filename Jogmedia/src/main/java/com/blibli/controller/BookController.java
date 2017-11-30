@@ -59,6 +59,7 @@ public class BookController {
     }
     @RequestMapping(value = "/book/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("categories", categoryService.showActiveCategories());
         model.addAttribute("book", bookService.searchBook(searchKey));
         return "book";
     }
