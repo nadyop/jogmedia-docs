@@ -129,6 +129,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')   ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
+
         try {
             this.makeConnection();
             Statement statement = this.con.createStatement();
@@ -192,7 +193,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         }
         return book;
     }
-    
+
     @Override
     public void saveBook(Book book){
         String psql;
