@@ -124,8 +124,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
     }
     @Override
     public  List<Book> search(String searchKey){
-        // select * from book where book_title like '%B%';
-        //String psql="select * from book where lower(book_title)=LOWER('"+searchKey+"') and book_title like '% '"+"a"+"' %'  ORDER BY book_id";
+
         String test="'%"+searchKey+"%'";
         String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')   ORDER BY book_id";
         List<Book> books= new ArrayList<>();
@@ -193,12 +192,12 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         }
         return book;
     }
-
+    
     @Override
     public void saveBook(Book book){
         String psql;
         double hitung;
-//int book_id, int category_id, String isbn, String book_title, String author, String publisher, String location,int discount, double price_before, double price_after, int stok, int status) {
+
         if(book.getBook_id()!=0){
             System.out.println("updating book");
             psql="UPDATE book SET isbn=?,book_title=?,author=?,publisher=?,category_id=?,location=?,price_before=?,price_after=?,discount=?, stok=?,status=? where book_id=?";

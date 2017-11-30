@@ -9,6 +9,7 @@ public interface BookDaoInterface {
     List<Book> getAllBooksDiscount();
     List<Book> getAllBooksEmty();
     List<Book> search(String searchKey);
+
     Book getIdBook(int idBook);
     void saveBook(Book book);
     void deleteBook(int idBook);
