@@ -92,7 +92,8 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
     }
     @Override
     public List<Employee> search(String searchKey){
-        String psql ="Select * from Employee WHERE LOWER(employee_name)=lower('"+searchKey+"') order by employee_id";
+        //select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')   ORDER BY book_id
+        String psql ="Select * from Employee WHERE LOWER(employee_name) LIKE lower('%" + searchKey+ "%') order by employee_id";
 
         List<Employee> list=new ArrayList<>();
         try{
