@@ -80,5 +80,10 @@ public class BookController {
         bookService.deleteBook(id);
         return "redirect:/book";
     }
+    @RequestMapping(value = "/book/softDelete/{id}", method = RequestMethod.GET)
+    public String softDeleteBook(@PathVariable Integer id) {
+        bookService.softDelete(id);
+        return "redirect:/book";
+    }
 
 }
