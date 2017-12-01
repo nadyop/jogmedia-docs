@@ -50,4 +50,9 @@ public class CategoryController {
         categoryService.deleteCategory(id);
         return "redirect:/category";
     }
+    @RequestMapping(value = "/category/softDelete/{id}", method = RequestMethod.GET)
+    public String softDeleteBook(@PathVariable Integer id) {
+        categoryService.softDeleteCategoty(id);
+        return "redirect:/category";
+    }
 }

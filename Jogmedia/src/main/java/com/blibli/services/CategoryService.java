@@ -24,6 +24,9 @@ public class CategoryService {
     public void save(Category category){
         dao.insertCategory(category);
     }
+    public void softDeleteCategoty(Integer id){
+        dao.softDeleteCategory(id);
+    }
     public Category getIdCategory(Integer id){
         Category get= dao.getIdCategory(id);
         return get;

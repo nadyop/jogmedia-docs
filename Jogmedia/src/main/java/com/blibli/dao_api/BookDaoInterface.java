@@ -13,5 +13,6 @@ public interface BookDaoInterface {
     List<Book> searchEmptyBook(String searchKey);
     Book getIdBook(int idBook);
     void saveBook(Book book);
+    void softDelete(Book book);
     void deleteBook(int idBook);
 }

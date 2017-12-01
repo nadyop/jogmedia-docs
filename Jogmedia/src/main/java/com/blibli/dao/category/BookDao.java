@@ -269,7 +269,21 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         }
         return book;
     }
-
+    @Override
+    public void softDelete(Book book){
+        String psql;
+        psql="UPDATE book SET book.status=1 where book_id=?";
+        try{
+            this.makeConnection();
+            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
+            preparedStatement.setInt(1,book.getBook_id());
+            preparedStatement.executeUpdate();
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
     @Override
     public void saveBook(Book book){
         String psql;

@@ -76,7 +76,21 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
         }
         return list;
     }
+    @Override
+    public void softDeleteCategory(int id){
 
+        String psql= "UPDATE Category set status= case when status=1 then 0 when status=0 then 1 end where Category.category_id='"+id+"';";
+        try{
+            System.out.println("test5");
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+            statement.executeQuery(psql);
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
     @Override
     public List<Category> search(String searchKey) {
 
@@ -136,15 +150,13 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
     @Override
     public void insertCategory(Category C){
         String psql;
-        System.out.println("test4");
+
         if(C.getCategory_id()!=0){
-            System.out.println("masuk update");
+
             psql="UPDATE category SET category_name =?, category_desc=?, status=? where category_id=?";
 
             try{
                 this.makeConnection();
-                System.out.println("test1");
-
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
                 preparedStatement.setString(1,C.getCategory_name());
                 preparedStatement.setString(2,C.getCategory_desc());

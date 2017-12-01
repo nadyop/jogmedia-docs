@@ -71,6 +71,9 @@
                                             <a th:href="${'/category/editCategory/'+category.category_id}">
                                                 <button class="btn btn-dafault">Edit</button>
                                             </a>
+                                            <a th:href="${'/category/softDelete/'+category.category_id}">
+                                                <button class="btn btn-warning">Deactive</button>
+                                            </a>
                                             <a th:href="${'/category/hapus/'+category.category_id}">
                                                 <button class="btn btn-warning">Delete</button>
                                             </a>

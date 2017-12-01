@@ -11,6 +11,7 @@ public interface CategoryDaoInterface {
     List<Category> search(String searchKey);
     Category getIdCategory(int idCategory);
     void insertCategory(Category C);
+    void softDeleteCategory(int id);
     void delete (int id);
 
 }
