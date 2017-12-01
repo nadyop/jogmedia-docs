@@ -17,7 +17,7 @@ public class My_Connection {
             con = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/jogmedia_db",
                     "postgres",
-                    "366milala"
+                    "password"
             );
             System.out.println("Success openning db!");
         }
