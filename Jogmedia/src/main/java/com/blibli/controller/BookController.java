@@ -63,6 +63,18 @@ public class BookController {
         model.addAttribute("book", bookService.searchBook(searchKey));
         return "book";
     }
+    @RequestMapping(value = "/book/searchDiscount", method = RequestMethod.POST)
+    public String searchDiscount(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("categories", categoryService.showActiveCategories());
+        model.addAttribute("book", bookService.searchDiscount(searchKey));
+        return "book";
+    }
+    @RequestMapping(value = "/book/searchEmptyBook", method = RequestMethod.POST)
+    public String searchEmptyBook(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("categories", categoryService.showActiveCategories());
+        model.addAttribute("book", bookService.searchEmptyBook(searchKey));
+        return "book";
+    }
     @RequestMapping(value = "/book/hapus/{id}", method = RequestMethod.GET)
     public String hapusDataBuku(@PathVariable Integer id) {
         bookService.deleteBook(id);

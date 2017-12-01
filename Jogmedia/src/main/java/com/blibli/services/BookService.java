@@ -38,4 +38,12 @@ public class BookService {
         List<Book> books= bookDaoInterface.search(searchKey);
         return books;
     }
+    public List<Book> searchDiscount(String searchKey){
+        List<Book> books= bookDaoInterface.searchDiscount(searchKey);
+        return books;
+    }
+    public List<Book> searchEmptyBook(String searchKey){
+        List<Book> books= bookDaoInterface.searchEmptyBook(searchKey);
+        return books;
+    }
 }
