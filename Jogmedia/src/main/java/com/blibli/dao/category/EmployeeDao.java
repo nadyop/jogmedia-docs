@@ -91,8 +91,21 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         }
     }
     @Override
+    public void softDeleteEmployee(int id){
+        String psql= "UPDATE Employee set status= case when status=1 then 0 when status=0 then 1 end where employee.employee_id='"+id+"';";
+        try{
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+            statement.executeQuery(psql);
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    @Override
     public List<Employee> search(String searchKey){
-        //select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')   ORDER BY book_id
+
         String psql ="Select * from Employee WHERE LOWER(employee_name) LIKE lower('%" + searchKey+ "%') order by employee_id";
 
         List<Employee> list=new ArrayList<>();

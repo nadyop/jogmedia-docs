@@ -10,4 +10,5 @@ public interface EmployeeDaoInterface {
     void insertCategory(Employee E);
     Employee getIdEmployee(int idEmployee);
     void delete(int id);
+    void softDeleteEmployee(int id);
 }

@@ -76,6 +76,9 @@
                                             <a th:href="${'/tampilemp/edit/'+employee.employee_id}">
                                                 <button class="btn btn-dafault">Edit</button>
                                             </a>
+                                            <a th:href="${'/tampilemp/softDelete/'+employee.employee_id}">
+                                                <button class="btn btn-warning">Deactive</button>
+                                            </a>
                                             <a th:href="${'/tampilemp/hapus/'+employee.employee_id}">
                                                 <button class="btn btn-warning">Delete</button>
                                             </a>

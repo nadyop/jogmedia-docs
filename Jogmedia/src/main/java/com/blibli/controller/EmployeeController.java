@@ -48,4 +48,10 @@ public class EmployeeController {
         return "redirect:/tampilemp";
 
     }
+    @RequestMapping(value = "/tampilemp/softDelete/{id}", method = RequestMethod.GET)
+    public String softDelete(@PathVariable Integer id,Model model) {
+        employeeService.softDeleteEmployee(id);
+        return "redirect:/tampilemp";
+
+    }
 }
