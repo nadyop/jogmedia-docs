@@ -31,8 +31,8 @@ public class BookService {
         Book get= bookDaoInterface.getIdBook(idBook);
         return get;
     }
-    public void softDelete(Book book){
-        bookDaoInterface.softDelete(book);
+    public void softDelete(int id){
+        bookDaoInterface.softDeleteBook(id);
     }
     public void deleteBook(int id){
         bookDaoInterface.deleteBook(id);
