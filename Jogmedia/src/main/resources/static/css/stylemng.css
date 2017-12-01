@@ -1,6 +1,9 @@
 /*HEX color
+mng
 primary-dark : #303F9E ; primary : #3F51B5 ; accent: #FF9800 ; light : #C5CAE9
 primary-text : #212121 ; second-text : #757575 ; divider : #BDBDBD;
+change-primary : #03A0FF
+change-accent : #0168FB
 */
 /*@media (min-width:768px) {
   .col-sm-11{
@@ -17,7 +20,7 @@ primary-text : #212121 ; second-text : #757575 ; divider : #BDBDBD;
     margin-right: -10.55%;
 }
 .navbar-inverse{
-    background: #3F51B5!important;
+    background: #03A0FF!important;
     border: none;
     border-radius: 0;
 }
@@ -40,7 +43,7 @@ primary-text : #212121 ; second-text : #757575 ; divider : #BDBDBD;
     height: 100%;
     left: 0;
     border: none;
-    background: #3F51B5;
+    background: #03A0FF;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .navbar-inverse .navbar-nav>li>a{
@@ -151,7 +154,7 @@ img#img-upload{
 }
 /*Book page*/
 .btn-search{
-    background: #3F51B5!important;
+    background: #0168FB!important;
     color: white;
 }
 .wrapper-content{

@@ -1,12 +1,15 @@
 /*HEX color
+csr
 primary-dark : #303F9E ; primary : #3F51B5 ; accent: #FF9800 ; light : #C5CAE9
 primary-text : #212121 ; second-text : #757575 ; divider : #BDBDBD;
+change-primary : #03A0FF
+change-accent : #0168FB
 */
 
 /*Style Login page*/
 
 .bd-login {
-    background: #3F51B5;
+    background: #03A0FF;
 }
 .pn-login {
     background: #C5CAE9!important;
@@ -44,7 +47,7 @@ div.login {
 
 /*Style Chasier L Page*/
 .nav-c{
-    background: #3F51B5;
+    background: #03A0FF;
     border: none;
     border-radius: 0;
 }
@@ -57,7 +60,7 @@ div.login {
 input.form-control.ip-homec:focus {
     outline: none;
     color: #444;
-    border-color: #3F51B5;
+    border-color: #03A0FF;
     border-left-width: 35px;
 }
 i.fa.fa-searchbook {
@@ -95,7 +98,7 @@ input.form-control.ip-homec:focus+i.fa.fa-searchbook {
     margin-top: 3%
 }
 .btn-search{
-    background: #3F51B5!important;
+    background: #0168FB!important;
     color: white;
 }
 .sp-icon{
