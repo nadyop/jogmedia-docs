@@ -41,7 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         auth.inMemoryAuthentication()
                 .withUser("cashier").password("a").roles("CASHIER")
                 .and()
-                .withUser("manager").password("password").roles("MANAGER");
+                .withUser("manager").password("a").roles("MANAGER");
     }
 
 }

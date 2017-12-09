@@ -35,15 +35,17 @@
       <div class="row">
         <!--search book-->
         <div class="col-md-9">
+          <form class="form-horizontal" th:action="@{/transaction/search}" method="post">
           <div class="row-fluid input-group">
             <span class="input-group-addon sp-icon">
               <i class="fa fa-book"></i>
             </span>
-            <input id="uname" type="text" class="form-control" name="" placeholder="Book Title"/>
+            <input id="uname" type="text" class="form-control" name="searchKey" th:value="${searchKey}" placeholder="Book Title"/>
             <span class="input-group-btn">
               <button class="btn btn-default btn-search" type="button" name="button">Search</button>
             </span>
           </div>
+          </form>
         </div>
       </div>
     </div>
@@ -63,21 +65,21 @@
             </tr>
             </thead>
           </table>
-          <div class="">
-            <table class="table table-striped">
-              <tbody>
-              <a href="index.html">
-                <tr>
-                  <td id="bookName" class="td-book">Marmut Merah Jambu</td>
-                  <td id="author">Raditya Dika</td>
-                  <td id="priceAfter">30.000</td>
-                  <td id="qty" class="ip-qty"><input type="number" class="form-control" name="" value="1"/></td>
-                  <td><button class="btn btn-primary">Buy</button></td>
-                </tr>
-              </a>
-              </tbody>
-            </table>
-          </div>
+            <div th:if="${not #lists.isEmpty(book)}">
+              <table class="table table-striped">
+                <tbody>
+                <a href="index.html">
+                  <tr th:each="book: ${book}">
+                    <td th:text="${book.book_title}" class="td-book">Marmut Merah Jambu</td>
+                    <td th:text="${book.author}">Raditya Dika</td>
+                    <td th:text="${book.price_after}">30.000</td>
+                    <td id="qty" class="ip-qty"><input type="number" class="form-control" name="" value="1"/></td>
+                    <td><button class="btn btn-primary">Buy</button></td>
+                  </tr>
+                </a>
+                </tbody>
+              </table>
+            </div>
         </div>
       </div>
     </div>

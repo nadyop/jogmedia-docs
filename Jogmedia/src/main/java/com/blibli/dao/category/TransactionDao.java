@@ -2,13 +2,18 @@ package com.blibli.dao.category;
 
 import com.blibli.dao.My_Connection;
 import com.blibli.dao_api.TransactionInterface;
+import com.blibli.model.Book;
 import com.blibli.model.Detil_Transaction;
 import com.blibli.model.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class TransactionDao extends My_Connection implements TransactionInterface {
     @Override
@@ -109,5 +114,44 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    @Override
+    public List<Book> searchCashier(String searchKey) {
+        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%') AND status=1 AND stok!=0 ORDER BY book_id";
+        List<Book> books= new ArrayList<>();
+        System.out.println(searchKey);
+
+        try {
+            this.makeConnection();
+            Statement statement = this.con.createStatement();
+            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
+
+            ResultSet rs = statement.executeQuery(psql);
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Book book= new Book(
+                            rs.getInt("book_id"),
+                            rs.getInt("category_id"),
+                            rs.getString("isbn"),
+                            rs.getString("book_title"),
+                            rs.getString("author"),
+                            rs.getString("publisher"),
+                            rs.getString("location"),
+                            rs.getInt("discount"),
+                            rs.getDouble("price_before"),
+                            rs.getDouble("price_after"),
+                            rs.getInt("stok"),
+                            rs.getInt("status")
+                    );
+                    books.add(book);
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return books;
     }
 }

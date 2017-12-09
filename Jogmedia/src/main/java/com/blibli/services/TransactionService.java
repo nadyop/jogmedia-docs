@@ -1,10 +1,13 @@
 package com.blibli.services;
 
 import com.blibli.dao_api.TransactionInterface;
+import com.blibli.model.Book;
 import com.blibli.model.Detil_Transaction;
 import com.blibli.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TransactionService {
@@ -18,5 +21,9 @@ public class TransactionService {
     }
     public void deleteDetilTransaction(int id){
         transactionInterface.deleteDetailTransaction(id);
+    }
+    public List<Book> searchCashier(String searchKey){
+        List<Book> books= transactionInterface.searchCashier(searchKey);
+        return books;
     }
 }

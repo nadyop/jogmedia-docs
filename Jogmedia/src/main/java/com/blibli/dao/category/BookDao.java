@@ -124,8 +124,6 @@ public class BookDao extends My_Connection implements BookDaoInterface {
     }
     @Override
     public  List<Book> search(String searchKey){
-
-
         String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')   ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
