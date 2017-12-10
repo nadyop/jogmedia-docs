@@ -32,4 +32,7 @@ public class EmployeeServices {
         employeeDaoInterface.delete(id);
     }
 
+    public void softDeleteEmployee(Integer id) {
+        employeeDaoInterface.softDeleteEmployee(id);
+    }
 }

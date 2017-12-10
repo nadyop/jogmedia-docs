@@ -5,6 +5,8 @@
     <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/stylemng.css}" rel="stylesheet" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta http-equiv="context-type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
@@ -80,7 +82,7 @@
                                         <td th:each="cat : ${categories}"
                                             th:if="${book.category_id==cat.category_id}" th:text="${cat.category_name}"></td>
                                         <td th:if="${book.status == 1}" th:text="Active"></td>
-                                        <td th:if="${book.status == 0}" th:text="Non-Active"></td>
+                                        <td th:if="${book.status == 0}" th:text="Deactive"></td>
                                         <td th:text="${book.price_after}"></td>
                                         <td th:text="${book.stok}"></td>
                                         <td th:text="${book.discount}"></td>
@@ -90,7 +92,8 @@
                                                 <button class="btn btn-dafault">Edit</button>
                                             </a>
                                             <a th:href="${'/book/softDelete/'+book.book_id}">
-                                                <button class="btn btn-warning">Deactive</button>
+                                                <button th:if="${book.status == 1}" th:text="Active" class="btn btn-warning btnActive">Active</button>
+                                                <button th:if="${book.status == 0}" th:text="Deactive" class="btn btn-warning btnActive">Deactive</button>
                                             </a>
                                             <a th:href="${'/book/hapus/'+book.book_id}">
                                                 <button class="btn btn-warning">Delete</button>
@@ -124,5 +127,18 @@
         </ul>
     </div>
 </div>
+
+<script type="text/javascript" th:inline="javascript">
+    $('.btnActive').click(function(){
+        var $this = $(this);
+        $this.toggleClass('btnActive');
+
+        if($this.hasClass('btnActive')){
+            $this.text('Active');
+        } else {
+            $this.text('Deactive');
+        }
+    });
+</script>
 </body>
 </html>

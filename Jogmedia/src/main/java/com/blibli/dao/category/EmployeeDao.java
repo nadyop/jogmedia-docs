@@ -162,4 +162,19 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
             System.out.println(e);
         }
     }
+
+    @Override
+    public void softDeleteEmployee(int id) {
+        String psql= "UPDATE Employee set status= case when status=1 then 0 when status=0 then 1 end where Employee.employee_id='"+id+"';";
+        try{
+            System.out.println("test5");
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+            statement.executeQuery(psql);
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
 }

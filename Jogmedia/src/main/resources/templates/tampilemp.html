@@ -70,11 +70,15 @@
                                         <td th:text="${employee.password}"></td>
                                         <td th:text="${employee.role}"></td>
                                         <td th:if="${employee.status == 1}" th:text="Active"></td>
-                                        <td th:if="${employee.status == 0}" th:text="Non-Active"></td>
+                                        <td th:if="${employee.status == 0}" th:text="Deactive"></td>
 
                                         <td>
                                             <a th:href="${'/tampilemp/edit/'+employee.employee_id}">
                                                 <button class="btn btn-dafault">Edit</button>
+                                            </a>
+                                            <a th:href="${'/employee/softDelete/'+employee.employee_id}">
+                                                <button th:if="${employee.status == 1}" th:text="Active" class="btn btn-warning btnActive">Active</button>
+                                                <button th:if="${employee.status == 0}" th:text="Deactive" class="btn btn-warning btnActive">Deactive</button>
                                             </a>
                                             <a th:href="${'/tampilemp/hapus/'+employee.employee_id}">
                                                 <button class="btn btn-warning">Delete</button>
