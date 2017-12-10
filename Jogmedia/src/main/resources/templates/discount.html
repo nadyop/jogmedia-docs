@@ -19,7 +19,7 @@
                     <li><a href="/home"><span class="fa fa-sign-out"></span> Logout</a></li>
                 </ul>
                 <div class="wrapper-title">
-                    <span><h3>Book</h3></span>
+                    <span><h3>DISCOUNT</h3></span>
                 </div>
             </div>
         </nav>
@@ -37,9 +37,12 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="content">
+                    <a href="/book"><button class="btn btn-default"><i class="fa fa-home"></i></button></a>
+                    <a href="/discount"><button class="btn btn-default">Discount</button></a>
+                    <a href="/emptyStok"><button class="btn btn-default">Empty</button></a>
                     <form class="form-horizontal" th:action="@{/book/searchDiscount}" method="post">
                         <!--Search Book-->
-                        <div class="row-fluid input-group">
+                        <div class="row-fluid input-group" style="margin-top:3%">
                         <span class="input-group-addon sp-icon">
                           <i class="fa fa-book"></i>
                         </span>
@@ -105,8 +108,6 @@
         <ul class="nav navbar-nav ul-top">
             <li><a href="/store"><i class="fa fa-home"></i>&nbsp; Store</a></li>
             <li><a href="/book"><i class="fa fa-book"></i>&nbsp; Book</a></li>
-            <li><a href="/discount"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
-            <li><a href="/emptyStok"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
             <li><a href="/category"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
             <li><a href="/reportmng"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
             <li><a href="/tampilemp"><i class="fa fa-user"></i>&nbsp; Employee</a></li>

@@ -11,10 +11,6 @@ public class HomeController {
     public String home(){
         return "home";
     }
-//    @RequestMapping("")
-//    public String hom(){
-//        return "hom";
-//    }
 
     @RequestMapping("/home")
     public String homee(){

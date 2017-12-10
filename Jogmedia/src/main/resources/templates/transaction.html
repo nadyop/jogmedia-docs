@@ -21,7 +21,7 @@
       <li><a href="#">
         <form th:action="@{/logout}" method="post">
           <span class="fa fa-sign-out"></span>
-          <input type="submit" value="Sign Out"/>
+          <input type="submit" value="Sign Out" style="background: none; border: none"/>
         </form>
       </a>
       </li>
@@ -33,14 +33,28 @@
   <div class="col-xs-12 col-sm-5 col-md-7">
     <div class="row-fluid">
       <div class="row">
-        <!--search book-->
-        <div class="col-md-9">
+        <!--search isbn-->
+        <div class="col-md-6">
+          <form class="form-horizontal" th:action="@{/transaction/search}" method="post">
+            <div class="row-fluid input-group">
+            <span class="input-group-addon sp-icon">
+              <i class="fa fa-book"></i>
+            </span>
+              <input type="text" class="form-control" name="searchKey" th:value="${searchKey}" placeholder="ISBN"/>
+              <span class="input-group-btn">
+              <button class="btn btn-default btn-search" type="button" name="button">Search</button>
+            </span>
+            </div>
+          </form>
+        </div>
+        <!--search book title-->
+        <div class="col-md-6">
           <form class="form-horizontal" th:action="@{/transaction/search}" method="post">
           <div class="row-fluid input-group">
             <span class="input-group-addon sp-icon">
               <i class="fa fa-book"></i>
             </span>
-            <input id="uname" type="text" class="form-control" name="searchKey" th:value="${searchKey}" placeholder="Book Title"/>
+            <input type="text" class="form-control" name="searchKey" th:value="${searchKey}" placeholder="BOOK TITLE"/>
             <span class="input-group-btn">
               <button class="btn btn-default btn-search" type="button" name="button">Search</button>
             </span>
