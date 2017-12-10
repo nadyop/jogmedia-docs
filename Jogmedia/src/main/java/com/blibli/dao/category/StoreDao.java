@@ -21,7 +21,7 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
             this.makeConnection();
             Statement statement=this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
-            System.out.println("testGEGE2  cute ");
+            System.out.println("gagal open");
             if(rs!=null){
                 while (rs.next()) {
                     Store store = new Store(
@@ -31,9 +31,8 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                             rs.getString("address"),
                             rs.getString("npwp"),
                             rs.getString("post_code"),
-                            rs.getString("email"),
-                            rs.getString("image")
-                    );
+                            rs.getString("email")
+                            );
                     temp.add(store);
                 }
             }
@@ -46,7 +45,7 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
     public void insertStore(Store S){
         String psql;
         if(S.getStore_id()!=0){
-            psql="UPDATE Store set employee_id=?,store_name=?, address=?, npwp=?, post_code=?, email=?, image=? where store_id=?";
+            psql="UPDATE Store set employee_id=?,store_name=?, address=?, npwp=?, post_code=?, email=? where store_id=?";
             try {
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
@@ -57,8 +56,7 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                 preparedStatement.setString(4, S.getNpwp());
                 preparedStatement.setString(5, S.getPost_code());
                 preparedStatement.setString(6, S.getEmail());
-                preparedStatement.setString(7, S.getImage());
-                preparedStatement.setInt(8,S.getStore_id());
+                preparedStatement.setInt(7,S.getStore_id());
                 preparedStatement.executeUpdate();
                 System.out.println("Sukses update : "+S.getStore_id());
                 this.disconnect();
@@ -68,10 +66,10 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
             }
         }
         else {
-            System.out.println("testGEGE3");
-            psql="INSERT INTO store(employee_id, store_name, address, npwp, post_code, email, image) VALUES (?,?,?,?,?,?,?,?)";
+            System.out.println("tidak masuk psql");
+            psql="INSERT INTO store(employee_id, store_name, address, npwp, post_code, email) VALUES (?,?,?,?,?,?,?)";
             try{
-                System.out.println("testGEGE1");
+                System.out.println("tidak masuk insert data");
                 this.makeConnection();
                 System.out.println("berhasil insert data");
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
@@ -82,7 +80,6 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                 preparedStatement.setString(5, S.getNpwp());
                 preparedStatement.setString(6, S.getPost_code());
                 preparedStatement.setString(7, S.getEmail());
-                preparedStatement.setString(8, S.getImage());
                 preparedStatement.executeUpdate();
                 this.disconnect();
             }
@@ -109,7 +106,6 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                     store.setNpwp(rs.getString("npwp"));
                     store.setPost_code(rs.getString("post_code"));
                     store.setEmail(rs.getString("email"));
-                    store.setImage(rs.getString("image"));
                 }
             }
             this.disconnect();

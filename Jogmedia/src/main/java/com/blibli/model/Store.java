@@ -3,16 +3,15 @@ package com.blibli.model;
 public class Store {
     private int store_id;
     private  int employee_id;
-    private String store_name, address, npwp, post_code, email, image;
+    private String store_name, address, npwp, post_code, email;
     public Store(){}
-    public Store(int store_id,int employee_id, String store_name, String address, String npwp, String post_code, String email, String image) {
+    public Store(int store_id,int employee_id, String store_name, String address, String npwp, String post_code, String email) {
         this.store_id = store_id;
         this.store_name = store_name;
         this.address = address;
         this.npwp = npwp;
         this.post_code = post_code;
         this.email = email;
-        this.image = image;
     }
 
     public int getEmployee_id() {
@@ -71,11 +70,4 @@ public class Store {
         this.email = email;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 }

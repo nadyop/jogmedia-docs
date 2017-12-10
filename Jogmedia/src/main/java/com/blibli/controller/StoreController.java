@@ -22,12 +22,12 @@ public class StoreController {
     @RequestMapping(value = "/store/",method = RequestMethod.GET)
     public String tampilFormStore(Model model){
         model.addAttribute("store",new Store());
-        return "createStore";
+        return "store";
     }
-    @RequestMapping(value = "/store/createStore",method = RequestMethod.POST)
+    @RequestMapping(value = "/store/createStore",method = RequestMethod.GET)
     public String simpanDataStore(Store store){
         storeService.saveOrUpdate(store);
-        return "redirect:/store";
+        return "createStore";
     }
     @RequestMapping(value = "/store/edit/{id}", method = RequestMethod.GET)
     public String editDataStore(@PathVariable Integer id, Model model){
