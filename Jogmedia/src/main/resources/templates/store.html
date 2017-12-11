@@ -44,7 +44,6 @@
                                 <table class="table table-striped">
                                     <tr>
 
-                                        <th>Employe Id</th>
                                         <th>Nama Toko Buku</th>
                                         <th>Alamat</th>
                                         <th>NPWP</th>
@@ -55,13 +54,11 @@
                                     </tr>
                                     <tr th:each="store: ${store}">
 
-                                        <td th:text="${store.employee_id}"></td>
                                         <td th:text="${store.store_name}"></td>
                                         <td th:text="${store.address}"></td>
                                         <td th:text="${store.npwp}"></td>
                                         <td th:text="${store.post_code}"></td>
                                         <td th:text="${store.email}"></td>
-
                                         <td>
                                             <a th:href="${'/store/edit/'+store.store_id}">
                                                 <button class="btn btn-dafault">Edit</button>

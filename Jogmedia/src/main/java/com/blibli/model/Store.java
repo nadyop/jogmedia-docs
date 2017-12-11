@@ -2,28 +2,19 @@ package com.blibli.model;
 
 public class Store {
     private int store_id;
-    private  int employee_id;
     private String store_name, address, npwp, post_code, email;
     public Store(){}
-    public Store(int store_id,int employee_id, String store_name, String address, String npwp, String post_code, String email) {
+    public int getStore_id() {
+        return store_id;
+    }
+
+    public Store(int store_id, String store_name, String address, String npwp, String post_code, String email) {
         this.store_id = store_id;
         this.store_name = store_name;
         this.address = address;
         this.npwp = npwp;
         this.post_code = post_code;
         this.email = email;
-    }
-
-    public int getEmployee_id() {
-        return employee_id;
-    }
-
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
-    }
-
-    public int getStore_id() {
-        return store_id;
     }
 
     public void setStore_id(int store_id) {

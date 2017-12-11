@@ -118,7 +118,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
 
     @Override
     public List<Book> searchCashier(String searchKey) {
-        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%') AND status=1 AND stok!=0 ORDER BY book_id";
+        String psql="select * from book where LOWER(isbn) LIKE LOWER('%" + searchKey+ "%') OR  LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')  AND status=1 AND stok!=0 ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
 

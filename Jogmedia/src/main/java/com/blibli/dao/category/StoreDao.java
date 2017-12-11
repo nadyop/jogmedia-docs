@@ -16,6 +16,7 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
     @Override
     public List<Store> getStore(){
         String psql="select * from Store";
+        System.out.println("yoy");
         List<Store> temp= new ArrayList<>();
         try{
             this.makeConnection();
@@ -26,7 +27,6 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                 while (rs.next()) {
                     Store store = new Store(
                             rs.getInt("store_id"),
-                            rs.getInt("employee_id"),
                             rs.getString("store_name"),
                             rs.getString("address"),
                             rs.getString("npwp"),
@@ -34,6 +34,7 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                             rs.getString("email")
                             );
                     temp.add(store);
+                    System.out.println("gagal open");
                 }
             }
         }catch (Exception e){
@@ -45,18 +46,17 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
     public void insertStore(Store S){
         String psql;
         if(S.getStore_id()!=0){
-            psql="UPDATE Store set employee_id=?,store_name=?, address=?, npwp=?, post_code=?, email=? where store_id=?";
+            psql="UPDATE Store set store_name=?, address=?, npwp=?, post_code=?, email=? where store_id=?";
             try {
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
 
-                preparedStatement.setInt(1, S.getEmployee_id());
-                preparedStatement.setString(2, S.getStore_name());
-                preparedStatement.setString(3, S.getAddress());
-                preparedStatement.setString(4, S.getNpwp());
-                preparedStatement.setString(5, S.getPost_code());
-                preparedStatement.setString(6, S.getEmail());
-                preparedStatement.setInt(7,S.getStore_id());
+                preparedStatement.setString(1, S.getStore_name());
+                preparedStatement.setString(2, S.getAddress());
+                preparedStatement.setString(3, S.getNpwp());
+                preparedStatement.setString(4, S.getPost_code());
+                preparedStatement.setString(5, S.getEmail());
+                preparedStatement.setInt(6, S.getStore_id());
                 preparedStatement.executeUpdate();
                 System.out.println("Sukses update : "+S.getStore_id());
                 this.disconnect();
@@ -67,19 +67,17 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
         }
         else {
             System.out.println("tidak masuk psql");
-            psql="INSERT INTO store(employee_id, store_name, address, npwp, post_code, email) VALUES (?,?,?,?,?,?,?)";
+            psql="INSERT INTO store( store_name, address, npwp, post_code, email) VALUES (?,?,?,?,?)";
             try{
                 System.out.println("tidak masuk insert data");
                 this.makeConnection();
                 System.out.println("berhasil insert data");
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-                preparedStatement.setInt(1,S.getStore_id());
-                preparedStatement.setInt(2, S.getEmployee_id());
-                preparedStatement.setString(3, S.getStore_name());
-                preparedStatement.setString(4, S.getAddress());
-                preparedStatement.setString(5, S.getNpwp());
-                preparedStatement.setString(6, S.getPost_code());
-                preparedStatement.setString(7, S.getEmail());
+                preparedStatement.setString(1, S.getStore_name());
+                preparedStatement.setString(2, S.getAddress());
+                preparedStatement.setString(3, S.getNpwp());
+                preparedStatement.setString(4, S.getPost_code());
+                preparedStatement.setString(5, S.getEmail());
                 preparedStatement.executeUpdate();
                 this.disconnect();
             }
@@ -100,7 +98,6 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
             if(rs!=null){
                 while (rs.next()) {
                     store.setStore_id(rs.getInt("store_id"));
-                    store.setEmployee_id(rs.getInt("employee_id"));
                     store.setStore_name(rs.getString("store_name"));
                     store.setAddress(rs.getString("address"));
                     store.setNpwp(rs.getString("npwp"));
