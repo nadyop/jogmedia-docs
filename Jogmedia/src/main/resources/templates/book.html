@@ -99,12 +99,31 @@
                                                 <button class="btn btn-primary">Edit</button>
                                             </a>
                                             <a th:href="${'/book/softDelete/'+book.book_id}">
-                                                <button th:if="${book.status == 1}" th:text="Active" class="btn btn-warning btnActive">Active</button>
-                                                <button th:if="${book.status == 0}" th:text="Deactive" class="btn btn-warning btnActive">Deactive</button>
+                                                <button th:if="${book.status == 1}" th:text="Deactive" class="btn btn-warning btnActive">Active</button>
+                                                <button th:if="${book.status == 0}" th:text="Active" class="btn btn-warning btnActive">Deactive</button>
                                             </a>
-                                            <a th:href="${'/book/hapus/'+book.book_id}">
-                                                <button class="btn btn-danger">Delete</button>
-                                            </a>
+                                            <button class="btn btn-danger" data-toggle="modal" data-target="#delete" data-backdrop="static">Delete</button>
+                                                <!--modal delete-->
+                                                <div class="modal fade" id="delete" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <!--modal total-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <div class="row">
+                                                                    <h4 class="modal-title"><center>Are you sure to delete <span th:text="${book.book_title}"></span>?</center></h4>
+                                                                </div><p></p>
+                                                                <center>
+                                                                    <div class="row">
+                                                                        <a th:each="book: ${book}" th:href="${'/book/hapus/'+book.book_id}">
+                                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                                                                        </a>
+                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                                                    </div>
+                                                                </center>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                         </td>
                                     </tr>

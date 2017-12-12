@@ -55,11 +55,13 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         if(E.getEmployee_id()!=0){
             try{
                 psql="update Employee set employee_name=?, employee_uname=?, password=?,role=?,status=? where employee_id=?";
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String hashPass = passwordEncoder.encode(E.getPassword());
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
                 preparedStatement.setString(1,E.getEmployee_name());
                 preparedStatement.setString(2,E.getEmployee_uname());
-                preparedStatement.setString(3,E.getPassword());
+                preparedStatement.setString(3,hashPass);
                 preparedStatement.setString(4,E.getRole());
                 preparedStatement.setInt(5,E.getStatus());
                 preparedStatement.setInt(6,E.getEmployee_id());

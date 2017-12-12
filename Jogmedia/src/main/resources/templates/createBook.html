@@ -39,22 +39,19 @@
                                 <input type="hidden" th:field="*{book_id}"/>
                                 <div class="row wrapper-content">
                                     <label>ISBN</label>
-                                    <input th:field="*{isbn}" type="text" class="input form-control" name="" value=""/>
+                                    <input th:field="*{isbn}" type="text" class="input form-control" required="true" autofocus="true" placeholder="input isbn"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Title</label>
-                                    <input th:field="*{book_title}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{book_title}" type="text" class="input form-control" required="true" autofocus="true" placeholder="input book title"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Author</label>
-                                    <input th:field="*{author}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{author}" type="text" class="input form-control" required="true" autofocus="true" placeholder="input author name"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Publisher</label>
-                                    <input th:field="*{publisher}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{publisher}" type="text" class="input form-control" required="true" autofocus="true" placeholder="input publisher"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Category</label>
@@ -68,27 +65,22 @@
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Location</label>
-                                    <input th:field="*{location}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{location}" type="text" class="input form-control" required="true" autofocus="true" placeholder="input location"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="row wrapper-content">
                                     <label>Price </label>
-                                    <input th:field="*{price_before}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{price_before}" type="number" class="input form-control" required="true" min="500" autofocus="true"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
-                                    <label>Stok</label>
-                                    <input th:field="*{stok}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <label>Stock</label>
+                                    <input th:field="*{stok}" type="number" class="input form-control" value="1" min="1" required="true" autofocus="true"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Disc (%)</label>
-                                    <input th:field="*{discount}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{discount}" type="number" class="input form-control" min="0"/>
                                 </div>
-
                             </div>
                             <div type="submit" class="form-group">
                                 <button type="submit" class="btn btn-warning">Save</button>

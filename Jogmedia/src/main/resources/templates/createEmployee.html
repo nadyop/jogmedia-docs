@@ -39,30 +39,21 @@
                                 <input type="hidden" th:field="*{employee_id}"/>
                                 <div class="row wrapper-content">
                                     <label>Name</label>
-                                    <input th:field="*{employee_name}" type="text" class="input form-control" name="" value=""/>
+                                    <input th:field="*{employee_name}" type="text" class="input form-control" required="true"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Username</label>
-                                    <input th:field="*{employee_uname}" type="text" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{employee_uname}" type="text" class="input form-control" required="true"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Password</label>
-                                    <input th:field="*{password}" type="password" class="input form-control" name=""
-                                           value=""/>
+                                    <input th:field="*{password}" type="password" class="input form-control" required="true"/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Role</label>
                                     <select th:field="*{role}" class="form-control" id="sel1">
                                         <option th:value="Cashier">Cashier</option>
                                         <option th:value="Manager">Manager</option>
-                                    </select>
-                                </div>
-                                <div class="row wrapper-content margin5">
-                                    <label>Status</label>
-                                    <select th:field="*{status}" class="form-control" id="sel1">
-                                        <option th:value="1">Active</option>
-                                        <option th:value="0">Non-Active</option>
                                     </select>
                                 </div>
                             </div>

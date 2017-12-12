@@ -39,14 +39,13 @@
                                 <div class="row wrapper-content">
                                     <input type="hidden" th:field="*{category_id}"/>
                                     <label>Name</label>
-                                    <input th:field="*{category_name}" type="text" class="input form-control" name="" value=""/>
+                                    <input th:field="*{category_name}" type="text" required="true" class="input form-control" name="" value=""/>
                                 </div>
                                 <div class="row wrapper-content margin5">
                                     <label>Description</label>
                                     <input th:field="*{category_desc}" type="text" class="input form-control" name=""
                                            value=""/>
                                 </div>
-                                
                             </div>
                             <div type="submit" class="form-group">
                                 <button type="submit" class="btn btn-warning">Save</button>
