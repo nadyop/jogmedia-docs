@@ -16,19 +16,24 @@ public class StoreController {
 
     @RequestMapping("/store")
     public String dataStore(Model model){
+        System.out.println("masuk disini");
         model.addAttribute("store",storeService.showStore());
         return "store";
     }
-    @RequestMapping(value = "/store/",method = RequestMethod.GET)
-    public String tampilFormStore(Model model){
-        model.addAttribute("store",new Store());
-        return "store";
-    }
-    @RequestMapping(value = "/store/createStore",method = RequestMethod.GET)
-    public String simpanDataStore(Store store){
+
+    @RequestMapping(value = "/store/",method = RequestMethod.POST)
+    public String updateData(Model model, Store store){
         storeService.saveOrUpdate(store);
+
+        return "redirect:/store";
+    }
+
+    @RequestMapping(value = "/store/createStore",method = RequestMethod.GET)
+    public String creStore(Model model){
+      model.addAttribute("store", new Store());
         return "createStore";
     }
+
     @RequestMapping(value = "/store/edit/{id}", method = RequestMethod.GET)
     public String editDataStore(@PathVariable Integer id, Model model){
         model.addAttribute("store",storeService.getIdStore(id));

@@ -13,12 +13,16 @@ public class StoreService {
     StoreDaoInterface storeDaoInterface;
     public List<Store> showStore(){
         List<Store> data=storeDaoInterface.getStore();
+
         return data;
     }
     public void saveOrUpdate(Store store){
+
+        System.out.println("Apakah masuk insertStore1");
         storeDaoInterface.insertStore(store);
     }
     public Store getIdStore(Integer id){
+        System.out.println("Apakah masuk insertStore2");
         Store get= storeDaoInterface.getIdStore(id);
         return get;
     }
