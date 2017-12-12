@@ -3,6 +3,7 @@ package com.blibli.dao.category;
 import com.blibli.dao.My_Connection;
 import com.blibli.dao_api.EmployeeDaoInterface;
 import com.blibli.model.Employee;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -74,11 +75,13 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         else{
             try{
                 psql="INSERT  INTO Employee(employee_name, employee_uname, password, role, status) VALUES (?,?,?,?,1)";
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String hashPass = passwordEncoder.encode(E.getPassword());
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
                 preparedStatement.setString(1,E.getEmployee_name());
                 preparedStatement.setString(2,E.getEmployee_uname());
-                preparedStatement.setString(3,E.getPassword());
+                preparedStatement.setString(3,hashPass);
                 preparedStatement.setString(4,E.getRole());
                 preparedStatement.executeUpdate();
                 System.out.println("berhasil insert data employee="+E.getEmployee_name());
@@ -149,20 +152,6 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         }
         return employee;
     }
-    @Override
-    public void delete(int id){
-        String psql= "Delete from Employee where Employee.employee_id='"+id+"';";
-        try{
-            this.makeConnection();
-            Statement statement= this.con.createStatement();
-            statement.executeQuery(psql);
-            this.disconnect();
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
-    }
-
     @Override
     public void softDeleteEmployee(int id) {
         String psql= "UPDATE Employee set status= case when status=1 then 0 when status=0 then 1 end where Employee.employee_id='"+id+"';";

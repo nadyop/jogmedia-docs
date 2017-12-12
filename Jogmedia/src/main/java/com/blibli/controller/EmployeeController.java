@@ -42,11 +42,6 @@ public class EmployeeController {
         model.addAttribute("employee",employeeService.getIdEmployee(id));
         return "createEmployee";
     }
-    @RequestMapping(value = "/tampilemp/hapus/{id}", method = RequestMethod.GET)
-    public String hapusData(@PathVariable Integer id,Model model) {
-        employeeService.deleteEmployee(id);
-        return "redirect:/tampilemp";
-    }
     @RequestMapping(value = "/employee/softDelete/{id}", method = RequestMethod.GET)
     public String softDeleteEmployee(@PathVariable Integer id) {
         employeeService.softDeleteEmployee(id);

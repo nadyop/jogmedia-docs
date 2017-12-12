@@ -86,9 +86,6 @@
                                                 <button th:if="${employee.status == 1}" th:text="Deactive" class="btn btn-warning btnActive">Active</button>
                                                 <button th:if="${employee.status == 0}" th:text="Active" class="btn btn-warning btnActive">Deactive</button>
                                             </a>
-                                            <a th:href="${'/tampilemp/hapus/'+employee.employee_id}">
-                                                <button class="btn btn-danger">Delete</button>
-                                            </a>
                                         </td>
                                     </tr>
                                 </table>

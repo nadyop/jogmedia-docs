@@ -28,10 +28,6 @@ public class EmployeeServices {
         Employee idEmp= employeeDaoInterface.getIdEmployee(id);
         return idEmp;
     }
-    public void deleteEmployee(Integer id){
-        employeeDaoInterface.delete(id);
-    }
-
     public void softDeleteEmployee(Integer id) {
         employeeDaoInterface.softDeleteEmployee(id);
     }
