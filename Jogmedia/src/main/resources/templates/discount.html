@@ -68,9 +68,8 @@
                                         <th>Category Name</th>
                                         <th>Status</th>
                                         <th>Price</th>
-                                        <!--<th>Harga Sesudah</th>-->
-
                                         <th>Location</th>
+                                        <th>Disc</th>
 
                                     </tr>
                                     <tr th:each="book: ${book}">
@@ -85,10 +84,9 @@
                                         <td th:if="${book.status == 1}" th:text="Active"></td>
                                         <td th:if="${book.status == 0}" th:text="Non-Active"></td>
                                         <td th:text="${book.price_after}"></td>
-                                        <!--<td th:text="${book.price_after}"></td>-->
-
                                         <td th:text="${book.location}"></td>
-
+                                        <td th:text="${book.discount}"></td>
+                                        <!--<td th:text="${#strings.arraySplit(book.discount, '%')}"></td>-->
                                     </tr>
                                 </table>
                             </div>
