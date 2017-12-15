@@ -1,172 +1,197 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Cashier</title>
-  <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
-  <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
-  <link th:href="@{/css/stylecsr.css}" rel="stylesheet" media="screen"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/stylecsr.js"></script>
+    <title>Cashier</title>
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"
+          media="screen"/>
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/stylecsr.css}" rel="stylesheet" media="screen"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/stylecsr.js"></script>
 </head>
 <body>
 
 <nav class="navbar navbar-inverse nav-c">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav navbar-left">
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a><span>20:45</span></a></li>
-      <li th:inline="text"><a><span class="fa fa-user"></span> Hi, [[${#httpServletRequest.remoteUser}]]!</a></li>
-      <li><a href="#">
-        <form th:action="@{/logout}" method="post">
-          <span class="fa fa-sign-out"></span>
-          <input type="submit" value="Sign Out" style="background: none; border: none"/>
-        </form>
-      </a>
-      </li>
-    </ul>
-  </div>
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a><span>20:45</span></a></li>
+            <li th:inline="text"><a><span class="fa fa-user"></span> Hi, [[${#httpServletRequest.remoteUser}]]!</a></li>
+            <li><a href="#">
+                <form th:action="@{/logout}" method="post">
+                    <span class="fa fa-sign-out"></span>
+                    <input type="submit" value="Sign Out" style="background: none; border: none"/>
+                </form>
+            </a>
+            </li>
+        </ul>
+    </div>
 </nav>
 <div class="container-fluid">
-  <!--left side-->
-  <div class="col-xs-12 col-sm-5 col-md-7">
-    <div class="row-fluid">
-      <div class="row">
-        <!--search book title-->
-        <div class="col-md-6">
-          <form class="form-horizontal" th:action="@{/transaction/search}" method="post">
-          <div class="row-fluid input-group">
+    <!--left side-->
+    <div class="col-xs-12 col-sm-5 col-md-7">
+        <div class="row-fluid">
+            <div class="row">
+                <!--search book title-->
+                <div class="col-md-6">
+                    <form class="form-horizontal" th:action="@{/transaction/search}" >
+                        <div class="row-fluid input-group">
             <span class="input-group-addon sp-icon">
               <i class="fa fa-book"></i>
             </span>
-            <input type="text" class="form-control" name="searchKey" th:value="${searchKey}" placeholder="BOOK TITLE"/>
-            <span class="input-group-btn">
-              <button class="btn btn-default btn-search" type="button" name="button">Search</button>
+                            <input type="text" class="form-control" name="searchKey" th:value="${searchKey}"
+                                   placeholder="BOOK TITLE"/>
+                            <span class="input-group-btn">
+              <button class="btn btn-default btn-search" type="submit" name="button">Search</button>
             </span>
-          </div>
-          </form>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
+        <!--end row fluid-->
+        <!--table search book-->
+        <div class="row-fluid table-book">
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Price</th>
+                            <th>Discount</th>
+                            <th>Qty</th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div th:if="${not #lists.isEmpty(book)}">
+                        <table class="table tab le-striped">
+                            <tbody>
+                            <a href="index.html">
+                                <tr th:each="book: ${book}">
+                                    <form method="post" th:action="@{'/transaction/search/buy/'+${book.book_id}}">
+                                        <input hidden="hidden" name="bookid" th:value="${book.book_id}"/>
+                                        <td name="title" th:value="${book.book_title}" class="td-book">
+                                            <input th:value="${book.book_title}" type="text"/>
+                                        </td>
+
+                                        <td name="price" th:value="${book.price_after}"><input th:value="${book.price_after}" type="number"/></td>
+                                        <td name="disc" th:object="${book.discount}" th:value="${book.discount}"><input
+                                                type="number" th:value="${book.discount}"/></td>
+                                        <td id="qty" class="ip-qty">
+                                            <input type="number" class="form-control"  value="1"  name="quantity" th:object="${quantity}" th:value="${quantity}"/>
+                                        </td>
+                                        <td>
+
+                                            <button class="btn btn-primary">Buy</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            </a>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--end row fluid-->
-    <!--table search book-->
-    <div class="row-fluid table-book">
-      <div class="panel panel-default">
-        <div class="panel-body table-responsive">
-          <table class="table">
+    <!--end left side-->
+    <!--right side-->
+    <div class="col-xs-12 col-sm-7 col-md-5">
+        <div class="row-fluid">
+            <form method="">
+                <div class="row">
+                    <!-- button pay -->
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-default btn-all search-book" data-toggle="modal"
+                                data-target="#modal-pay" data-backdrop="static">Pay
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--table cart-->
+        <table class="table table-striped">
             <thead>
             <tr>
-              <th>Book Title</th>
-              <th>Author</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Choose</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+                <th>Action</th>
             </tr>
             </thead>
-          </table>
-            <div th:if="${not #lists.isEmpty(book)}">
-              <table class="table table-striped">
-                <tbody>
-                <a href="index.html">
-                  <tr th:each="book: ${book}">
-                    <td th:text="${book.book_title}" class="td-book">Marmut Merah Jambu</td>
-                    <td th:text="${book.author}">Raditya Dika</td>
-                    <td th:text="${book.price_after}">30.000</td>
-                    <td id="qty" class="ip-qty"><input type="number" class="form-control" name="" value="1"/></td>
-                    <td><button class="btn btn-primary">Buy</button></td>
-                  </tr>
-                </a>
-                </tbody>
-              </table>
-            </div>
-        </div>
-      </div>
+            <tbody id="detail_cart">
+            <tr>
+                <td id="bookName"></td>
+                <td id="priceAfter"></td>
+                <td id="quantity"></td>
+                <td id="total_payment"></td>
+                <td>
+                    <button type="button" data-id="" class="hapus_cart btn btn-danger btn-xs">Cancel</button>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="3">Total</th>
+                <th colspan="2">Rp <span id="total-payment"></span></th>
+            </tr>
+            </tbody>
+        </table>
     </div>
-  </div>
-  <!--end left side-->
-  <!--right side-->
-  <div class="col-xs-12 col-sm-7 col-md-5">
-    <div class="row-fluid">
-      <form method="">
-        <div class="row">
-          <!-- button pay -->
-          <div class="col-md-12">
-            <button type="button" class="btn btn-default btn-all search-book" data-toggle="modal" data-target="#modal-pay" data-backdrop="static">Pay</button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <!--table cart-->
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Price</th>
-          <th>Qty</th>
-          <th>Subtotal</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="detail_cart">
-        <tr>
-          <td id="bookName"></td>
-          <td id="priceAfter"></td>
-          <td id="quantity"></td>
-          <td id="total_payment"></td>
-          <td><button type="button" data-id="" class="hapus_cart btn btn-danger btn-xs">Cancel</button></td>
-        </tr>
-        <tr>
-          <th colspan="3">Total</th>
-          <th colspan="2">Rp <span id="total-payment"></span></th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
-  <!--modal-->
-  <div class="modal fade" id="modal-pay" role="dialog">
-    <div class="modal-dialog">
-      <!--modal total-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <div class="row">
-            <h4 class="modal-title"><center>Payment</center></h4>
-          </div>
-          <div class="row green"><h3>
-            <div class="col-sm-6 col-md-6">
-              <center>Total</center>
+    <!--modal-->
+    <div class="modal fade" id="modal-pay" role="dialog">
+        <div class="modal-dialog">
+            <!--modal total-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="row">
+                        <h4 class="modal-title">
+                            <center>Payment</center>
+                        </h4>
+                    </div>
+                    <div class="row green">
+                        <h3>
+                            <div class="col-sm-6 col-md-6">
+                                <center>Total</center>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                Rp20000
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <h3>
+                            <div class="col-sm-6 col-md-6">
+                                <center>Paying now</center>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <input type="number" class="input form-control" name="" value=""/>
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="row red">
+                        <h3>
+                            <div class="col-sm-6 col-md-6">
+                                <center>Change</center>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <span>Rp0</span>
+                            </div>
+                        </h3>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Print</button>
+                </div>
             </div>
-            <div class="col-sm-6 col-md-6">
-              Rp20000
-            </div></h3>
-          </div>
-          <div class="row">
-            <h3>
-              <div class="col-sm-6 col-md-6">
-                <center>Paying now</center>
-              </div>
-              <div class="col-sm-6 col-md-6">
-                <input type="number" class="input form-control" name="" value=""/>
-              </div></h3>
-          </div>
-          <div class="row red"><h3>
-            <div class="col-sm-6 col-md-6">
-              <center>Change</center>
-            </div>
-            <div class="col-sm-6 col-md-6">
-              <span>Rp0</span>
-            </div></h3>
-          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Print</button>
-        </div>
-      </div>
     </div>
-  </div>
-  <!--close tag container fluid-->
+    <!--close tag container fluid-->
 </div>
 
 </body>

@@ -41,7 +41,7 @@ public class BookController {
         return "emptyStok";
     }
     @RequestMapping(value="/book/",method = RequestMethod.POST)
-    public String simpanDataBook(Model model, @ModelAttribute("buku") Book buku){
+    public String simpanDataBook( @ModelAttribute("buku") Book buku){
         bookService.saveOrdUpdateService(buku);
         return "redirect:/book";
     }

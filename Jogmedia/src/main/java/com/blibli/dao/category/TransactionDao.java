@@ -4,6 +4,7 @@ import com.blibli.dao.My_Connection;
 import com.blibli.dao_api.TransactionInterface;
 import com.blibli.model.Book;
 import com.blibli.model.Detil_Transaction;
+import com.blibli.model.TempDetil;
 import com.blibli.model.Transaction;
 import org.springframework.stereotype.Repository;
 
@@ -118,7 +119,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
 
     @Override
     public List<Book> searchCashier(String searchKey) {
-        String psql="select * from book where LOWER(isbn) LIKE LOWER('%" + searchKey+ "%') OR  LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')  AND status=1 AND stok!=0 ORDER BY book_id";
+        String psql="select * from book where  status=1 AND stok!=0 AND  LOWER(isbn) LIKE LOWER('%" + searchKey+ "%') ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
 
@@ -154,4 +155,26 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
         }
         return books;
     }
+    @Override
+    public void saveTempDetilTransaction(TempDetil tempDetil){
+        String psql;
+
+        psql = "Insert into temp_Detil(book_id, quantity, unit_price, discount)"+
+                " values (?,?,?,?)";
+        try {
+            this.makeConnection();
+            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
+            preparedStatement.setInt(1,tempDetil.getBookId());
+            preparedStatement.setInt(2,tempDetil.getQuantity());
+            preparedStatement.setDouble(3,tempDetil.getUnitPrice());
+            preparedStatement.setInt(4,tempDetil.getDiscount());
+            preparedStatement.executeUpdate();
+            this.disconnect();
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+    }
+
 }
