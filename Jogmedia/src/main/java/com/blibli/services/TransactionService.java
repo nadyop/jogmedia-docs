@@ -17,8 +17,9 @@ public class TransactionService {
     TransactionInterface transactionInterface;
     @Autowired
     BookDaoInterface bookDaoInterface;
-    public void saveOrUpdateTransaction(Transaction transaction){
-        transactionInterface.saveTransaction(transaction);
+    public void saveOrUpdateTransaction(double pembayaran){
+
+        transactionInterface.saveTransaction(pembayaran);
     }
     public void saveOrUpdateDetilTransaction(Detil_Transaction detil_transaction){
         transactionInterface.saveDetailTransaction(detil_transaction);
@@ -36,5 +37,8 @@ public class TransactionService {
     public List<TempDetil> getAllTempDetil(){
         List<TempDetil> temp= transactionInterface.getAllTempDetilSaved();
         return temp;
+    }
+    public double perhitunganTotal(){
+        return  transactionInterface.totalPehitungan();
     }
 }

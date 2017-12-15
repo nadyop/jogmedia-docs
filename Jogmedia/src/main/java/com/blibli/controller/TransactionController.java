@@ -37,6 +37,7 @@ public class TransactionController {
         model.addAttribute("book", transactionService.searchCashier(searchKey));
         return "transaction";
     }
+
 // post = luar kedalam
 // get= dalam keluar
     @PostMapping(value="/transaction/search/buy/{id}")
@@ -44,6 +45,13 @@ public class TransactionController {
         Book book = bookService.getIdBuku(id);
         TempDetil tempDetil1= new TempDetil(id, book.getBook_id(),quantity,book.getPrice_after(), book.getDiscount(),book.getBook_title(),book.getIsbn());
         transactionService.saveDetilTemp(tempDetil1);
+        return "redirect:/transaction";
+    }
+    @PostMapping(value="/transaction/payment")
+    public String simpanData(@ModelAttribute("pembayaran") Double pembayaran,Model model){
+        model.addAttribute("totalPerhitungan",transactionService.perhitunganTotal());
+
+        transactionService.saveOrUpdateTransaction(pembayaran);
         return "redirect:/transaction";
     }
     @RequestMapping(value = "/transaction/hapus/{id}",method = RequestMethod.GET)

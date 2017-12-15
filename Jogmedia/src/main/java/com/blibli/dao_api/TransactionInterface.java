@@ -9,11 +9,11 @@ import java.util.List;
 
 public interface TransactionInterface {
 
-    void saveTransaction(Transaction transaction);
+    void saveTransaction(double pembayaran);
     void saveDetailTransaction(Detil_Transaction detil_transaction);
     void deleteDetailTransaction(int idDetil);
     List<Book> searchCashier(String searchKey);
     void saveTempDetilTransaction(TempDetil tempDetil);
     List<TempDetil> getAllTempDetilSaved();
-
+    Double totalPehitungan();
 }

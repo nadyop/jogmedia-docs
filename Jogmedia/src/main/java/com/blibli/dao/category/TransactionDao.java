@@ -18,37 +18,41 @@ import java.util.List;
 @Repository
 public class TransactionDao extends My_Connection implements TransactionInterface {
     @Override
-    public void saveTransaction(Transaction transaction){
+    public void saveTransaction(double pembayaran){
         String psql;
-        if(transaction.getTransaction_id()!=0){
-            System.out.println("updating transaction");
-
-            psql="UPDATE transaction SET employee_id=?, total_pembelian=?," +
-                    "total_pembayaran=?, tanggal_transaksi=CURRENT_DATE  where transaction_id= ?";
-            try {
-                this.makeConnection();
-                System.out.println("test update buku");
-                PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-                preparedStatement.setInt(1,transaction.getEmployee_id());
-                preparedStatement.setDouble(2,transaction.getTotal_pembelian());
-                preparedStatement.setDouble(3,transaction.getTotal_pembayaran());
-                preparedStatement.setInt(4,transaction.getTransaction_id());
-                preparedStatement.executeUpdate();
-                System.out.println("suskes update");
-                this.disconnect();
-
-            }catch (Exception e){
-                System.out.println(e);
-            }
-        }
-        else{
+//        if(transaction.getTransaction_id()!=0){
+//
+//
+//            psql="UPDATE transaction SET employee_id=?, total_pembelian=?," +
+//                    "total_pembayaran=?, tanggal_transaksi=CURRENT_DATE  where transaction_id= ?";
+//            try {
+//                this.makeConnection();
+//                System.out.println("test update buku");
+//                PreparedStatement preparedStatement= this.con.prepareStatement(psql);
+//                preparedStatement.setInt(1,transaction.getEmployee_id());
+//                preparedStatement.setDouble(2,transaction.getTotal_pembelian());
+//                preparedStatement.setDouble(3,transaction.getTotal_pembayaran());
+//                preparedStatement.setInt(4,transaction.getTransaction_id());
+//                preparedStatement.executeUpdate();
+//                System.out.println("suskes update");
+//                this.disconnect();
+//
+//            }catch (Exception e){
+//                System.out.println(e);
+//            }
+//        }
+//        else{
+            //String psql= "Delete from temp_detil where id_detil='"+idDetil+"';";
             psql = "Insert into transaction(employee_id,total_pembelian,total_pembayaran,tanggal_transaksi)"+
-                    " values (?,0,0,CURRENT_DATE)";
+                    " values (1,'"+totalPehitungan()+"','"+pembayaran+"',CURRENT_DATE)";
             try {
                 this.makeConnection();
 
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-                preparedStatement.setInt(1,transaction.getEmployee_id());
+                preparedStatement.setInt(1,1);
+                preparedStatement.setDouble(2, totalPehitungan());
+
+//                preparedStatement.setDate(4,new Date());
                 preparedStatement.executeUpdate();
 
                 this.disconnect();
@@ -56,7 +60,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             }catch (Exception e){
                 System.out.println(e);
             }
-        }
+
     }
     @Override
     public void saveDetailTransaction(Detil_Transaction detil){
@@ -204,5 +208,30 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             System.out.println(e);
         }
         return  temp;
+    }
+    @Override
+    public Double totalPehitungan(){
+        double temp=0;
+        String psql="select sum(quantity*unit_price) as total from temp_detil join book using(book_id)";
+        try{
+            this.makeConnection();
+            PreparedStatement preparedStatement = this.con.prepareStatement(psql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet != null)  {
+                while(resultSet.next()){
+                    temp=resultSet.getDouble("total");
+                }
+
+
+            }
+            
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        System.out.println("psql = " + psql);
+        System.out.println("hasil="+temp);
+        return temp;
     }
 }

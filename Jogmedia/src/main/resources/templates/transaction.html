@@ -152,6 +152,7 @@
     <div class="modal fade" id="modal-pay" role="dialog">
         <div class="modal-dialog">
             <!--modal total-->
+
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -160,36 +161,38 @@
                             <center>Payment</center>
                         </h4>
                     </div>
-                    <div class="row green">
-                        <h3>
-                            <div class="col-sm-6 col-md-6">
-                                <center>Total</center>
-                            </div>
-                            <div class="col-sm-6 col-md-6">
-                                Rp20000
-                            </div>
-                        </h3>
-                    </div>
-                    <div class="row">
-                        <h3>
-                            <div class="col-sm-6 col-md-6">
-                                <center>Paying now</center>
-                            </div>
-                            <div class="col-sm-6 col-md-6">
-                                <input type="number" class="input form-control" name="" value=""/>
-                            </div>
-                        </h3>
-                    </div>
-                    <div class="row red">
-                        <h3>
-                            <div class="col-sm-6 col-md-6">
-                                <center>Change</center>
-                            </div>
-                            <div class="col-sm-6 col-md-6">
-                                <span>Rp0</span>
-                            </div>
-                        </h3>
-                    </div>
+                    <form method="post" th:action="@{'/transaction/payment'}">
+                        <div class="row green">
+                            <h3>
+                                <div class="col-sm-6 col-md-6">
+                                    <center>Total</center>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <td th:text="${totalPerhitungan}"></td>
+                                </div>
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <h3>
+                                <div class="col-sm-6 col-md-6">
+                                    <center>Paying now</center>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <input type="number" class="input form-control" name="" value=""/>
+                                </div>
+                            </h3>
+                        </div>
+                        <div class="row red">
+                            <h3>
+                                <div class="col-sm-6 col-md-6">
+                                    <center>Change</center>
+                                </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <span>Rp0</span>
+                                </div>
+                            </h3>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Print</button>
