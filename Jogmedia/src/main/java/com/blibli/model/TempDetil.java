@@ -4,17 +4,43 @@ public class TempDetil {
 
     private Integer bookId;
     private double unitPrice;
-    private Integer quantity, discount;
-
-    public TempDetil(Integer bookId, Integer quantity,Double unitPrice,  Integer discount) {
-
+    private Integer quantity, discount, id_detil;
+    private String book_title, isbn;
+    public TempDetil(Integer id_detil,Integer bookId, Integer quantity,Double unitPrice,  Integer discount, String book_title, String isbn) {
+        this.id_detil=id_detil;
         this.bookId = bookId;
         this.unitPrice = unitPrice;
         this.quantity = quantity;
         this.discount = discount;
+        this.book_title=book_title;
+        this.isbn=isbn;
     }
 
     public TempDetil() {
+    }
+
+    public Integer getId_detil() {
+        return id_detil;
+    }
+
+    public void setId_detil(Integer id_detil) {
+        this.id_detil = id_detil;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getBook_title() {
+        return book_title;
+    }
+
+    public void setBook_title(String book_title) {
+        this.book_title = book_title;
     }
 
     public Integer getBookId() {

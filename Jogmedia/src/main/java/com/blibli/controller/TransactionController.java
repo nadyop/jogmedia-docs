@@ -27,23 +27,29 @@ public class TransactionController {
 
     @RequestMapping("/transaction")
     public String transaction(Model model ){
-
         model.addAttribute("tempDetil",transactionService.getAllTempDetil());
         return "transaction";
     }
 
     @RequestMapping(value = "/transaction/search", method = RequestMethod.GET)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
+        model.addAttribute("tempDetil",transactionService.getAllTempDetil());
         model.addAttribute("book", transactionService.searchCashier(searchKey));
         return "transaction";
     }
 // post = luar kedalam
+// get= dalam keluar
     @PostMapping(value="/transaction/search/buy/{id}")
     public String search1(@PathVariable("id") Integer id, @ModelAttribute("quantity") Integer quantity){
         Book book = bookService.getIdBuku(id);
-        TempDetil tempDetil1= new TempDetil(book.getBook_id(),quantity,book.getPrice_after(), book.getDiscount());
-
+        TempDetil tempDetil1= new TempDetil(id, book.getBook_id(),quantity,book.getPrice_after(), book.getDiscount(),book.getBook_title(),book.getIsbn());
         transactionService.saveDetilTemp(tempDetil1);
+        return "redirect:/transaction";
+    }
+    @RequestMapping(value = "/transaction/hapus/{id}",method = RequestMethod.GET)
+    public String hapusDataCategory(@PathVariable Integer id,Model model){
+        System.out.println("nilai id="+id);
+        transactionService.deleteDetilTransaction(id);
         return "redirect:/transaction";
     }
 

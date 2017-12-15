@@ -14,4 +14,6 @@ public interface TransactionInterface {
     void deleteDetailTransaction(int idDetil);
     List<Book> searchCashier(String searchKey);
     void saveTempDetilTransaction(TempDetil tempDetil);
+    List<TempDetil> getAllTempDetilSaved();
+
 }

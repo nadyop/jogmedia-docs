@@ -21,8 +21,8 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         List<Book> books= new ArrayList<>();
         try{
             this.makeConnection();
-            Statement statement= this.con.createStatement();
 
+            Statement statement= this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
                 while(rs.next()){

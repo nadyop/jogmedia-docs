@@ -105,7 +105,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
     }
     @Override
     public void deleteDetailTransaction(int idDetil){
-        String psql= "Delete from detil_transaction where detail_id='"+idDetil+"';";
+        String psql= "Delete from temp_detil where id_detil='"+idDetil+"';";
         try {
             this.makeConnection();
             Statement statement=this.con.createStatement();
@@ -176,5 +176,33 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
         }
 
     }
+    @Override
+    public List<TempDetil> getAllTempDetilSaved(){
+        String psql=" select id_detil,book.isbn,temp_detil.book_id, quantity, unit_price, temp_detil.discount, book_title from temp_detil join book using(book_id)";
+        List<TempDetil> temp = new ArrayList<>();
+        try {
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null) {
+                while (rs.next()) {
 
+                    TempDetil tempDetil= new TempDetil(
+                            rs.getInt("id_detil"),
+                            rs.getInt("book_id"),
+                            rs.getInt("quantity"),
+                            rs.getDouble("unit_price"),
+                            rs.getInt("discount"),
+                            rs.getString("book_title"),
+                            rs.getString("isbn")
+                    );
+                    temp.add(tempDetil);
+                }
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return  temp;
+    }
 }

@@ -34,6 +34,7 @@ public class TransactionService {
         transactionInterface.saveTempDetilTransaction(tempDetil);
     }
     public List<TempDetil> getAllTempDetil(){
-        return  null;
+        List<TempDetil> temp= transactionInterface.getAllTempDetilSaved();
+        return temp;
     }
 }

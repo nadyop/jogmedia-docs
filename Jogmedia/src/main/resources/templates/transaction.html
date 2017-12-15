@@ -82,7 +82,7 @@
                                         <td name="disc" th:object="${book.discount}" th:value="${book.discount}"><input
                                                 type="number" th:value="${book.discount}"/></td>
                                         <td id="qty" class="ip-qty">
-                                            <input type="number" class="form-control"  value="1"  name="quantity" th:object="${quantity}" th:value="${quantity}"/>
+                                            <input type="number" class="form-control"  value="1" name="quantity" th:object="${quantity}" th:value="${quantity}"/>
                                         </td>
                                         <td>
 
@@ -114,32 +114,38 @@
             </form>
         </div>
         <!--table cart-->
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Subtotal</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody id="detail_cart">
-            <tr>
-                <td id="bookName"></td>
-                <td id="priceAfter"></td>
-                <td id="quantity"></td>
-                <td id="total_payment"></td>
-                <td>
-                    <button type="button" data-id="" class="hapus_cart btn btn-danger btn-xs">Cancel</button>
-                </td>
-            </tr>
-            <tr>
-                <th colspan="3">Total</th>
-                <th colspan="2">Rp <span id="total-payment"></span></th>
-            </tr>
-            </tbody>
-        </table>
+        <div th:if="${not #lists.isEmpty(tempDetil)}">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+
+
+                </tr>
+                </thead>
+                <tbody id="detail_cart">
+                <tr th:each="tempDetil: ${tempDetil}">
+                    <td th:text="${tempDetil.isbn}"></td>
+                    <td th:text="${tempDetil.book_title}"></td>
+                    <td th:text="${tempDetil.unitPrice}"></td>
+                    <td th:text="${tempDetil.quantity}"></td>
+                    <td id="total_payment"></td>
+                    <td>
+                        <a th:href="${'/transaction/hapus/'+tempDetil.id_detil}">
+                            <button type="button" data-id="" class="hapus_cart btn btn-danger btn-xs">Cancel</button>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="3">Total</th>
+                    <th colspan="2">Rp <span id="total-payment"></span></th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!--modal-->
