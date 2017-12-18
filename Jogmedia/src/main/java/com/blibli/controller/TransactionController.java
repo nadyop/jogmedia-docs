@@ -68,7 +68,7 @@ public class TransactionController {
         Book book = bookService.getIdBuku(id);
         TempDetil tempDetilTemp= transactionService.getIdTempDetilService(id);
         System.out.println("id book"+tempDetilTemp.getBookId());
-        if(tempDetilTemp.getBookId()!=null )
+        if(tempDetilTemp.getBookId()!=null && book.getStok()>=quantity)
         {
             System.out.println("updating");
             quantity += tempDetilTemp.getQuantity();
@@ -78,12 +78,14 @@ public class TransactionController {
             transactionService.updatingTempDetil(tempDetilTemp.getUnitPrice(),quantity, tempDetilTemp.getId_detil());
 
         }
-        else
+        else if(tempDetilTemp.getBookId()==null && book.getStok()>=quantity)
         {
             TempDetil tempDetil1= new TempDetil(id, book.getBook_id(),quantity,book.getPrice_after(), book.getDiscount(),book.getBook_title(),book.getIsbn(),1);
             transactionService.saveDetilTemp(tempDetil1);
         }
-
+        else{
+            System.out.println("quantity diatas stok");
+        }
         return "redirect:/transaction";
     }
     private TempDetil setTempDetil( double price,int qty){
