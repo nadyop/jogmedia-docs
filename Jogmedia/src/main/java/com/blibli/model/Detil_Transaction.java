@@ -5,15 +5,25 @@ public class Detil_Transaction {
     private Integer discountDetil;
     private Integer transaction_id;
     private Integer book_id;
+    private Integer employee_id;
     private double unit_price;
 
-    public Detil_Transaction(int transaction_id,int book_id,int detil_id, int quantity, Integer discountDetil, double unit_price) {
+    public Detil_Transaction(int transaction_id,int book_id,int detil_id, int quantity, Integer discountDetil, double unit_price, int employee_id) {
         this.detil_id = detil_id;
         this.quantity = quantity;
         this.discountDetil = discountDetil;
         this.unit_price = unit_price;
         this.transaction_id=transaction_id;
         this.book_id=book_id;
+        this.employee_id=employee_id;
+    }
+
+    public Integer getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(Integer employee_id) {
+        this.employee_id = employee_id;
     }
 
     public int getDetil_id() {

@@ -9,6 +9,7 @@ import com.blibli.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,9 +18,9 @@ public class TransactionService {
     TransactionInterface transactionInterface;
     @Autowired
     BookDaoInterface bookDaoInterface;
-    public void saveOrUpdateTransaction(double pembayaran){
+    public void saveOrUpdateTransaction(double total,double pembayaran){
 
-        transactionInterface.saveTransaction(pembayaran);
+        transactionInterface.saveTransaction(total,pembayaran);
     }
     public void saveOrUpdateDetilTransaction(Detil_Transaction detil_transaction){
         transactionInterface.saveDetailTransaction(detil_transaction);
@@ -38,7 +39,16 @@ public class TransactionService {
         List<TempDetil> temp= transactionInterface.getAllTempDetilSaved();
         return temp;
     }
-    public double perhitunganTotal(){
-        return  transactionInterface.totalPehitungan();
+    public List showAllTransaction(){
+        List<Transaction> transactions= new ArrayList<>();
+        return transactions;
+    }
+    public TempDetil getIdTempDetilService(int idTemp){
+        TempDetil get= transactionInterface.getIdTempDetil(idTemp);
+        return get;
+    }
+    public void updatingTempDetil(double tempUnitPrice, int qty, int id){
+        transactionInterface.updateTempDetil(tempUnitPrice,qty,id);
+
     }
 }

@@ -9,11 +9,13 @@ import java.util.List;
 
 public interface TransactionInterface {
 
-    void saveTransaction(double pembayaran);
+    void saveTransaction(double total,double pembayaran);
     void saveDetailTransaction(Detil_Transaction detil_transaction);
     void deleteDetailTransaction(int idDetil);
     List<Book> searchCashier(String searchKey);
+    List<Transaction> getAllTransaction();
     void saveTempDetilTransaction(TempDetil tempDetil);
+    void updateTempDetil(double tempUnitPrice, int qty, int id);
     List<TempDetil> getAllTempDetilSaved();
-    Double totalPehitungan();
+    TempDetil getIdTempDetil(int idTemp);
 }
