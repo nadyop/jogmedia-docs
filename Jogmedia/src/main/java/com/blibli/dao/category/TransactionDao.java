@@ -107,6 +107,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
 
     @Override
     public List<Book> searchCashier(String searchKey) {
+
         String psql="select * from book where  status=1 AND stok!=0 AND  LOWER(isbn) LIKE LOWER('%" + searchKey+ "%') ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
@@ -146,7 +147,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
     @Override
     public void updateTempDetil(double tempUnitPrice, int qty, int id){
         String psql;
-        System.out.println("unitPrice"+tempUnitPrice+"quantity="+qty+"ID="+id);
+
         psql = "Update temp_Detil SET quantity=?, unit_price=? where id_detil=?";
 
         try {
@@ -188,6 +189,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
     }
     @Override
     public List<TempDetil> getAllTempDetilSaved(){
+        //System.out.println("hellooworld12");
         String psql=" select id_detil,book.isbn,temp_detil.book_id, quantity, unit_price, temp_detil.discount, book_title, employee_id from temp_detil join book using(book_id)";
         List<TempDetil> temp = new ArrayList<>();
         try {
@@ -217,8 +219,37 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
         return  temp;
     }
     @Override
+    public TempDetil getIdTempDetilbyNomorIdDetil(int idTemp){
+
+        String psql="select id_detil,book.isbn,temp_detil.book_id, quantity, unit_price, temp_detil.discount, book_title, employee_id from temp_detil join book using(book_id) where id_detil='"+idTemp+"';";
+
+        TempDetil tempDetil= new TempDetil();
+        try{
+            this.makeConnection();
+            Statement statement=this.con.createStatement();
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null) {
+                while (rs.next()) {
+
+                    tempDetil.setId_detil(rs.getInt("id_detil"));
+                    tempDetil.setBookId(rs.getInt("book_id"));
+                    tempDetil.setQuantity(rs.getInt("quantity"));
+                    tempDetil.setUnitPrice(rs.getDouble("unit_price"));
+                    tempDetil.setDiscount(rs.getInt("discount"));
+                    tempDetil.setBook_title(rs.getString("book_title"));
+                    tempDetil.setIsbn(rs.getString("isbn"));
+                    tempDetil.setEmployee_id(rs.getInt("employee_id"));
+                }
+            }
+            this.disconnect();
+        }catch (Exception e){
+            System.out.println("#GETIDTEMP#"+e.toString());
+        }
+        return  tempDetil;
+    }
+    @Override
     public TempDetil getIdTempDetil(int idTemp){
-        String psql=" select id_detil,book.isbn,temp_detil.book_id, quantity, unit_price, temp_detil.discount, book_title, employee_id from temp_detil join book using(book_id) where temp_detil.book_id='"+idTemp+"';";
+        String psql=" select id_detil,book.isbn,temp_detil.book_id, quantity, unit_price, temp_detil.discount, book_title, employee_id from temp_detil join book using(book_id) where temp_detil.book_id="+idTemp+";";
         TempDetil tempDetil= new TempDetil();
         try{
             this.makeConnection();
@@ -238,9 +269,24 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
                 }
             }
             this.disconnect();
-        }catch (Exception e){
+         }catch (Exception e){
             System.out.println(e);
         }
         return  tempDetil;
+    }
+
+    @Override
+    public void updatingStok(int id, int qty){
+        String psql= "update book set stok = stok + '"+ qty +"' where book_id='"+id+"'";
+        try {
+            this.makeConnection();
+            Statement statement = con.createStatement();
+            statement.execute(psql);
+            this.disconnect();
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 }

@@ -47,8 +47,15 @@ public class TransactionService {
         TempDetil get= transactionInterface.getIdTempDetil(idTemp);
         return get;
     }
+    public TempDetil getIdTempDetilServiceByIdTemp(int idTemp){
+        TempDetil get= transactionInterface.getIdTempDetilbyNomorIdDetil(idTemp);
+        return get;
+    }
     public void updatingTempDetil(double tempUnitPrice, int qty, int id){
         transactionInterface.updateTempDetil(tempUnitPrice,qty,id);
 
+    }
+    public void updatingStock(int id, int qty){
+        transactionInterface.updatingStok(id,qty);
     }
 }

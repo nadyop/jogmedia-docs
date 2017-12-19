@@ -2,11 +2,11 @@ package com.blibli.model;
 
 public class TempDetil {
 
-    private Integer bookId, employee_id;
+    private int bookId, employee_id;
     private double unitPrice;
-    private Integer quantity, discount, id_detil;
+    private int quantity, discount, id_detil;
     private String book_title, isbn;
-    public TempDetil(Integer id_detil,Integer bookId, Integer quantity,Double unitPrice,  Integer discount, String book_title, String isbn, int employee_id) {
+    public TempDetil(int id_detil,int bookId, int quantity,double unitPrice,  int discount, String book_title, String isbn, int employee_id) {
         this.id_detil=id_detil;
         this.bookId = bookId;
         this.unitPrice = unitPrice;
@@ -17,30 +17,22 @@ public class TempDetil {
         this.employee_id=employee_id;
     }
 
-    public TempDetil() {
-    }
+        public TempDetil() {
+        }
 
-    public Integer getEmployee_id() {
+    public int getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployee_id(Integer employee_id) {
+    public void setEmployee_id(int employee_id) {
         this.employee_id = employee_id;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setDiscount(Integer discount) {
-        this.discount = discount;
-    }
-
-    public Integer getId_detil() {
+    public int getId_detil() {
         return id_detil;
     }
 
-    public void setId_detil(Integer id_detil) {
+    public void setId_detil(int id_detil) {
         this.id_detil = id_detil;
     }
 
@@ -60,11 +52,11 @@ public class TempDetil {
         this.book_title = book_title;
     }
 
-    public Integer getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 

@@ -18,4 +18,6 @@ public interface TransactionInterface {
     void updateTempDetil(double tempUnitPrice, int qty, int id);
     List<TempDetil> getAllTempDetilSaved();
     TempDetil getIdTempDetil(int idTemp);
+    TempDetil getIdTempDetilbyNomorIdDetil(int idTemp);
+    void updatingStok(int id, int qty);
 }
