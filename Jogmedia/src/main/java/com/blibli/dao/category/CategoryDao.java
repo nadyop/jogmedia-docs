@@ -191,9 +191,6 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             }
             System.out.println("masuk insert");
         }
-
-
-
     }
     @Override
     public void delete (int id){

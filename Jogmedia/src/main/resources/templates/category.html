@@ -14,12 +14,18 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="span-disclick"><span>20:45 &nbsp; &nbsp;</span></li>
-                    <li class="span-disclick"><span class="fa fa-user"></span> Cashier, <span id="uname">Mail</span></li>
-                    <li><a href="/home"><span class="fa fa-sign-out"></span> Logout</a></li>
+                    <li><a><span>20:45</span></a></li>
+                    <li th:inline="text"><a><span class="fa fa-user"></span> Hi, [[${#httpServletRequest.remoteUser}]]!</a></li>
+                    <li><a href="#">
+                        <form th:action="@{/logout}" method="post">
+                            <span class="fa fa-sign-out"></span>
+                            <input type="submit" value="Sign Out" style="background: none; border: none"/>
+                        </form>
+                    </a>
+                    </li>
                 </ul>
                 <div class="wrapper-title">
-                    <span><h3>Category</h3></span>
+                    <span><h3>CATEGORY MASTER</h3></span>
                 </div>
             </div>
         </nav>
@@ -56,8 +62,8 @@
                                 <table class="table table-striped">
                                     <tr>
 
-                                        <th>Nama Kategory</th>
-                                        <th>Deskripsi Kategori</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -69,13 +75,14 @@
                                         <td th:if="${category.status == 0}" th:text="Non-Active"></td>
                                         <td>
                                             <a th:href="${'/category/editCategory/'+category.category_id}">
-                                                <button class="btn btn-dafault">Edit</button>
+                                                <button class="btn btn-primary">Edit</button>
                                             </a>
                                             <a th:href="${'/category/softDelete/'+category.category_id}">
-                                                <button class="btn btn-warning">Deactive</button>
+                                                <button th:if="${category.status == 1}" th:text="Deactive" class="btn btn-warning btnActive">Active</button>
+                                                <button th:if="${category.status == 0}" th:text="Active" class="btn btn-warning btnActive">Deactive</button>
                                             </a>
                                             <a th:href="${'/category/hapus/'+category.category_id}">
-                                                <button class="btn btn-warning">Delete</button>
+                                                <button class="btn btn-danger">Delete</button>
                                             </a>
                                         </td>
                                     </tr>
@@ -97,8 +104,6 @@
         <ul class="nav navbar-nav ul-top">
             <li><a href="/store"><i class="fa fa-home"></i>&nbsp; Store</a></li>
             <li><a href="/book"><i class="fa fa-book"></i>&nbsp; Book</a></li>
-            <li><a href="/discount"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
-            <li><a href="/emptyStok"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
             <li><a href="/category"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
             <li><a href="/reportmng"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
             <li><a href="/tampilemp"><i class="fa fa-user"></i>&nbsp; Employee</a></li>

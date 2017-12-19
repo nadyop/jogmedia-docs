@@ -21,7 +21,7 @@
     </nav>
     <div class="container-fluid">
       <!-- Left Side -->
-      <div class="col-xs-12 col-sm-5 col-md-5">
+      <div class="col-xs-12 col-sm-5 col-md-7">
         <div class="row-fluid">
           <form method="">
             <div class="row">
@@ -50,6 +50,8 @@
                     <th>Book Title</th>
                     <th>Author</th>
                     <th>Price</th>
+                    <th>Qty</th>
+                    <th>Choose</th>
                   </tr>
                 </thead>
               </table>
@@ -58,9 +60,11 @@
                   <tbody>
                     <a href="index.html">
                       <tr>
-                        <td id="bookName" class="td-book"><a href="#">Marmut Kuning Jambu</a></td>
+                        <td id="bookName" class="td-book">Marmut Merah Jambu</td>
                         <td id="author">Raditya Dika</td>
                         <td id="priceAfter">30.000</td>
+                        <td id="qty" class="ip-qty"><input type="number" class="form-control" name="" value="1"></td>
+                        <td><button class="btn btn-primary">Buy</button></td>
                       </tr>
                     </a>
                   </tbody>
@@ -72,76 +76,44 @@
       </div>
 
       <!-- Right Side -->
-        <div class="col-xs-12 col-sm-7 col-md-7">
+        <div class="col-xs-12 col-sm-7 col-md-5">
           <div class="row-fluid">
             <form method="">
               <div class="row">
-                <!-- enter isbn -->
-                <div class="col-md-9">
-                  <div class="row-fluid input-group">
-                    <span class="input-group-addon sp-icon">
-                      <i class="fa fa-book"></i>
-                    </span>
-                    <input id="uname" type="text" class="form-control" name="" placeholder="No ISBN">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default btn-search" type="button" name="button">Enter</button>
-                    </span>
-                  </div>
-                </div>
                 <!-- button pay -->
-                <div class="col-md-3">
+                <div class="col-md-12">
                   <button type="button" class="btn btn-default btn-all search-book" data-toggle="modal" data-target="#modal-pay" data-backdrop="static">Pay</button>
                 </div>
               </div>
             </form>
-          </div>
-          <!-- table book buy -->
-          <div class="list-book col-md-7" style="margin-left:-1%">
-            <div class="panel panel-default col-md-12">
-              <div class="panel-body table-responsive" style="max-height:430px;overflow:auto">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Book Title</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                      <th>Total</th>
-                    </tr>
-                  </thead>
-                <!-- </table> -->
-                <div class="">
-                  <!-- <table class="table"> -->
-                    <tbody>
-                      <tr>
-                        <td id="bookName" class="td-book">Marmut Merah Jambu</td>
-                        <td id="priceAfter">30.000</td>
-                        <td id="qty" class="ip-qty"><input type="number" class="form-control" name="" value="" placeholder="1"></td>
-                        <td id="totalpriceAfter">30.000</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!-- total -->
-              <!-- button cancel order -->
-              <div class="col-sm-5 col-md-5">
-                <button type="button" class="btn btn-danger" name="button">Cancel Transaction</button>
-              </div>
-              <div class="col-sm-7 col-md-7">
-                <div class="col-sm-6 col-md-6">
-                  <p class="total">Subtotal : </p>
-                  <p class="total">Total Discount : </p>
-                  <p class="total">Total : </p>
-                </div>
-                <div class="col-sm-5 col-md-4">
-                  <p class="total">Rp <span>80000</span></p>
-                  <p class="total">Rp <span>2000</span></p>
-                  <p class="total">Rp <span>78000</span></p>
-                </div>
-              </div>
+          </div><br>
+          <!-- table cart -->
+          <table class="table table-striped">
+    				<thead>
+    					<tr>
+    						<th>Product</th>
+    						<th>Price</th>
+    						<th>Qty</th>
+    						<th>Subtotal</th>
+    						<th>Action</th>
+    					</tr>
+    				</thead>
+    				<tbody id="detail_cart">
+    					<tr>
+    						<td id="bookName"></td>
+    						<td id="priceAfter"></td>
+    						<td id="quantity"></td>
+    						<td id="total_payment"></td>
+    						<td><button type="button" data-id="" class="hapus_cart btn btn-danger btn-xs">Cancel</button></td>
+    					</tr>
+    				<tr>
+    					<th colspan="3">Total</th>
+    					<th colspan="2">Rp <span id="total-payment"></span></th>
+    				</tr>
 
-            </div>
-          </div>
+
+    				</tbody>
+    			</table>
         </div>
 
       <!-- modal button pay -->

@@ -28,6 +28,11 @@ public class BookController {
         model.addAttribute("categories", categoryService.showAllCategory());
         return "book";
     }
+    @RequestMapping(value="/book/",method = RequestMethod.POST)
+    public String simpanDataBook( @ModelAttribute("buku") Book buku){
+        bookService.saveOrdUpdateService(buku);
+        return "redirect:/book";
+    }
     @RequestMapping("/discount")
     public String BookListDiscount(Model model){
         model.addAttribute("book",bookService.showAllBooksbyDiscount());
@@ -39,11 +44,6 @@ public class BookController {
         model.addAttribute("book",bookService.showAllBooksbyEmptyStok());
         model.addAttribute("categories", categoryService.showAllCategory());
         return "emptyStok";
-    }
-    @RequestMapping(value="/book/",method = RequestMethod.POST)
-    public String simpanDataBook(Model model, @ModelAttribute("buku") Book buku){
-        bookService.saveOrdUpdateService(buku);
-        return "redirect:/book";
     }
     @RequestMapping(value = "/book/createBook", method = RequestMethod.GET)
     public String tampilFormCreateBook(Model model){

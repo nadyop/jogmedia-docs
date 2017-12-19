@@ -25,7 +25,7 @@ public class CategoryController {
     @RequestMapping(value="/category/",method = RequestMethod.POST)
     public String simpanDataCategory(Model model, Category c){
         categoryService.save(c);
-        System.out.println("BUKAN!Masuk sini!!!!!!");
+
         return "redirect:/category";
     }
     @RequestMapping(value = "/category/createCategory", method = RequestMethod.GET)

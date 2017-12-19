@@ -1,19 +1,21 @@
 /*HEX color
-csr
+csr newest
+primary-dark : #17242A ; primary : #3AAFA9 ; accent: #2B7A77 ; light : #DEF2F1
+
 primary-dark : #303F9E ; primary : #3F51B5 ; accent: #FF9800 ; light : #C5CAE9
 primary-text : #212121 ; second-text : #757575 ; divider : #BDBDBD;
-change-primary : #03A0FF
-change-accent : #0168FB
+
 */
 
 /*Style Login page*/
 
 .bd-login {
-    background: #03A0FF;
+    background: #3AAFA9;
 }
 .pn-login {
-    background: #C5CAE9!important;
+    background: #3AAFA9!important;
     color: white!important;
+    border: none;
 }
 panel {
     border: none;
@@ -47,7 +49,7 @@ div.login {
 
 /*Style Chasier L Page*/
 .nav-c{
-    background: #03A0FF;
+    background: #3AAFA9;
     border: none;
     border-radius: 0;
 }
@@ -60,7 +62,7 @@ div.login {
 input.form-control.ip-homec:focus {
     outline: none;
     color: #444;
-    border-color: #03A0FF;
+    border-color: #3AAFA9;
     border-left-width: 35px;
 }
 i.fa.fa-searchbook {
@@ -98,12 +100,12 @@ input.form-control.ip-homec:focus+i.fa.fa-searchbook {
     margin-top: 3%
 }
 .btn-search{
-    background: #0168FB!important;
+    background: #2B7A77!important;
     color: white;
 }
 .sp-icon{
-    background:#C5CAE9!important;
-    color:white;
+    /*background:#DEF2F1!important;*/
+    /*color:white;*/
 }
 /*modal payment*/
 .box-content{

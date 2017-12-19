@@ -19,7 +19,7 @@
                     <li><a href="/home"><span class="fa fa-sign-out"></span> Logout</a></li>
                 </ul>
                 <div class="wrapper-title">
-                    <span><h3>Store</h3></span>
+                    <span><h3>STORE</h3></span>
                 </div>
             </div>
         </nav>
@@ -27,9 +27,7 @@
     <!-- Button circle -->
     <div class="row btn-add">
         <a href="/store/createStore">
-            <button type="button" class="btn btn-default btn-circle col-md-5 col-sm-2" name="button">
-                <i class="fa fa-plus"></i>
-            </button>
+
         </a>
     </div>
     <!--Content-->
@@ -44,7 +42,6 @@
                                 <table class="table table-striped">
                                     <tr>
 
-                                        <th>Employe Id</th>
                                         <th>Nama Toko Buku</th>
                                         <th>Alamat</th>
                                         <th>NPWP</th>
@@ -55,13 +52,11 @@
                                     </tr>
                                     <tr th:each="store: ${store}">
 
-                                        <td th:text="${store.employee_id}"></td>
                                         <td th:text="${store.store_name}"></td>
                                         <td th:text="${store.address}"></td>
                                         <td th:text="${store.npwp}"></td>
                                         <td th:text="${store.post_code}"></td>
                                         <td th:text="${store.email}"></td>
-
                                         <td>
                                             <a th:href="${'/store/edit/'+store.store_id}">
                                                 <button class="btn btn-dafault">Edit</button>
@@ -86,8 +81,6 @@
         <ul class="nav navbar-nav ul-top">
             <li><a href="/store"><i class="fa fa-home"></i>&nbsp; Store</a></li>
             <li><a href="/book"><i class="fa fa-book"></i>&nbsp; Book</a></li>
-            <li><a href="/discount"><i class="fa fa-product-hunt"></i>&nbsp; Discount</a></li>
-            <li><a href="/emptyStok"><i class="fa fa-times-circle"></i>&nbsp; Empty Stock</a></li>
             <li><a href="/category"><i class="fa fa-th-list"></i>&nbsp; Category</a></li>
             <li><a href="/reportmng"><i class="fa fa-bar-chart"></i>&nbsp; Report</a></li>
             <li><a href="/tampilemp"><i class="fa fa-user"></i>&nbsp; Employee</a></li>

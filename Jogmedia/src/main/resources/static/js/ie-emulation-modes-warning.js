@@ -1,6 +1,3 @@
-/**
- * Created by Dias on 1/5/2017.
- */
 // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
 // IT'S JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++

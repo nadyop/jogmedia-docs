@@ -21,8 +21,8 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         List<Book> books= new ArrayList<>();
         try{
             this.makeConnection();
-            Statement statement= this.con.createStatement();
 
+            Statement statement= this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
                 while(rs.next()){
@@ -124,8 +124,6 @@ public class BookDao extends My_Connection implements BookDaoInterface {
     }
     @Override
     public  List<Book> search(String searchKey){
-
-
         String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')   ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
@@ -322,8 +320,6 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             try {
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-                System.out.println("berhasil memasukan data buku");
-
                 preparedStatement.setInt(1,book.getCategory_id());
                 preparedStatement.setString(2,book.getIsbn());
                 preparedStatement.setString(3,book.getBook_title());
@@ -337,7 +333,6 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 preparedStatement.setString(9,book.getLocation());
                 preparedStatement.setInt(10,book.getStok());
                 preparedStatement.executeQuery();
-                System.out.println("yey berhasil");
                 this.disconnect();
             }
             catch (Exception e){
