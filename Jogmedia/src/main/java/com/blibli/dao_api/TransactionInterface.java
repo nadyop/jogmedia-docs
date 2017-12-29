@@ -1,23 +1,28 @@
 package com.blibli.dao_api;
 
-import com.blibli.model.Book;
-import com.blibli.model.Detil_Transaction;
-import com.blibli.model.TempDetil;
-import com.blibli.model.Transaction;
+import com.blibli.model.*;
 
 import java.util.List;
 
 public interface TransactionInterface {
 
-    void saveTransaction(double total,double pembayaran);
+    void saveTransaction(Transaction transaction);
+    void updateTransaction(int transaction_id,double total);
     void saveDetailTransaction(Detil_Transaction detil_transaction);
-    void deleteDetailTransaction(int idDetil);
-    List<Book> searchCashier(String searchKey);
-    List<Transaction> getAllTransaction();
+    void deleteFromTempDetailByKeyword(int idDetil);
     void saveTempDetilTransaction(TempDetil tempDetil);
     void updateTempDetil(double tempUnitPrice, int qty, int id);
+    void updatingStok(int id, int qty);
+    void deleteTempDetil();
+
+    List<Book> searchCashier(String searchKey);
     List<TempDetil> getAllTempDetilSaved();
+    List<Store> getDataStore();
+    List<Detil_Transaction> getAllDetilTransactionByKeyword(int id);
+
     TempDetil getIdTempDetil(int idTemp);
     TempDetil getIdTempDetilbyNomorIdDetil(int idTemp);
-    void updatingStok(int id, int qty);
+
+    int getIdTransaction();
+    int getIdEmployee(String searchKey);
 }

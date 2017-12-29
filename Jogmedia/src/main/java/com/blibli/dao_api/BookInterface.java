@@ -4,7 +4,7 @@ import com.blibli.model.Book;
 
 import java.util.List;
 
-public interface BookDaoInterface {
+public interface BookInterface {
     List<Book> getAllBooks();
     List<Book> getAllBooksDiscount();
     List<Book> getAllBooksEmty();
@@ -14,5 +14,5 @@ public interface BookDaoInterface {
     Book getIdBook(int idBook);
     void saveBook(Book book);
     void softDeleteBook(int id);
-    void deleteBook(int idBook);
+
 }

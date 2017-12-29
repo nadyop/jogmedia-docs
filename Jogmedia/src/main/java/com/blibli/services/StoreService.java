@@ -13,7 +13,6 @@ public class StoreService {
     StoreDaoInterface storeDaoInterface;
     public List<Store> showStore(){
         List<Store> data=storeDaoInterface.getStore();
-
         return data;
     }
     public void saveOrUpdate(Store store){

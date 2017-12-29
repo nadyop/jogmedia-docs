@@ -1,10 +1,9 @@
 package com.blibli.dao.category;
 
 import com.blibli.dao.My_Connection;
-import com.blibli.dao_api.BookDaoInterface;
+import com.blibli.dao_api.BookInterface;
 import com.blibli.model.Book;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class BookDao extends My_Connection implements BookDaoInterface {
+public class BookDao extends My_Connection implements BookInterface {
 
     @Override
     public List<Book> getAllBooks(){
@@ -45,10 +44,11 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while get all books.. "+e.toString());
         }
         return books;
     }
+
     @Override
     public List<Book> getAllBooksDiscount(){
         String psql="select * from book where book.discount!=0 and book.stok!=0";
@@ -56,11 +56,9 @@ public class BookDao extends My_Connection implements BookDaoInterface {
         try{
             this.makeConnection();
             Statement statement= this.con.createStatement();
-
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
                 while(rs.next()){
-
                     Book book= new Book(
                             rs.getInt("book_id"),
                             rs.getInt("category_id"),
@@ -81,7 +79,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while get all books.. "+e.toString());
         }
         return books;
     }
@@ -118,23 +116,20 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while get all books.. "+e.toString());
         }
         return books;
     }
     @Override
     public  List<Book> search(String searchKey){
-        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')   ORDER BY book_id";
+        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%') " +
+                    "or  LOWER(isbn) LIKE LOWER('%" + searchKey+ "%')  ORDER BY book_id";
         List<Book> books= new ArrayList<>();
-        System.out.println(searchKey);
-
         try {
             this.makeConnection();
             Statement statement = this.con.createStatement();
-            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
 
             ResultSet rs = statement.executeQuery(psql);
-
             if (rs != null) {
                 while (rs.next()) {
                     Book book= new Book(
@@ -156,21 +151,19 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while searching.. "+e.toString());
         }
         return books;
     }
     @Override
     public List<Book> searchEmptyBook(String searchKey){
-        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%') and book.stok=0  ORDER BY book_id";
+        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')" +
+                    " or  LOWER(isbn) LIKE LOWER('%" + searchKey+ "%') and book.stok=0  ORDER BY book_id";
         List<Book> books= new ArrayList<>();
         System.out.println(searchKey);
-
         try {
             this.makeConnection();
             Statement statement = this.con.createStatement();
-            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-
             ResultSet rs = statement.executeQuery(psql);
 
             if (rs != null) {
@@ -194,24 +187,20 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while searching.. "+e.toString());
         }
         return books;
     }
     @Override
     public List<Book> searchDiscount(String searchKey){
 
-        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%') and book.discount!=0  ORDER BY book_id";
+        String psql="select * from book where LOWER(book_title) LIKE LOWER('%" + searchKey+ "%')" +
+                    " or  LOWER(isbn) LIKE LOWER('%" + searchKey+ "%') and book.discount!=0  ORDER BY book_id";
         List<Book> books= new ArrayList<>();
-        System.out.println(searchKey);
-
         try {
             this.makeConnection();
             Statement statement = this.con.createStatement();
-            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-
             ResultSet rs = statement.executeQuery(psql);
-
             if (rs != null) {
                 while (rs.next()) {
                     Book book= new Book(
@@ -233,7 +222,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while searching.. "+e.toString());
         }
         return books;
     }
@@ -263,7 +252,7 @@ public class BookDao extends My_Connection implements BookDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while searching.. "+e.toString());
         }
         return book;
     }
@@ -271,27 +260,24 @@ public class BookDao extends My_Connection implements BookDaoInterface {
     public void softDeleteBook(int id){
         String psql= "UPDATE Book set status= case when status=1 then 0 when status=0 then 1 end where book.book_id='"+id+"';";
         try{
-
             this.makeConnection();
             Statement statement= this.con.createStatement();
-            statement.executeQuery(psql);
+            statement.executeUpdate(psql);
             this.disconnect();
         }
         catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while soft delete.. "+e.toString());
         }
     }
     @Override
     public void saveBook(Book book){
         String psql;
-        double hitung;
+        double count = (book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
 
         if(book.getBook_id()!=0){
-            System.out.println("updating book");
             psql="UPDATE book SET isbn=?,book_title=?,author=?,publisher=?,category_id=?,location=?,price_before=?,price_after=?,discount=?, stok=?,status=? where book_id=?";
             try {
                 this.makeConnection();
-                System.out.println("test update buku");
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
                 preparedStatement.setString(1,book.getIsbn());
                 preparedStatement.setString(2,book.getBook_title());
@@ -300,17 +286,13 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 preparedStatement.setInt(5,book.getCategory_id());
                 preparedStatement.setString(6,book.getLocation());
                 preparedStatement.setDouble(7,book.getPrice_before());
-                hitung=(book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
-
-                preparedStatement.setDouble(8,hitung);
+                preparedStatement.setDouble(8,count);
                 preparedStatement.setInt(9,book.getDiscount());
                 preparedStatement.setInt(10,book.getStok());
                 preparedStatement.setInt(11,book.getStatus());
                 preparedStatement.setInt(12,book.getBook_id());
-                preparedStatement.executeUpdate();
-                System.out.println("suskes update="+book.getBook_title());
+                preparedStatement.execute();
                 this.disconnect();
-
             }catch (Exception e){
                 System.out.println(e);
             }
@@ -325,33 +307,18 @@ public class BookDao extends My_Connection implements BookDaoInterface {
                 preparedStatement.setString(3,book.getBook_title());
                 preparedStatement.setString(4,book.getAuthor());
                 preparedStatement.setString(5,book.getPublisher());
-
                 preparedStatement.setDouble(6,book.getPrice_before());
-                hitung=(book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
-                preparedStatement.setDouble(7,hitung);
+                preparedStatement.setDouble(7,count);
                 preparedStatement.setInt(8,book.getDiscount());
                 preparedStatement.setString(9,book.getLocation());
                 preparedStatement.setInt(10,book.getStok());
-                preparedStatement.executeQuery();
+                preparedStatement.execute();
                 this.disconnect();
             }
             catch (Exception e){
-                System.out.println(e);
+                System.out.println("Error while saving or updating .. "+e.toString());
             }
         }
     }
-    @Override
-    public void deleteBook(int idBook){
-        String psql= "Delete from Book where Book.book_id='"+idBook+"';";
-        try {
-            this.makeConnection();
-            Statement statement=this.con.createStatement();
-            statement.executeQuery(psql);
-            System.out.println("berhasil menghapus data buku");
-            this.disconnect();
-        }catch (Exception e){
-            System.out.println(e);
-        }
 
-    }
 }

@@ -1,30 +1,18 @@
 package com.blibli.controller;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
     @RequestMapping("")
-    public String home(){
-        return "home";
+    public String first(){
+        return "/home";
     }
 
     @RequestMapping("/home")
     public String homee(){
         return "home";
-    }
-
-    @RequestMapping("/manager")
-    public String manager() {
-        return "/manager";
-    }
-
-    @RequestMapping("/cashier")
-    public String cashier() {
-        return "/cashier";
     }
 
     @RequestMapping("/login")

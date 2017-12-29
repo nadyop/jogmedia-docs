@@ -2,28 +2,38 @@ package com.blibli.model;
 
 public class Detil_Transaction {
     private int detil_id, quantity;
-    private Integer discountDetil;
-    private Integer transaction_id;
-    private Integer book_id;
-    private Integer employee_id;
+    private int discountDetil;
+    private int transaction_id;
+    private int book_id;
+    private String book_title;
+    private String isbn;
     private double unit_price;
 
-    public Detil_Transaction(int transaction_id,int book_id,int detil_id, int quantity, Integer discountDetil, double unit_price, int employee_id) {
+    public Detil_Transaction(String isbn, String book_title,int transaction_id,int book_id,int detil_id, int quantity, int discountDetil, double unit_price) {
         this.detil_id = detil_id;
         this.quantity = quantity;
         this.discountDetil = discountDetil;
         this.unit_price = unit_price;
         this.transaction_id=transaction_id;
         this.book_id=book_id;
-        this.employee_id=employee_id;
+        this.isbn=isbn;
+        this.book_title=book_title;
     }
 
-    public Integer getEmployee_id() {
-        return employee_id;
+    public String getBook_title() {
+        return book_title;
     }
 
-    public void setEmployee_id(Integer employee_id) {
-        this.employee_id = employee_id;
+    public void setBook_title(String book_title) {
+        this.book_title = book_title;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public int getDetil_id() {
@@ -42,11 +52,11 @@ public class Detil_Transaction {
         this.quantity = quantity;
     }
 
-    public Integer getDiscountDetil() {
+    public int getDiscountDetil() {
         return discountDetil;
     }
 
-    public void setDiscountDetil(Integer discountDetil) {
+    public void setDiscountDetil(int discountDetil) {
         this.discountDetil = discountDetil;
     }
 
@@ -58,19 +68,19 @@ public class Detil_Transaction {
         this.unit_price = unit_price;
     }
 
-    public Integer getTransaction_id() {
+    public int getTransaction_id() {
         return transaction_id;
     }
 
-    public void setTransaction_id(Integer transaction_id) {
+    public void setTransaction_id(int transaction_id) {
         this.transaction_id = transaction_id;
     }
 
-    public Integer getBook_id() {
+    public int getBook_id() {
         return book_id;
     }
 
-    public void setBook_id(Integer book_id) {
+    public void setBook_id(int book_id) {
         this.book_id = book_id;
     }
 }

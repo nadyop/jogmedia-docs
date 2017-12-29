@@ -2,11 +2,11 @@ package com.blibli.model;
 
 public class TempDetil {
 
-    private int bookId, employee_id;
-    private double unitPrice;
+    private int bookId;
+    private double unitPrice, subTotal;
     private int quantity, discount, id_detil;
     private String book_title, isbn;
-    public TempDetil(int id_detil,int bookId, int quantity,double unitPrice,  int discount, String book_title, String isbn, int employee_id) {
+    public TempDetil(int id_detil,int bookId, int quantity,double unitPrice,  int discount, String book_title, String isbn, double subTotal) {
         this.id_detil=id_detil;
         this.bookId = bookId;
         this.unitPrice = unitPrice;
@@ -14,18 +14,18 @@ public class TempDetil {
         this.discount = discount;
         this.book_title=book_title;
         this.isbn=isbn;
-        this.employee_id=employee_id;
+        this.subTotal=subTotal;
     }
 
         public TempDetil() {
         }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public double getSubTotal() {
+        return subTotal;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
     }
 
     public int getId_detil() {

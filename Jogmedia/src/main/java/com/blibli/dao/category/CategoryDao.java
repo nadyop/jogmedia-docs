@@ -17,17 +17,13 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
     @Override
     public List<Category> getAllActive(){
         String psql="select * from Category where status = 1";
-        System.out.println("Show Category");
         List<Category> list= new ArrayList<>();
         try{
             this.makeConnection();
             Statement statement=this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
-                System.out.println("test1");
-                System.out.println("getAll\t:");
                 while (rs.next()){
-                    System.out.println("\t"+rs.getInt("category_id"));
                     Category category= new Category(
                             rs.getInt("category_id"),
                             rs.getString("category_name"),
@@ -41,24 +37,20 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             this.disconnect();
         }
         catch (Exception e){
-            System.out.println("eror "+ e);
+            System.out.println("Error while getting data.."+ e.toString());
         }
         return list;
     }
     @Override
     public List<Category> getAllCategory() {
         String psql="select * from Category";
-        System.out.println("Show Category");
         List<Category> list= new ArrayList<>();
         try{
             this.makeConnection();
             Statement statement=this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
-                System.out.println("test1");
-                System.out.println("getAll\t:");
                 while (rs.next()){
-                    System.out.println("\t"+rs.getInt("category_id"));
                     Category category= new Category(
                             rs.getInt("category_id"),
                             rs.getString("category_name"),
@@ -72,7 +64,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             this.disconnect();
         }
         catch (Exception e){
-            System.out.println("eror "+ e);
+            System.out.println("Error while getting data.. "+ e.toString());
         }
         return list;
     }
@@ -81,6 +73,19 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
 
         String psql= "UPDATE Category set status= case when status=1 then 0 when status=0 then 1 end where Category.category_id='"+id+"';";
         try{
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+            statement.execute(psql);
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println("Error while soft deleting.."+e.toString());
+        }
+    }
+    @Override
+    public void delete (int id){
+        String psql= "Delete from Category where Category.category_id='"+id+"';";
+        try{
             System.out.println("test5");
             this.makeConnection();
             Statement statement= this.con.createStatement();
@@ -88,21 +93,19 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             this.disconnect();
         }
         catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while deleting.."+e.toString());
         }
     }
     @Override
     public List<Category> search(String searchKey) {
-
         String psql="select * from category where lower(category_name) like lower('%" + searchKey+ "%') ORDER BY category_id";
         List<Category> categories= new ArrayList<>();
-        System.out.println(searchKey);
+
         try {
             this.makeConnection();
             Statement statement = this.con.createStatement();
-            PreparedStatement preparedStatement= this.con.prepareStatement(psql);
             ResultSet rs = statement.executeQuery(psql);
-            System.out.println("test");
+
             if (rs != null) {
                 while (rs.next()) {
                     Category category= new Category(
@@ -116,7 +119,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while searching.. "+e.toString());
         }
         return categories;
     }
@@ -126,7 +129,6 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
         String psql="Select * from category where category_id='"+idCategory+"';";
         Category category= new Category();
         try {
-            System.out.println("test3");
             this.makeConnection();
             Statement statement= this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
@@ -143,7 +145,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
 
         }
         catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while getting id category.. "+e.toString());
         }
         return category;
     }
@@ -151,10 +153,23 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
     public void insertCategory(Category C){
         String psql;
 
-        if(C.getCategory_id()!=0){
-
+        if(C.getCategory_id()==0){
+            psql = "Insert into category(category_name, category_desc, status)" +
+                    "values (?,?,1)";
+            try{
+                this.makeConnection();
+                PreparedStatement preparedStatement= this.con.prepareStatement(psql);
+                preparedStatement.setString(1,C.getCategory_name());
+                preparedStatement.setString(2,C.getCategory_desc());
+                preparedStatement.executeQuery();
+                this.disconnect();
+            }
+            catch (Exception e){
+                System.out.println("Error while inserting category.. "+e.toString());
+            }
+        }
+        else{
             psql="UPDATE category SET category_name =?, category_desc=?, status=? where category_id=?";
-
             try{
                 this.makeConnection();
                 PreparedStatement preparedStatement= this.con.prepareStatement(psql);
@@ -163,47 +178,11 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
                 preparedStatement.setInt(3,C.getStatus());
                 preparedStatement.setInt(4,C.getCategory_id());
                 preparedStatement.executeUpdate();
-                System.out.println("Sukses update : "+C.getCategory_id());
                 this.disconnect();
             }
             catch (Exception e){
-                System.out.println(e);
-
+                System.out.println("Error while updating category.. "+e.toString());
             }
-        }
-        else{
-            psql = "Insert into category(category_name, category_desc, status)" +
-                    "values (?,?,1)";
-            try{
-                this.makeConnection();
-                System.out.println("berhasil insert data");
-                PreparedStatement preparedStatement= this.con.prepareStatement(psql);
-                preparedStatement.setString(1,C.getCategory_name());
-                preparedStatement.setString(2,C.getCategory_desc());
-
-                preparedStatement.executeQuery();
-                System.out.println("berhasil insert data");
-                this.disconnect();
-
-            }
-            catch (Exception e){
-                System.out.println(e);
-            }
-            System.out.println("masuk insert");
-        }
-    }
-    @Override
-    public void delete (int id){
-        String psql= "Delete from Category where Category.category_id='"+id+"';";
-        try{
-            System.out.println("test5");
-            this.makeConnection();
-            Statement statement= this.con.createStatement();
-            statement.executeQuery(psql);
-            this.disconnect();
-        }
-        catch (Exception e){
-            System.out.println(e);
         }
     }
 }

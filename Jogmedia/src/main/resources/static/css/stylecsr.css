@@ -10,10 +10,10 @@ primary-text : #212121 ; second-text : #757575 ; divider : #BDBDBD;
 /*Style Login page*/
 
 .bd-login {
-    background: #3AAFA9;
+    background: #46A24A;
 }
 .pn-login {
-    background: #3AAFA9!important;
+    background: #46A24A!important;
     color: white!important;
     border: none;
 }
@@ -49,7 +49,7 @@ div.login {
 
 /*Style Chasier L Page*/
 .nav-c{
-    background: #3AAFA9;
+    background: #46A24A;
     border: none;
     border-radius: 0;
 }
@@ -62,7 +62,7 @@ div.login {
 input.form-control.ip-homec:focus {
     outline: none;
     color: #444;
-    border-color: #3AAFA9;
+    border-color: #46A24A;
     border-left-width: 35px;
 }
 i.fa.fa-searchbook {
@@ -119,4 +119,81 @@ input.form-control.ip-homec:focus+i.fa.fa-searchbook {
 .red{
     color: red;
     text-align: left;
+}
+/*navbar-top*/
+.signout{
+    background: none;
+    border: none;
+}
+
+/*table search*/
+.disc{
+    border: hidden;
+    background-color: transparent;
+    margin-left: 18%;
+}
+.book-name{
+    border: hidden;
+    background-color: transparent;
+}
+.border{
+    border: hidden;
+}
+
+/*button rectangle*/
+.btn-sq-lg {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.btn-sq {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 10px;
+}
+
+.btn-sq-sm {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 10px;
+}
+
+.btn-sq-xs {
+    width: 25px !important;
+    height: 25px !important;
+    padding:2px;
+}
+/*button homepage*/
+.btn-home {
+    color: white;
+    border: none;
+    margin-top: 20px;
+}
+.btn-home:hover {
+    color: white;
+}
+.a-home {
+    background: #FE9902;
+    color: white;
+    border: none;
+}
+.a-home:hover {
+    background: #F57C00;
+    color: white;
+}
+/*nota*/
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
 }

@@ -5,38 +5,40 @@ import com.blibli.model.Book;
 import com.blibli.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
 @Service
 public class CategoryService {
     @Autowired
-    CategoryDaoInterface dao;
-
-    public List<Category> showAllCategory(){
-        List<Category> temp= dao.getAllCategory();
-        return temp;
-    }
-    public List<Category> showActiveCategories(){
-        List<Category> temp= dao.getAllActive();
-        return temp;
-    }
+    CategoryDaoInterface categoryDaoInterface;
     public void save(Category category){
-        dao.insertCategory(category);
+
+        categoryDaoInterface.insertCategory(category);
     }
     public void softDeleteCategoty(Integer id){
-        dao.softDeleteCategory(id);
-    }
-    public Category getIdCategory(Integer id){
-        Category get= dao.getIdCategory(id);
-        return get;
-    }
-    public void deleteCategory(Integer id){
-        dao.delete(id);
+        categoryDaoInterface.softDeleteCategory(id);
     }
 
-    public List<Category> searchCategory(String searchKey){
-        List<Category> categories= dao.search(searchKey);
-        return categories;
+    public void deleteCategory(Integer id){
+        categoryDaoInterface.delete(id);
+    }
+
+    public Model showAllCategories(Model model){
+        model.addAttribute("category",categoryDaoInterface.getAllCategory());
+        return model;
+    }
+    public Model manageFormCreateCategory(Model model){
+        model.addAttribute("category", new Category());
+        return model;
+    }
+    public Model getIdCategory(Model model, int id){
+        model.addAttribute("category",categoryDaoInterface.getIdCategory(id));
+        return model;
+    }
+    public Model searchCategoryByTitle(Model model, String searchKey){
+        model.addAttribute("category", categoryDaoInterface.search(searchKey));
+        return model;
     }
 }

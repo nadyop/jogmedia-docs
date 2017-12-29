@@ -4,6 +4,7 @@ import com.blibli.dao_api.EmployeeDaoInterface;
 import com.blibli.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -11,24 +12,29 @@ import java.util.List;
 public class EmployeeServices {
     @Autowired
     EmployeeDaoInterface employeeDaoInterface;
-    public List<Employee> showAllEmployee(){
-        List<Employee> temp=employeeDaoInterface.getAllEmployee();
-        return temp;
+    public Model showListEmployee(Model model){
+        model.addAttribute("employee",employeeDaoInterface.getAllEmployee());
+        return model;
+    }
+    public Model searchCategoryByKeyword(Model model, String searchKey){
+        model.addAttribute("employee", employeeDaoInterface.search(searchKey));
+        return model;
+    }
+    public Model manageFormCreateEmployee(Model model){
+        model.addAttribute("employee",new Employee());
+        return model;
+    }
+    public Model manageEditEmployee(Model model, int id){
+        model.addAttribute("employee",employeeDaoInterface.getIdEmployee(id));
+        return  model;
     }
 
-    public List<Employee> search(String searchKey){
-        List<Employee> temp=employeeDaoInterface.search(searchKey);
-        return temp;
-    }
     public void save(Employee e){
         employeeDaoInterface.insertCategory(e);
+    }
 
-    }
-    public Employee getIdEmployee(Integer id){
-        Employee idEmp= employeeDaoInterface.getIdEmployee(id);
-        return idEmp;
-    }
     public void softDeleteEmployee(Integer id) {
+
         employeeDaoInterface.softDeleteEmployee(id);
     }
 }

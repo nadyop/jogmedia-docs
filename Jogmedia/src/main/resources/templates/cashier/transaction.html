@@ -18,12 +18,22 @@
         <ul class="nav navbar-nav navbar-left">
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a><span>20:45</span></a></li>
+            <li>
+                <a>
+                    <span>
+                        <span id="Jakarta_z41c"></span>
+                        <script src="//widget.time.is/en.js"></script>
+                        <script>
+                            time_is_widget.init({Jakarta_z41c: {template: "TIME"}});
+                        </script>
+                    </span>
+                </a>
+            </li>
             <li th:inline="text"><a><span class="fa fa-user"></span> Hi, [[${#httpServletRequest.remoteUser}]]!</a></li>
             <li><a href="#">
                 <form th:action="@{/logout}" method="post">
                     <span class="fa fa-sign-out"></span>
-                    <input type="submit" value="Sign Out" style="background: none; border: none"/>
+                    <input type="submit" value="Sign Out" class="signout"/>
                 </form>
             </a>
             </li>
@@ -42,8 +52,8 @@
             <span class="input-group-addon sp-icon">
               <i class="fa fa-book"></i>
             </span>
-                            <input type="text" class="form-control" name="searchKey" th:value="${searchKey}"
-                                   placeholder="BOOK TITLE"/>
+                            <input type="text" class="form-control" maxlength="13" name="searchKey" th:value="${searchKey}"
+                                   placeholder="enter isbn book"/>
                             <span class="input-group-btn">
               <button class="btn btn-default btn-search" type="submit" name="button">Search</button>
             </span>
@@ -62,8 +72,9 @@
                         <tr>
                             <th>Book Title</th>
                             <th>Price</th>
-                            <th>Discount</th>
+                            <th>Stock</th>
                             <th>Qty</th>
+                            <th>&nbsp;</th>
                         </tr>
                         </thead>
                     </table>
@@ -72,22 +83,23 @@
                             <tbody>
                             <a href="index.html">
                                 <tr th:each="book: ${book}">
-                                    <form method="post" th:action="@{'/transaction/search/buy/'+${book.book_id}}">
+                                    <form method="post" th:action="@{'/transaction/search/buy/'+${ book.book_id}}">
                                         <input hidden="hidden" name="bookid" th:value="${book.book_id}"/>
                                         <td name="title" th:value="${book.book_title}" class="td-book">
-                                            <input th:value="${book.book_title}" type="text"/>
+                                            <input th:value="${book.book_title}" type="text" readonly="readonly" class="book-name"/>
                                         </td>
 
-                                        <td name="price" th:value="${book.price_after}"><input
-                                                th:value="${book.price_after}" type="number"/></td>
-                                        <td name="disc" th:object="${book.discount}" th:value="${book.discount}"><input
-                                                type="number" th:value="${book.discount}"/></td>
+                                        <td name="price" th:value="${book.price_after}">
+                                            Rp <input hidden="hidden" th:text="${#numbers.formatDecimal(book.price_after, 0, 'COMMA', 2, 'POINT')}" type="number" readonly="readonly" class="border"/>
+                                        </td>
+                                        <td name="disc" th:object="${book.stok}" th:value="${book.stok}">
+                                            <input class="disc" type="number" th:value="${book.stok}" readonly="readonly"/>
+                                        </td>
                                         <td id="qty" class="ip-qty">
                                             <input type="number" class="form-control" value="1" name="quantity"
-                                                   th:object="${quantity}" th:value="${quantity}"/>
+                                                   th:object="${quantity}" th:value="${quantity}" min="0" required="true"/>
                                         </td>
                                         <td>
-
                                             <button class="btn btn-primary">Buy</button>
                                         </td>
                                     </form>
@@ -108,7 +120,7 @@
                 <div class="row">
                     <!-- button pay -->
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-default btn-all search-book" data-toggle="modal"
+                        <button type="button" class="btn btn-all search-book" data-toggle="modal"
                                 data-target="#modal-pay" data-backdrop="static">Pay
                         </button>
                     </div>
@@ -120,30 +132,29 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>ISBN</th>
                     <th>Product</th>
                     <th>Price</th>
                     <th>Qty</th>
-
-
+                    <th>Subtotal ( Rp. )</th>
                 </tr>
                 </thead>
                 <tbody id="detail_cart">
                 <tr th:each="tempDetil: ${tempDetil}">
-                    <td th:text="${tempDetil.isbn}"></td>
                     <td th:text="${tempDetil.book_title}"></td>
                     <td th:text="${tempDetil.unitPrice}"></td>
                     <td th:text="${tempDetil.quantity}"></td>
+                    <td th:text="${tempDetil.subTotal}"></td>
                     <td id="total_payment"></td>
                     <td>
                         <a th:href="${'/transaction/hapus/'+tempDetil.id_detil}">
-                            <button type="button" data-id="" class="hapus_cart btn btn-danger btn-xs">Cancel</button>
+                            <button type="button" class="close" >&times;</button>
+
                         </a>
                     </td>
                 </tr>
                 <tr>
                     <th colspan="3">Total</th>
-                    <th colspan="4">Rp <span th:text="${total}" id="total-payment"></span></th>
+                    <th colspan="4">Rp <span th:text="${total}"></span></th>
                 </tr>
                 </tbody>
             </table>
@@ -154,26 +165,22 @@
     <div class="modal fade" id="modal-pay" role="dialog">
         <div class="modal-dialog">
             <!--modal total-->
-
             <div class="modal-content">
                 <div class="modal-header">
-
-                    <form method="post" th:action="@{'/transaction/payment'}">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <form>
                         <div class="row">
                             <h4 class="modal-title">
-                                <center>Payment</center>
+                                <center>PAYMENT</center>
                             </h4>
                         </div>
-
-                        <div class="row green">
+                        <div class="row">
                             <h3>
-                                <div class="col-sm-6 col-md-6">
+                                <div class="col-sm-6 col-md-6 green">
                                     <center>Total</center>
                                 </div>
                                 <div class="col-sm-6 col-md-6">
-                                    <td>Rp</td>
-                                    <td id="total" th:text="${total}"></td>
+                                    <input id="totalCart" required="required" type="number" th:value="${total}" class="input form-control" readonly="readonly"/>
                                 </div>
                             </h3>
                         </div>
@@ -183,27 +190,24 @@
                                     <center>Paying now</center>
                                 </div>
                                 <div class="col-sm-6 col-md-6">
-
-                                    <input id="payment" type="number" class="input form-control" value="" name="money"
-                                           th:object="${money}" th:value="${money}" oninput=""/>
+                                    <input id="totalPay" required="required" type="number" class="input form-control" name="money"
+                                           th:object="${money}" th:value="${money}" min="totalCart"/>
                                 </div>
                             </h3>
-                        </div>
-                        <div class="row red">
-                            <h3>
-                                <div class="col-sm-6 col-md-6">
-                                    <center>Change</center>
-                                </div>
-                                <div class="col-sm-6 col-md-6">
-                                    <td id="change"></td>
-
-                                </div>
-                            </h3>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-default" data-dismiss="modal">Print</button>
+                            <input class="btn btn-all" type="submit" onclick="Totalin()" value="Enter"/>
                         </div>
                     </form>
+                        <div class="modal-footer">
+                            <div class="col-sm-6 col-md-6 red">
+                                <h3>Change : <span id="totalChange"></span></h3>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <a href="/transaction" class="cleanPage">
+                                    <input id="something" type="submit" class="btn btn-default" formtarget="_blank" value="Print" onclick="window.open('/nota')"/>
+                                </a>
+                            </div>
+                        </div>
+
                 </div>
             </div>
         </div>
@@ -213,11 +217,41 @@
 
 </body>
 <script>
-    $total = (document).getElementById('#total');
-    $change = (document).getElementById('#change');
-    $payment = (document)
-    function countMoney() {
-        $
+    function Totalin() {
+        var totalCart = document.getElementById("totalCart").value;
+        var totalPay = document.getElementById("totalPay").value;
+        var calChange = totalPay - totalCart;
+        document.getElementById("totalChange").innerHTML = calChange;
+
+        // if(totalPay  totalCart){
+        //     totalPay.setCustomValidity("The number must greater than total.");
+        // }else{
+        //     document.getElementById("totalChange").innerHTML = calChange;
+        // }
+
+
+
+        // if(totalPay totalCart) {
+        //     totalPay.setCustomValidity("The number must greater than total.");
+        // } else {
+        //     // totalPay.setCustomValidity('');
+        //     document.getElementById("totalChange").innerHTML = calChange;
+        // }
     }
+</script>
+<script>
+    var totalCart = document.getElementById("totalCart")
+        , totalPay = document.getElementById("totalPay");
+
+    function validateMoney(){
+        if(totalCart.value &lt; totalPay.value) {
+            totalPay.setCustomValidity("Money given less");
+        } else {
+            totalPay.setCustomValidity('');
+        }
+    }
+
+    totalCart.onchange = validateMoney;
+    totalPay.onkeyup = validateMoney;
 </script>
 </html>

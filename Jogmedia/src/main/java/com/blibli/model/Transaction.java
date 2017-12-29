@@ -7,11 +7,11 @@ public class Transaction {
     private Date tanggal;
     private double total_pembelian, total_pembayaran;
 
-    public Transaction(int transaction_id, int employee_id, double total_pembelian, double total_pembayaran, Date tanggal) {
+    public Transaction(int transaction_id, int employee_id, double total_pembelian, Date tanggal) {
         this.transaction_id = transaction_id;
         this.tanggal = tanggal;
         this.total_pembelian = total_pembelian;
-        this.total_pembayaran = total_pembayaran;
+
         this.employee_id=employee_id;
     }
 
@@ -39,13 +39,7 @@ public class Transaction {
         this.total_pembelian = total_pembelian;
     }
 
-    public double getTotal_pembayaran() {
-        return total_pembayaran;
-    }
 
-    public void setTotal_pembayaran(double total_pembayaran) {
-        this.total_pembayaran = total_pembayaran;
-    }
 
     public Integer getEmployee_id() {
         return employee_id;

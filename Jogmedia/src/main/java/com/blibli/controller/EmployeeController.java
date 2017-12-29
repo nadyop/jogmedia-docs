@@ -17,8 +17,8 @@ public class EmployeeController {
 
     @RequestMapping("/tampilemp")
     public String EmployeeList(Model model){
-        model.addAttribute("employee",employeeService.showAllEmployee());
-        return "tampilemp";
+        model = employeeService.showListEmployee(model);
+        return "manager/show/tampilemp";
     }
     @RequestMapping(value = "/tampilemp/", method = RequestMethod.POST)
     public String simpanDataEmployee(Employee employee){
@@ -27,30 +27,23 @@ public class EmployeeController {
     }
     @RequestMapping(value = "/tampilemp/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
-        model.addAttribute("employee", employeeService.search(searchKey));
-        return "tampilemp";
+        model = employeeService.searchCategoryByKeyword(model, searchKey);
+        return "manager/show/tampilemp";
     }
 
     @RequestMapping(value = "/tampilemp/createEmployee", method = RequestMethod.GET)
-    public String tampilFormCreateEmployee(Model model)
-    {
-        model.addAttribute("employee",new Employee());
-        return "createEmployee";
+    public String tampilFormCreateEmployee(Model model) {
+        model = employeeService.manageFormCreateEmployee(model);
+        return "manager/edit/createEmployee";
     }
     @RequestMapping(value = "/tampilemp/edit/{id}", method = RequestMethod.GET)
-    public String editData(@PathVariable Integer id, Model model){
-        model.addAttribute("employee",employeeService.getIdEmployee(id));
-        return "createEmployee";
+    public String editData(@PathVariable int id, Model model){
+        model = employeeService.manageEditEmployee(model, id);
+        return "manager/edit/createEmployee";
     }
     @RequestMapping(value = "/employee/softDelete/{id}", method = RequestMethod.GET)
     public String softDeleteEmployee(@PathVariable Integer id) {
         employeeService.softDeleteEmployee(id);
         return "redirect:/tampilemp";
-    }
-    @RequestMapping(value = "/tampilemp/softDelete/{id}", method = RequestMethod.GET)
-    public String softDelete(@PathVariable Integer id,Model model) {
-        employeeService.softDeleteEmployee(id);
-        return "redirect:/tampilemp";
-
     }
 }

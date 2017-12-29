@@ -23,67 +23,59 @@ public class BookController {
     }
 
     @RequestMapping("/book")
-    public String BookList(Model model){
-        model.addAttribute("book",bookService.showAllBooks());
-        model.addAttribute("categories", categoryService.showAllCategory());
-        return "book";
+    public String listBook(Model model){
+        model= bookService.showAllListBook(model);
+        return "manager/show/book";
     }
-    @RequestMapping(value="/book/",method = RequestMethod.POST)
-    public String simpanDataBook( @ModelAttribute("buku") Book buku){
-        bookService.saveOrdUpdateService(buku);
-        return "redirect:/book";
-    }
-    @RequestMapping("/discount")
-    public String BookListDiscount(Model model){
-        model.addAttribute("book",bookService.showAllBooksbyDiscount());
-        model.addAttribute("categories", categoryService.showAllCategory());
-        return "discount";
-    }
-    @RequestMapping("/emptyStok")
-    public String BookListEmpty(Model model){
-        model.addAttribute("book",bookService.showAllBooksbyEmptyStok());
-        model.addAttribute("categories", categoryService.showAllCategory());
-        return "emptyStok";
-    }
+//    @RequestMapping(value="/book/",method = RequestMethod.POST)
+//    public String saveBook( @ModelAttribute("buku") Book book){
+//        bookService.save(book);
+//        return "redirect:/book";
+//    }
+@RequestMapping(value="/book/",method = RequestMethod.POST)
+public String saveBook(@ModelAttribute("book") Book book, Model model){
+    bookService.saveModal(model, book);
+    return "redirect:/book";
+}
     @RequestMapping(value = "/book/createBook", method = RequestMethod.GET)
     public String tampilFormCreateBook(Model model){
-        model.addAttribute("categories", categoryService.showActiveCategories());
-        model.addAttribute("book", new Book());
-        return "createBook";
+        model = bookService.manageFormCreateBook(model);
+        return "manager/edit/createBook";
+    }
+    @RequestMapping("/discount")
+    public String listBookDiscount(Model model){
+        model = bookService.showAllListBookDiscount(model);
+        return "manager/show/discount";
+    }
+    @RequestMapping("/emptyStok")
+    public String listBookEmpty(Model model){
+        model = bookService.showAllListBookEmpty(model);
+        return "manager/show/emptyStok";
     }
     @RequestMapping(value = "/book/editBook/{id}",method = RequestMethod.GET)
-    public String editDataCategory(@PathVariable Integer id, Model model){
-        model.addAttribute("categories", categoryService.showActiveCategories());
-        model.addAttribute("book",bookService.getIdBuku(id));
-        return "createBook";
+    public String editDataCategory(@PathVariable int id, Model model){
+        model = bookService.manageEditBook(model,id);
+        return "manager/edit/createBook";
     }
     @RequestMapping(value = "/book/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
-        model.addAttribute("categories", categoryService.showActiveCategories());
-        model.addAttribute("book", bookService.searchBook(searchKey));
-        return "book";
+        model = bookService.searchBookByKeyword(model,searchKey);
+        return "manager/show/book";
     }
     @RequestMapping(value = "/book/searchDiscount", method = RequestMethod.POST)
     public String searchDiscount(Model model, @ModelAttribute("searchKey") String searchKey){
-        model.addAttribute("categories", categoryService.showActiveCategories());
-        model.addAttribute("book", bookService.searchDiscount(searchKey));
-        return "book";
+        model = bookService.searchBookByKeywordDiscount(model, searchKey);
+        return "manager/show/book";
     }
     @RequestMapping(value = "/book/searchEmptyBook", method = RequestMethod.POST)
     public String searchEmptyBook(Model model, @ModelAttribute("searchKey") String searchKey){
-        model.addAttribute("categories", categoryService.showActiveCategories());
-        model.addAttribute("book", bookService.searchEmptyBook(searchKey));
-        return "book";
+        model = bookService.searchBookByKeywordEmptyStock(model, searchKey);
+        return "manager/show/book";
     }
-    @RequestMapping(value = "/book/hapus/{id}", method = RequestMethod.GET)
-    public String hapusDataBuku(@PathVariable Integer id) {
-        bookService.deleteBook(id);
-        return "redirect:/book";
-    }
+
     @RequestMapping(value = "/book/softDelete/{id}", method = RequestMethod.GET)
     public String softDeleteBook(@PathVariable Integer id) {
         bookService.softDelete(id);
         return "redirect:/book";
     }
-
 }

@@ -1,25 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <title>SpringBoot - Project</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
     <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{/css/stylecsr.css}" rel="stylesheet" media="screen"/>
-
-    <meta http-equiv="context-type" content="text/html; charset=UTF-8"/>
 </head>
-<body>
-    <div class="page-header text-center">
-        <h1>Simple CRUD SpringBoot</h1>
+<body class="bd-login">
+<div class="container">
+    <div class="col-sm-offset-3 col-md-offset-4 login">
+        <div class="panel-group">
+            <div class="panel panel-default pn-login">
+                <div class="panel-heading pn-login">
+                    <h3><center><strong  th:inline="text">Hi, [[${#httpServletRequest.remoteUser}]]!</strong></center></h3>
+                    <h3><center><strong>WELCOME TO JOGMEDIA</strong></center></h3>
+                </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xl-6">
+                                <a href="/book" class="btn btn-sq-lg a-home" style="margin-top: 25%">
+                                    <i class="fa fa-user fa-5x btn-home"></i><br/>
+                                    MANAGER
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xl-6">
+                                <a href="/transaction" class="btn btn-sq-lg a-home" style="margin-top: 25%">
+                                    <i class="fa fa-usd fa-5x btn-home"></i><br/>
+                                    CASHIER
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </div>
-    <div class="container jumbotron">
-        <a href="book.html" ><b>Manager</b></a>
-        <td>
-            <a href="transaction.html" ><b>Cashier</b></a>
-        </td>
-
-    </div>
-
-
-
+</div>
 </body>
 </html>

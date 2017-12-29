@@ -18,7 +18,7 @@ public class StoreController {
     public String dataStore(Model model){
         System.out.println("masuk disini");
         model.addAttribute("store",storeService.showStore());
-        return "store";
+        return "manager/show/store";
     }
 
     @RequestMapping(value = "/store/",method = RequestMethod.POST)
@@ -31,12 +31,12 @@ public class StoreController {
     @RequestMapping(value = "/store/createStore",method = RequestMethod.GET)
     public String creStore(Model model){
       model.addAttribute("store", new Store());
-        return "createStore";
+        return "manager/edit/createStore";
     }
 
     @RequestMapping(value = "/store/edit/{id}", method = RequestMethod.GET)
     public String editDataStore(@PathVariable Integer id, Model model){
         model.addAttribute("store",storeService.getIdStore(id));
-        return "createStore";
+        return "manager/edit/createStore";
     }
 }
