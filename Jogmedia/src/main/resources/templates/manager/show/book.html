@@ -11,7 +11,7 @@
     <!--data-Table-->
     <link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.10.16/css/jquery.dataTables.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css}"/>
 
     <!--creation, material-->
     <!--<link th:href="@{/css/stylemng.css}" rel="stylesheet" media="screen"/>-->
@@ -127,8 +127,8 @@
                             <!--content tab-->
                             <div class="card-content">
                                 <div class="tab-content">
-                                    <div class="display tab-pane table-responsive active" th:if="${not #lists.isEmpty(book)}" style="align-items: left!important;">
-                                        <table class="display table mdl-data-table" id="showTable" cellspacing="0" width="100%">
+                                    <div class="display tab-pane table-responsive" th:if="${not #lists.isEmpty(book)}" style="align-items: left!important;">
+                                        <table class="col-md-12 display table mdl-data-table table-responsive responsive nowrap" id="showTable" cellspacing="0" >
                                             <thead class="text-primary">
                                             <th>ISBN</th>
                                             <th>Title</th>
