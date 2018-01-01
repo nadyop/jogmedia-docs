@@ -3,6 +3,7 @@ package com.blibli.services;
 import com.blibli.dao_api.BookInterface;
 import com.blibli.dao_api.CategoryDaoInterface;
 import com.blibli.model.Book;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -67,6 +68,10 @@ public class BookService {
     public Model searchBookByKeywordEmptyStock(Model model, String searchKey){
         model.addAttribute("categories",categoryDaoInterface.getAllActive());
         model.addAttribute("book", bookDaoInterface.searchEmptyBook(searchKey));
+        return model;
+    }
+    private Model validate(Model model, ){
+
         return model;
     }
 }

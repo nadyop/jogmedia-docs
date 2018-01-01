@@ -81,7 +81,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> LEDGER MASTER - Weekly</a>
+                    <a class="navbar-brand" href="#"> LEDGER MASTER - Detail Transaction</a>
                 </div>
                 <div class="collapse navbar-collapse">
                 </div>
@@ -118,7 +118,7 @@
                                 <td>Select Date: </td>
                                 <p><input th:type="date"  name="dateFrom" th:value="${dateFrom}" />Until
                                     <input th:type="date" name="dateUntil" th:value="${dateUntil}" />
-                                    <input th:type="submit"/></p>
+                                    <input th:type="submit" class="btn btn-sm btn-primary"/></p>
 
                             </form>
                             <div th:if="${not #lists.isEmpty(detil)}">

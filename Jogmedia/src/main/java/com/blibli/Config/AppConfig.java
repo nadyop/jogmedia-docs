@@ -8,7 +8,7 @@ public class AppConfig{
         driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
         driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/jogmedia_db");
         driverManagerDataSource.setUsername("postgres");
-        driverManagerDataSource.setPassword("366milala");
+        driverManagerDataSource.setPassword("password");
         return driverManagerDataSource;
     }
 }
