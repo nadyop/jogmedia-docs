@@ -141,11 +141,11 @@
                                     <th>Total ( Rp. )</th>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="bestSellingMonthly: ${bestSellingMonthly}">
-                                        <td th:text="${bestSellingMonthly.isbn}"></td>
-                                        <td th:text="${bestSellingMonthly.book_title}"></td>
-                                        <td th:text="${bestSellingMonthly.total_quantity}"></td>
-                                        <td th:text="${#numbers.formatDecimal(bestSellingMonthly.total_price, 0, 'DEFAULT', 2, 'DEFAULT')}"  ></td>
+                                    <tr th:each="bestSellingMontly: ${bestSellingMontly}">
+                                        <td th:text="${bestSellingMontly.isbn}"></td>
+                                        <td th:text="${bestSellingMontly.book_title}"></td>
+                                        <td th:text="${bestSellingMontly.total_quantity}"></td>
+                                        <td th:text="${#numbers.formatDecimal(bestSellingMontly.total_price, 0, 'DEFAULT', 2, 'DEFAULT')}"  ></td>
                                     </tr>
                                     </tbody>
                                 </table>

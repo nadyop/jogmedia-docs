@@ -14,19 +14,20 @@ import java.util.Date;
 @Controller
 public class ReportController {
     private final ReportService reportService;
+
+    @Autowired
+    public ReportController(ReportService reportService){
+        this.reportService=reportService;
+    }
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(Model model){
         model = reportService.generalLedgerWeekly(model);
         return "manager/show/report";
     }
 
-    @Autowired
-    public ReportController(ReportService reportService){
-        this.reportService=reportService;
-    }
-
     @RequestMapping(value = "/report-month", method = RequestMethod.GET)
     public String reportMonth(Model model){
+
         model = reportService.generalLedgerMonthly(model);
         return "manager/show/report-month";
     }

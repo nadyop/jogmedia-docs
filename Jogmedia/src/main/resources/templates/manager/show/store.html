@@ -93,20 +93,20 @@
                         <div class="card card-stats">
                             <div class="card-header" data-background-color="green">
                                 <i class="material-icons">store</i><h4>STORE</h4>
-                                <a href="/store/createStore" class="btn btn-white btn-round" style="color: black!important;">
+                                <a th:href="'/store/edit/' +  ${store.get(0).store_id}" class="btn btn-white btn-round" style="color: black!important;">
                                     <i class="material-icons">create</i>Edit Store
                                     <div class="ripple-container"></div>
                                 </a>
                             </div>
-                            <div class="card-content">
+                            <div class="card-content" th:each="s: ${store}" >
                                 <span class="label label-default">store</span>
-                                <h3 class="title"><strong>JOGMEDIA</strong></h3>
+                                <h3 class="title"><strong th:text="${s.store_name}"></strong></h3>
                                 <span class="label label-default">address</span>
-                                <h4 class="title">Jalan Kapten Tendean - Yogyakarta 55182</h4>
+                                <h4 class="title" th:text="${s.address + ' - ' + s.post_code}"></h4>
                                 <span class="label label-default">npwp</span>
-                                <h4 class="title">982301239812312981</h4>
+                                <h4 class="title" th:text="${s.npwp}"></h4>
                                 <span class="label label-default">email</span>
-                                <h4 class="title">contact@jogmedia.com</h4>
+                                <h4 class="title" th:text="${s.email }"></h4>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">

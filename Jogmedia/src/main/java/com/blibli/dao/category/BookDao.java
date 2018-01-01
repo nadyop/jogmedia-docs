@@ -274,6 +274,8 @@ public class BookDao extends My_Connection implements BookInterface {
         String psql;
         double count = (book.getPrice_before()-(book.getPrice_before()*(book.getDiscount()/100.0)));
 
+        System.out.println("count="+count);
+        System.out.println("pricebefore="+book.getPrice_before());
         if(book.getBook_id()!=0){
             psql="UPDATE book SET isbn=?,book_title=?,author=?,publisher=?,category_id=?,location=?,price_before=?,price_after=?,discount=?, stok=?,status=? where book_id=?";
             try {

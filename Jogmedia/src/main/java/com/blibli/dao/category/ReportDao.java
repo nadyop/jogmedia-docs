@@ -159,6 +159,7 @@ public class ReportDao extends My_Connection implements ReportInterface {
     }
     @Override
     public List<BestSelling> getAllBestSellingMonthly(){
+
         String psql="select isbn,book_title, sum(quantity) as total_quantity, sum(quantity*unit_price) as total_price" +
                 " from detil_transaction join book\n" +
                 "on book.book_id = detil_transaction.book_id\n" +
@@ -195,7 +196,7 @@ public class ReportDao extends My_Connection implements ReportInterface {
                 "on book.book_id = detil_transaction.book_id\n" +
                 "join transaction\n" +
                 "on detil_transaction.transaction_id = transaction.transaction_id\n" +
-                "where tanggal_transaksi > now() - interval '1 week' \n" +
+                "where tanggal_transaksi > now() - interval '1 year' \n" +
                 "group by book.book_id  order by sum(quantity) desc limit 10";
         List<BestSelling> temp = new ArrayList<>();
         try {
