@@ -21,11 +21,12 @@ public class EmployeeController {
         return "manager/show/tampilemp";
     }
     @RequestMapping(value = "/tampilemp/", method = RequestMethod.POST)
-    public String simpanDataEmployee(Model model, Employee employee){
-        return employeeService.save(model, employee);
-//        return "redirect:/tampilemp";
+    public String simpanDataEmployee(Employee employee){
+        System.out.println("ini id employee dr controller: "+employee.getEmployee_id());
+        System.out.println("ini nama employee: "+employee.getEmployee_name());
+        employeeService.save(employee);
+        return "redirect:/tampilemp";
     }
-
     @RequestMapping(value = "/tampilemp/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
         model = employeeService.searchCategoryByKeyword(model, searchKey);

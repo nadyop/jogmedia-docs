@@ -44,8 +44,7 @@ public class ReportController {
     }
     @RequestMapping(value = "/report-detail/search", method = RequestMethod.GET)
     public String reportDetail1(Model model, @ModelAttribute(value = "dateFrom") @DateTimeFormat(pattern="yyyy-MM-dd") Date dateFrom, @ModelAttribute(value="dateUntil") @DateTimeFormat(pattern="yyyy-MM-dd") Date dateUntil){
-        System.out.println("date="+dateFrom);
-        System.out.println("date="+dateUntil);
+
         model= reportService.getAllDetilTransactionByDate(model, dateFrom, dateUntil);
         return "manager/show/report-detail";
     }

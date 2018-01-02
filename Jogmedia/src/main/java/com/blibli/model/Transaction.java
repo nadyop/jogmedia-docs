@@ -3,7 +3,7 @@ package com.blibli.model;
 import java.util.Date;
 
 public class Transaction {
-    private Integer transaction_id, employee_id;
+    private int transaction_id, employee_id;
     private Date tanggal;
     private double total_pembelian, total_pembayaran;
 
@@ -15,7 +15,7 @@ public class Transaction {
         this.employee_id=employee_id;
     }
 
-    public Integer getTransaction_id() {
+    public int getTransaction_id() {
         return transaction_id;
     }
 
@@ -41,7 +41,7 @@ public class Transaction {
 
 
 
-    public Integer getEmployee_id() {
+    public int getEmployee_id() {
         return employee_id;
     }
 

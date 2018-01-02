@@ -15,11 +15,10 @@ import java.util.List;
 public class StoreDao extends My_Connection implements StoreDaoInterface {
     @Override
     public List<Store> getStore(){
-        System.out.println("test1");
 
         String psql="select * from Store";
 
-        System.out.println("yoy");
+
         List<Store> temp= new ArrayList<>();
         try{
             this.makeConnection();
@@ -41,15 +40,14 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                 }
             }
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while getting data store.."+e.toString());
         }
         return temp;
     }
     @Override
     public void insertStore(Store S){
         String psql;
-        System.out.println("Apakah masuk insertStore");
-        System.out.println(S.getStore_id());
+
         if(S.getStore_id()!=0){
             psql="UPDATE Store set store_name=?, address=?, npwp=?, post_code=?, email=? where store_id=?";
             try {
@@ -63,11 +61,11 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
                 preparedStatement.setString(5, S.getEmail());
                 preparedStatement.setInt(6, S.getStore_id());
                 preparedStatement.executeUpdate();
-                System.out.println("Sukses update : "+S.getStore_id());
+
                 this.disconnect();
             }
             catch (Exception e){
-                System.out.println(e);
+                System.out.println("Error while inserting .."+e.toString());
             }
         }
     }
@@ -92,7 +90,7 @@ public class StoreDao extends My_Connection implements StoreDaoInterface {
             }
             this.disconnect();
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println("Error while getting id.."+e.toString());
         }
         return store;
     }

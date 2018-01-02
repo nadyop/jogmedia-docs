@@ -246,35 +246,4 @@ public class BookDao extends My_Connection implements BookInterface {
             }
         }
     }
-
-    @Override
-    public Book getBookByISBN(String isbn) {
-        String psql = "Select * from Book where isbn='" + isbn + "';";
-        Book book = new Book();
-        try {
-            this.makeConnection();
-            Statement statement = this.con.createStatement();
-            ResultSet rs = statement.executeQuery(psql);
-            if (rs != null) {
-                while (rs.next()) {
-                    book.setBook_id(rs.getInt("book_id"));
-                    book.setCategory_id(rs.getInt("category_id"));
-                    book.setIsbn(rs.getString("isbn"));
-                    book.setBook_title(rs.getString("book_title"));
-                    book.setAuthor(rs.getString("author"));
-                    book.setPublisher(rs.getString("publisher"));
-                    book.setLocation(rs.getString("location"));
-                    book.setDiscount(rs.getInt("discount"));
-                    book.setPrice_before(rs.getDouble("price_before"));
-                    book.setPrice_after(rs.getDouble("price_after"));
-                    book.setStok(rs.getInt("stok"));
-                    book.setStatus(rs.getInt("status"));
-                }
-            }
-            this.disconnect();
-        } catch (Exception e) {
-            System.out.println("Error while searching.. " + e.toString());
-        }
-        return book;
-    }
 }

@@ -2,8 +2,6 @@ package com.blibli.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class My_Connection {
     protected Connection con;
@@ -15,9 +13,9 @@ public class My_Connection {
         System.out.println("Openning database...");
         try{
             con = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/jogmedia_db",
-                    "postgres",
-                    "password"
+                    "jdbc:postgresql://ec2-54-235-148-19.compute-1.amazonaws.com:5432/dc30q5j3noe3mj",
+                    "asmerpqvzuwdmg",
+                    "018e4696ce272a12ec7dcf4422a44b9b772204f58afaa1ce9d2c2e21781689fb"
             );
             System.out.println("Success openning db!");
         }

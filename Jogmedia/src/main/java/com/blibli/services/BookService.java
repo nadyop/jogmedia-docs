@@ -34,20 +34,8 @@ public class BookService {
     }
 
     public String saveModal(Model model, Book book) {
-        if (getBookByISBN(book.getIsbn()).getBook_id() != 0)   {
-            Map<String, String > map = new HashMap<>();
-            map.put("isbn", "ISBN already exist !");
-            model.addAttribute("error", map);
-            model.addAttribute("book", book);
-            model.addAttribute("categories", categoryDaoInterface.getAllActive());
-            return "manager/edit/createBook";
-        }
         bookDaoInterface.saveBook(book);
         return "redirect:/book";
-    }
-
-    public Book getBookByISBN(String isbn) {
-        return bookDaoInterface.getBookByISBN(isbn);
     }
 
     public void softDelete(int id) {

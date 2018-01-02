@@ -22,7 +22,6 @@ public interface TransactionInterface {
 
     TempDetil getIdTempDetil(int idTemp);
     TempDetil getIdTempDetilbyNomorIdDetil(int idTemp);
-
     int getIdTransaction();
     int getIdEmployee(String searchKey);
 }

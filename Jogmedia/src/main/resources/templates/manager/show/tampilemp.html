@@ -5,23 +5,21 @@
     <title>Jogmedia</title>
     <!--bootstrap, icon, font-->
     <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{//cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
     <link th:href="@{http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons}" rel="stylesheet" media="screen"/>
 
     <!--data-Table-->
     <link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.10.16/css/jquery.dataTables.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.material.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css}"/>
 
-    <!--creation, material-->
-    <!--<link th:href="@{/css/stylemng.css}" rel="stylesheet" media="screen"/>-->
-    <link th:href="@{/css/demo.css}" rel="stylesheet" media="screen"/>
-    <link th:href="@{/css/material-dashboard.css?v=1.2.0}" rel="stylesheet" media="screen"/>
-    <link th:href="@{//cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css}" rel="stylesheet" media="screen"/>
+    <!--creation-->
+    <link th:href="@{/css/manager.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
 <div class="wrapper">
-    <div class="sidebar" data-color="green" data-image="../static/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="green">
         <div class="logo">
             <a href="/store" class="simple-text">
                 <strong>JOGMEDIA</strong>
@@ -168,21 +166,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!--plugin-->
-<script type="text/javascript" charset="utf8" th:src="@{/js/chartist.min.js}"></script>
-<script type="text/javascript" charset="utf8" th:src="@{/js/arrive.min.js}"></script>
-<script type="text/javascript" charset="utf8" th:src="@{js/perfect-scrollbar.jquery.min.js}"></script>
-<script type="text/javascript" charset="utf8" th:src="@{js/bootstrap-notify.js}"></script>
 <!--dataTables-->
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-<!--creation js-->
-<script type="text/javascript" charset="utf8" th:src="@{/js/demo.js}"></script>
-<script type="text/javascript" charset="utf8" th:src="@{/js/material.min.js}"></script>
-<script type="text/javascript" charset="utf8" th:src="@{/js/material-dashboard.js?v=1.2.0}"></script>
-
+<!--jQuery navbar phone-->
+<script type="text/javascript" charset="utf8" th:src="@{js/perfect-scrollbar.jquery.min.js}"></script>
+<script type="text/javascript" charset="utf8" th:src="@{/js/material-dashboard.js}"></script>
+<!--creation-->
 <script type="text/javascript" th:inline="javascript">
     $('.btnActive').click(function(){
         var $this = $(this);
@@ -191,7 +183,7 @@
         if($this.hasClass('btnActive')){
             $this.text('Active');
         } else {
-            $this.text('Non-active');
+            $this.text('Deactive');
         }
     });
 </script>
@@ -205,6 +197,11 @@
                 }
             ]
         } );
+    } );
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#showTable').DataTable();
     } );
 </script>
 </html>

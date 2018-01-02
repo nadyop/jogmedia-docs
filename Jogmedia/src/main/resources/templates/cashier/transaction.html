@@ -6,10 +6,8 @@
           media="screen"/>
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}"
           rel="stylesheet" media="screen"/>
-    <link th:href="@{/css/stylecsr.css}" rel="stylesheet" media="screen"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/stylecsr.js"></script>
+    <!--creation-->
+    <link th:href="@{/css/cashier.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
 
@@ -19,15 +17,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a>
-                    <span>
-                        <span id="Jakarta_z41c"></span>
-                        <script src="//widget.time.is/en.js"></script>
-                        <script>
-                            time_is_widget.init({Jakarta_z41c: {template: "TIME"}});
-                        </script>
-                    </span>
-                </a>
+
             </li>
             <li th:inline="text"><a><span class="fa fa-user"></span> Hi, [[${#httpServletRequest.remoteUser}]]!</a></li>
             <li><a href="#">
@@ -141,9 +131,9 @@
                 <tbody id="detail_cart">
                 <tr th:each="tempDetil: ${tempDetil}">
                     <td th:text="${tempDetil.book_title}"></td>
-                    <td th:text="${tempDetil.unitPrice}"></td>
+                    <td th:text="${#numbers.formatDecimal(tempDetil.unitPrice, 0, 'DEFAULT', 2, 'DEFAULT')}"></td>
                     <td th:text="${tempDetil.quantity}"></td>
-                    <td th:text="${tempDetil.subTotal}"></td>
+                    <td th:text="${#numbers.formatDecimal(tempDetil.subTotal, 0, 'DEFAULT', 2, 'DEFAULT')}"></td>
                     <td id="total_payment"></td>
                     <td>
                         <a th:href="${'/transaction/hapus/'+tempDetil.id_detil}">
@@ -154,7 +144,8 @@
                 </tr>
                 <tr>
                     <th colspan="3">Total</th>
-                    <th colspan="4">Rp <span th:text="${total}"></span></th>
+
+                    <th colspan="4">Rp <span th:text="${#numbers.formatDecimal(total, 0, 'DEFAULT', 2, 'DEFAULT')}"></span></th>
                 </tr>
                 </tbody>
             </table>
@@ -179,6 +170,7 @@
                                 <div class="col-sm-6 col-md-6 green">
                                     <center>Total</center>
                                 </div>
+
                                 <div class="col-sm-6 col-md-6">
                                     <input id="totalCart" required="required" type="number" th:value="${total}" class="input form-control" readonly="readonly"/>
                                 </div>
@@ -203,7 +195,7 @@
                             </div>
                             <div class="col-sm-6 col-md-6">
                                 <a href="/transaction" class="cleanPage">
-                                    <input id="something" type="submit" class="btn btn-default" formtarget="_blank" value="Print" onclick="window.open('/nota')"/>
+                                    <input id="something" type="submit" class="btn btn-default" formtarget="_blank" value="Print" onclick="window.open('/nota')" disabled="disabled"/>
                                 </a>
                             </div>
                         </div>
@@ -216,28 +208,28 @@
 </div>
 
 </body>
-<script>
+<!--jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--creation-->
+<script th:inline="javascript">
+    /*<![CDATA[*/
     function Totalin() {
         var totalCart = document.getElementById("totalCart").value;
         var totalPay = document.getElementById("totalPay").value;
         var calChange = totalPay - totalCart;
         document.getElementById("totalChange").innerHTML = calChange;
 
-        // if(totalPay  totalCart){
-        //     totalPay.setCustomValidity("The number must greater than total.");
-        // }else{
-        //     document.getElementById("totalChange").innerHTML = calChange;
-        // }
+        if(calChange < 0)
+        {
+            document.getElementById("something").disabled = true;
 
+        }else{
+            document.getElementById("something").disabled = false;
 
-
-        // if(totalPay totalCart) {
-        //     totalPay.setCustomValidity("The number must greater than total.");
-        // } else {
-        //     // totalPay.setCustomValidity('');
-        //     document.getElementById("totalChange").innerHTML = calChange;
-        // }
+        }
     }
+    /*]]>*/
 </script>
 <script>
     var totalCart = document.getElementById("totalCart")

@@ -66,12 +66,12 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
                 preparedStatement.setInt(5,E.getStatus());
                 preparedStatement.setInt(6,E.getEmployee_id());
                 preparedStatement.executeUpdate();
-                System.out.println("Sukses update employee dengan id= "+E.getEmployee_id());
+
                 this.disconnect();
 
             }
             catch (Exception e){
-                System.out.println("terdapat error: "+e);
+                System.out.println("Eror while updating.."+e);
             }
         }
         else{
@@ -86,12 +86,11 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
                 preparedStatement.setString(3,hashPass);
                 preparedStatement.setString(4,E.getRole());
                 preparedStatement.executeUpdate();
-                System.out.println("berhasil insert data employee="+E.getEmployee_name());
-                this.disconnect();
 
+                this.disconnect();
             }
             catch (Exception e){
-                System.out.println("terdapat error: "+e);
+                System.out.println("Eror while inserting.."+e);
             }
         }
     }
@@ -106,9 +105,9 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
             Statement statement=this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
-                System.out.println("getAll\t:");
+
                 while (rs.next()){
-                    System.out.println("\t"+rs.getInt("employee_id"));
+
                     Employee employee= new Employee(
 
                             rs.getInt("employee_id"),
@@ -124,7 +123,7 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
             this.disconnect();
         }
         catch (Exception e){
-            System.out.println("Terdapat kesalahan eror : "+e);
+            System.out.println("Error while searching.. "+e);
         }
         return list;
     }
@@ -133,6 +132,7 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         String psql="Select * from Employee where employee_id='"+idEmployee+"';";
         Employee employee=new Employee();
         try{
+
             this.makeConnection();
             Statement statement= this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);
@@ -149,32 +149,7 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
             this.disconnect();
         }
         catch (Exception e){
-            System.out.println(e);
-        }
-        return employee;
-    }
-    @Override
-    public Employee getEmployeeByUname(String uname){
-        String psql="Select * from Employee where employee_uname='"+uname+"';";
-        Employee employee=new Employee();
-        try{
-            this.makeConnection();
-            Statement statement= this.con.createStatement();
-            ResultSet rs= statement.executeQuery(psql);
-            if(rs!=null){
-                while (rs.next()){
-                    employee.setEmployee_id(rs.getInt("employee_id"));
-                    employee.setEmployee_name(rs.getString("employee_name"));
-                    employee.setEmployee_uname(rs.getString("employee_uname"));
-                    employee.setPassword(rs.getString("password"));
-                    employee.setRole(rs.getString("role"));
-                    employee.setStatus(rs.getInt("status"));
-                }
-            }
-            this.disconnect();
-        }
-        catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while getting id.."+e.toString());
         }
         return employee;
     }
@@ -182,14 +157,14 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
     public void softDeleteEmployee(int id) {
         String psql= "UPDATE Employee set status= case when status=1 then 0 when status=0 then 1 end where Employee.employee_id='"+id+"';";
         try{
-            System.out.println("test5");
+
             this.makeConnection();
             Statement statement= this.con.createStatement();
             statement.executeQuery(psql);
             this.disconnect();
         }
         catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while soft deleting.."+e.toString());
         }
     }
 }

@@ -1,22 +1,20 @@
 package com.blibli.model;
 
-import javax.persistence.*;
-import java.sql.Date;
 
 public class Employee {
 
-    private Integer id;
+    private int id;
     private String employee_name;
     private String employee_uname;
     private String password;
     private String role;
-    private Integer status;
+    private int status;
 
     public Employee() {
-        System.out.println("no id:"+id);
+
     }
 
-    public Employee(Integer id,String employee_name, String employee_uname, String password, String role, Integer status)
+    public Employee(int id,String employee_name, String employee_uname, String password, String role, int status)
     {
         this.id=id;
         this.employee_name = employee_name;
@@ -34,7 +32,7 @@ public class Employee {
         this.employee_uname = employee_uname;
     }
 
-    public Integer getEmployee_id() {
+    public int getEmployee_id() {
         return id;
     }
 
@@ -66,7 +64,7 @@ public class Employee {
         this.role = role;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 

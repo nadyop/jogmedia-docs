@@ -24,7 +24,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             preparedStatement.setInt(1,transaction.getTransaction_id());
             preparedStatement.setInt(2, transaction.getEmployee_id());
             preparedStatement.setDouble(3, transaction.getTotal_pembelian());
-            System.out.println("oke masuk save Transaction");
+
             preparedStatement.executeUpdate();
             this.disconnect();
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
     }
     @Override
     public List<Detil_Transaction> getAllDetilTransactionByKeyword(int id){
-        System.out.println("id: "+id);
+
         String psql =
                 " select isbn, book_title, detil_id,transaction_id,book.book_id,quantity," +
                 "(unit_price*quantity) as subTotal, detil_transaction.discount from Detil_transaction join book\n" +
@@ -145,7 +145,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             preparedStatement.executeUpdate();
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while updating .."+e.toString());
         }
     }
     @Override
@@ -253,7 +253,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             }
             this.disconnect();
          }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while getiing.."+e.toString());
         }
         return  tempDetil;
     }
@@ -267,7 +267,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             statement.execute(psql);
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while updating.."+e.toString());
         }
 
     }
@@ -300,7 +300,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             preparedStatement.setDouble(1,total);
             preparedStatement.setInt(2,transaction_id);
             preparedStatement.executeUpdate();
-            System.out.println("oke masuk update Transaction");
+
             this.disconnect();
         } catch (Exception e) {
             System.out.println("Error while update transaction .."+e.toString());
@@ -343,7 +343,7 @@ public class TransactionDao extends My_Connection implements TransactionInterfac
             }
             this.disconnect();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Error while getting.."+e.toString());
         }
         return  store;
     }

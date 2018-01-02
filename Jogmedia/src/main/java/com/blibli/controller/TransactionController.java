@@ -1,6 +1,6 @@
 package com.blibli.controller;
 
-import com.blibli.services.BookService;
+
 import com.blibli.services.StoreService;
 import com.blibli.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +46,7 @@ public class TransactionController {
 
     @RequestMapping(value = "/nota", method = RequestMethod.GET)
     public String manageTransaction(Model model, Authentication authentication){
+
         model = transactionService.manageTransactionPayment(model, authentication);
         return "cashier/nota";
     }

@@ -86,7 +86,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
     public void delete (int id){
         String psql= "Delete from Category where Category.category_id='"+id+"';";
         try{
-            System.out.println("test5");
+
             this.makeConnection();
             Statement statement= this.con.createStatement();
             statement.executeQuery(psql);
@@ -134,32 +134,7 @@ public class CategoryDao extends My_Connection implements CategoryDaoInterface {
             ResultSet rs= statement.executeQuery(psql);
             if(rs!=null){
                 while (rs.next()){
-                    System.out.println("getId: "+rs.getInt("category_id"));
-                    category.setCategory_id(rs.getInt("category_id"));
-                    category.setCategory_name(rs.getString("category_name"));
-                    category.setCategory_desc(rs.getString("category_desc"));
-                    category.setStatus(rs.getInt("status"));
-                }
-            }
-            this.disconnect();
 
-        }
-        catch (Exception e){
-            System.out.println("Error while getting id category.. "+e.toString());
-        }
-        return category;
-    }
-    @Override
-    public Category getCategoryByName(String name){
-        String psql="Select * from category where category_name='"+name+"';";
-        Category category= new Category();
-        try {
-            this.makeConnection();
-            Statement statement= this.con.createStatement();
-            ResultSet rs= statement.executeQuery(psql);
-            if(rs!=null){
-                while (rs.next()){
-                    System.out.println("getId: "+rs.getInt("category_id"));
                     category.setCategory_id(rs.getInt("category_id"));
                     category.setCategory_name(rs.getString("category_name"));
                     category.setCategory_desc(rs.getString("category_desc"));

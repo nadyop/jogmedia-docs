@@ -244,7 +244,7 @@ public class ReportDao extends My_Connection implements ReportInterface {
                             rs.getDouble("SubTotal"),
                             rs.getInt("quantity")
                     );
-                    System.out.println("sukses masuk dao deport");
+
                     temp.add(reportDetail);
                 }
             }

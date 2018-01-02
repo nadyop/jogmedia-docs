@@ -5,10 +5,10 @@ import com.blibli.model.Employee;
 import java.util.List;
 
 public interface EmployeeDaoInterface {
-    List<Employee> getAllEmployee();
-    List<Employee> search(String searchKey);
+
+    void softDeleteEmployee(int id);
     void insertCategory(Employee E);
     Employee getIdEmployee(int idEmployee);
-    Employee getEmployeeByUname(String uname);
-    void softDeleteEmployee(int id);
+    List<Employee> getAllEmployee();
+    List<Employee> search(String searchKey);
 }

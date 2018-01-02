@@ -16,7 +16,7 @@ public class StoreController {
 
     @RequestMapping("/store")
     public String dataStore(Model model){
-        System.out.println("masuk disini");
+
         model.addAttribute("store",storeService.showStore());
         return "manager/show/store";
     }

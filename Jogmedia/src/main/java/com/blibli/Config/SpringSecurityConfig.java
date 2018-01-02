@@ -48,34 +48,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
                 .and()
                 .csrf().disable();
     }
-//    @Autowired
-//    private AccessDeniedHandler accessDeniedHandler;
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception{
-//        http.csrf().disable()
-//                .authorizeRequests()
-////                    .antMatchers("/", "/hom", "/book").permitAll()
-//                    .antMatchers("/").permitAll()
-//                    .antMatchers("/book/**","/home/**","/category/**","/discount/**","/tampilemp/**","/store/**").hasAnyRole("MANAGER")
-//                    .antMatchers("/cashier/**").hasAnyRole("CASHIER")
-//                    .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                    .loginPage("/login")
-//                    .permitAll()
-//                    .and()
-//                .logout()
-//                    .permitAll()
-//                    .and()
-//                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
-//    }
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-//        auth.inMemoryAuthentication()
-//                .withUser("cashier").password("a").roles("CASHIER")
-//                .and()
-//                .withUser("manager").password("a").roles("MANAGER");
-//    }
 
 }

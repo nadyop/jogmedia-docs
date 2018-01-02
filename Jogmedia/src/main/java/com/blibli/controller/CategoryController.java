@@ -22,9 +22,9 @@ public class CategoryController {
     }
 
     @RequestMapping(value="/category/",method = RequestMethod.POST)
-    public String simpanDataCategory(Model model, Category c){
-        return categoryService.save(model, c);
-//        return "redirect:/category";
+    public String simpanDataCategory(Category c){
+        return categoryService.save(c);
+
     }
     @RequestMapping(value = "/category/createCategory", method = RequestMethod.GET)
     public String tampilFormCreateCategory(Model model){

@@ -19,7 +19,7 @@ public class BookController {
     private final BookService bookService;
 
     @Autowired
-    public BookController(BookService bookService, CategoryService categoryService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
@@ -32,7 +32,7 @@ public class BookController {
     @RequestMapping(value = "/book/", method = RequestMethod.POST)
     public String saveBook(@ModelAttribute("book") Book book, Model model) {
         return bookService.saveModal(model, book);
-//        return "redirect:/book";
+
     }
 
     @RequestMapping(value = "/book/createBook", method = RequestMethod.GET)

@@ -15,22 +15,10 @@ import java.util.Map;
 public class CategoryService {
     @Autowired
     CategoryDaoInterface categoryDaoInterface;
-    public String save(Model model, Category category){
-        if (getCategoryByName(category.getCategory_name()).getCategory_id() != 0)   {
-            Map<String, String > map = new HashMap<>();
-            map.put("name", "Category name already exist !");
-            model.addAttribute("error", map);
-            model.addAttribute("category", category);
-            return "manager/edit/createCategory";
-        }
+    public String save(Category category){
         categoryDaoInterface.insertCategory(category);
         return "redirect:/category";
     }
-
-    private Category getCategoryByName(String category_name) {
-        return categoryDaoInterface.getCategoryByName(category_name);
-    }
-
     public void softDeleteCategoty(Integer id){
         categoryDaoInterface.softDeleteCategory(id);
     }
