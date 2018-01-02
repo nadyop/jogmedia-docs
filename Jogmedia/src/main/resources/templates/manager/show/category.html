@@ -114,7 +114,7 @@
                             <div class="card-content">
                                 <div class="tab-content">
                                     <div class="display tab-pane table-responsive active" th:if="${not #lists.isEmpty(category)}" style="align-items: left!important;">
-                                        <table class="display table" id="showTable" cellspacing="0" width="100%">
+                                        <table class="display table" id="showTable">
                                             <thead class="text-primary">
                                             <th>Name</th>
                                             <th>Description</th>
@@ -132,8 +132,8 @@
                                                         Edit &nbsp;|
                                                     </a>
                                                     <a th:href="${'/category/softDelete/'+category.category_id}">
-                                                        <span th:if="${category.status == 1}" th:text="Deactive">Active</span>
-                                                        <span th:if="${category.status == 0}" th:text="Active">Deactive</span>
+                                                        <span th:if="${category.status == 1}" th:text="Non-active">Active</span>
+                                                        <span th:if="${category.status == 0}" th:text="Active">Non-active</span>
                                                     </a>
 
                                                     <!--<a th:href="${'/category/hapus/'+category.category_id}">-->
@@ -192,7 +192,7 @@
         if($this.hasClass('btnActive')){
             $this.text('Active');
         } else {
-            $this.text('Deactive');
+            $this.text('Non-active');
         }
     });
 </script>

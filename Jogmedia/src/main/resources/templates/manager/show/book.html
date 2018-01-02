@@ -128,8 +128,8 @@
                             <div class="card-content">
                                 <div class="tab-content">
                                     <div class="display tab-pane table-responsive active" th:if="${not #lists.isEmpty(book)}" style="align-items: left!important;">
-                                        <table class="table responsive nowrap" id="showTable" cellspacing="0" >
-                                            <thead class="text-primary" style="word-wrap: break-word">
+                                        <table class="display table" id="showTable">
+                                            <thead class="text-primary">
                                             <th>ISBN</th>
                                             <th>Title</th>
                                             <th>Author</th>
@@ -141,6 +141,7 @@
                                             <th>Disc%</th>
                                             <th>Location</th>
                                             <th>Action</th>
+                                            <th>`</th>
                                             </thead>
                                             <tbody>
                                             <tr th:each="book: ${book}">
@@ -151,7 +152,7 @@
                                                 <td th:each="cat : ${categories}"
                                                     th:if="${book.category_id==cat.category_id}" th:text="${cat.category_name}"></td>
                                                 <td th:if="${book.status == 1}" th:text="Active"></td>
-                                                <td th:if="${book.status == 0}" th:text="Deactive"></td>
+                                                <td th:if="${book.status == 0}" th:text="Non-Active"></td>
                                                 <td th:text="${book.price_after}"></td>
                                                 <td th:text="${book.stok}"></td>
                                                 <td th:text="${book.discount}"></td>
@@ -160,10 +161,16 @@
                                                     <a th:href="${'/book/editBook/'+book.book_id}">
                                                         Edit
                                                     </a> |
+                                                </td>
+                                                <td>
                                                     <a th:href="${'/book/softDelete/'+book.book_id}">
-                                                        <span th:if="${book.status == 1}" th:text="Deactive" class="card-content">Active</span>
-                                                        <span th:if="${book.status == 0}" th:text="Active" class="card-content">Deactive</span>
+                                                        <span th:if="${book.status == 1}" th:text="Non-active" class="card-content">Active</span>
+                                                        <span th:if="${book.status == 0}" th:text="Active" class="card-content">Non-active</span>
                                                     </a>
+
+                                                    <!--<a th:href="${'/category/hapus/'+category.category_id}">-->
+                                                    <!--<button class="btn btn-danger">Delete</button>-->
+                                                    <!--</a>-->
                                                 </td>
                                             </tr>
                                             </tbody>

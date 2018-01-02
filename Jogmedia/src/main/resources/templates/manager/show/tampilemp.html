@@ -128,15 +128,15 @@
                                                 <td th:text="${employee.employee_uname}"></td>
                                                 <td th:text="${employee.role}"></td>
                                                 <td th:if="${employee.status == 1}" th:text="Active"></td>
-                                                <td th:if="${employee.status == 0}" th:text="Deactive"></td>
+                                                <td th:if="${employee.status == 0}" th:text="Non-active"></td>
 
                                                 <td>
                                                     <a th:href="${'/tampilemp/edit/'+employee.employee_id}">
                                                         &nbsp;Edit &nbsp;
                                                     </a>
                                                     <a th:href="${'/employee/softDelete/'+employee.employee_id}">
-                                                        <span th:if="${employee.status == 1}" th:text="Deactive">Active</span>
-                                                        <span th:if="${employee.status == 0}" th:text="Active">Deactive</span>
+                                                        <span th:if="${employee.status == 1}" th:text="Non-active">Active</span>
+                                                        <span th:if="${employee.status == 0}" th:text="Active">Non-active</span>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -191,7 +191,7 @@
         if($this.hasClass('btnActive')){
             $this.text('Active');
         } else {
-            $this.text('Deactive');
+            $this.text('Non-active');
         }
     });
 </script>
