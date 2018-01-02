@@ -103,6 +103,9 @@
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Category</label>
                                                 <input th:field="*{category_name}" type="text" class="form-control" required="required"/>
+                                                <th:block th:if="${error!=null}">
+                                                    <p th:text="${error['name']}" style="color: red;"></p>
+                                                </th:block>
                                             </div>
                                         </div>
                                     </div>

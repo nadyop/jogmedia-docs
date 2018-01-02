@@ -7,16 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CategoryService {
     @Autowired
     CategoryDaoInterface categoryDaoInterface;
-    public void save(Category category){
-
+    public String save(Model model, Category category){
+        if (getCategoryByName(category.getCategory_name()).getCategory_id() != 0)   {
+            Map<String, String > map = new HashMap<>();
+            map.put("name", "Category name already exist !");
+            model.addAttribute("error", map);
+            model.addAttribute("category", category);
+            return "manager/edit/createCategory";
+        }
         categoryDaoInterface.insertCategory(category);
+        return "redirect:/category";
     }
+
+    private Category getCategoryByName(String category_name) {
+        return categoryDaoInterface.getCategoryByName(category_name);
+    }
+
     public void softDeleteCategoty(Integer id){
         categoryDaoInterface.softDeleteCategory(id);
     }

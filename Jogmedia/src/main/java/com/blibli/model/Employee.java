@@ -5,18 +5,18 @@ import java.sql.Date;
 
 public class Employee {
 
-    private int id;
+    private Integer id;
     private String employee_name;
     private String employee_uname;
     private String password;
     private String role;
-    private int status;
+    private Integer status;
 
     public Employee() {
         System.out.println("no id:"+id);
     }
 
-    public Employee(int id,String employee_name, String employee_uname, String password, String role, int status)
+    public Employee(Integer id,String employee_name, String employee_uname, String password, String role, Integer status)
     {
         this.id=id;
         this.employee_name = employee_name;
@@ -34,7 +34,7 @@ public class Employee {
         this.employee_uname = employee_uname;
     }
 
-    public int getEmployee_id() {
+    public Integer getEmployee_id() {
         return id;
     }
 
@@ -66,11 +66,11 @@ public class Employee {
         this.role = role;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

@@ -103,7 +103,10 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">ISBN</label>
-                                                <input th:field="*{isbn}" type="number" class="form-control" required="required" max-length="13"/>
+                                                <input th:field="*{isbn}" type="text" class="form-control" required="required" maxlength="13"/>
+                                                <th:block th:if="${error!=null}">
+                                                    <p th:text="${error['isbn']}" style="color: red;"></p>
+                                                </th:block>
                                             </div>
                                         </div>
                                         <div class="col-md-4">

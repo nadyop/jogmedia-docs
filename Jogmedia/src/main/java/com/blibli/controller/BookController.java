@@ -11,64 +11,68 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class BookController {
     private final BookService bookService;
-    private final CategoryService categoryService;
 
     @Autowired
     public BookController(BookService bookService, CategoryService categoryService) {
         this.bookService = bookService;
-        this.categoryService = categoryService;
     }
 
     @RequestMapping("/book")
-    public String listBook(Model model){
-        model= bookService.showAllListBook(model);
+    public String listBook(Model model) {
+        model = bookService.showAllListBook(model);
         return "manager/show/book";
     }
-//    @RequestMapping(value="/book/",method = RequestMethod.POST)
-//    public String saveBook( @ModelAttribute("buku") Book book){
-//        bookService.save(book);
+
+    @RequestMapping(value = "/book/", method = RequestMethod.POST)
+    public String saveBook(@ModelAttribute("book") Book book, Model model) {
+        return bookService.saveModal(model, book);
 //        return "redirect:/book";
-//    }
-@RequestMapping(value="/book/",method = RequestMethod.POST)
-public String saveBook(@ModelAttribute("book") Book book, Model model){
-    bookService.saveModal(model, book);
-    return "redirect:/book";
-}
+    }
+
     @RequestMapping(value = "/book/createBook", method = RequestMethod.GET)
-    public String tampilFormCreateBook(Model model){
+    public String tampilFormCreateBook(Model model) {
         model = bookService.manageFormCreateBook(model);
         return "manager/edit/createBook";
     }
+
     @RequestMapping("/discount")
-    public String listBookDiscount(Model model){
+    public String listBookDiscount(Model model) {
         model = bookService.showAllListBookDiscount(model);
         return "manager/show/discount";
     }
+
     @RequestMapping("/emptyStok")
-    public String listBookEmpty(Model model){
+    public String listBookEmpty(Model model) {
         model = bookService.showAllListBookEmpty(model);
         return "manager/show/emptyStok";
     }
-    @RequestMapping(value = "/book/editBook/{id}",method = RequestMethod.GET)
-    public String editDataCategory(@PathVariable int id, Model model){
-        model = bookService.manageEditBook(model,id);
+
+    @RequestMapping(value = "/book/editBook/{id}", method = RequestMethod.GET)
+    public String editDataCategory(@PathVariable int id, Model model) {
+        model = bookService.manageEditBook(model, id);
         return "manager/edit/createBook";
     }
+
     @RequestMapping(value = "/book/search", method = RequestMethod.POST)
-    public String search(Model model, @ModelAttribute("searchKey") String searchKey){
-        model = bookService.searchBookByKeyword(model,searchKey);
+    public String search(Model model, @ModelAttribute("searchKey") String searchKey) {
+        model = bookService.searchBookByKeyword(model, searchKey);
         return "manager/show/book";
     }
+
     @RequestMapping(value = "/book/searchDiscount", method = RequestMethod.POST)
-    public String searchDiscount(Model model, @ModelAttribute("searchKey") String searchKey){
+    public String searchDiscount(Model model, @ModelAttribute("searchKey") String searchKey) {
         model = bookService.searchBookByKeywordDiscount(model, searchKey);
         return "manager/show/book";
     }
+
     @RequestMapping(value = "/book/searchEmptyBook", method = RequestMethod.POST)
-    public String searchEmptyBook(Model model, @ModelAttribute("searchKey") String searchKey){
+    public String searchEmptyBook(Model model, @ModelAttribute("searchKey") String searchKey) {
         model = bookService.searchBookByKeywordEmptyStock(model, searchKey);
         return "manager/show/book";
     }

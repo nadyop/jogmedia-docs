@@ -21,10 +21,11 @@ public class EmployeeController {
         return "manager/show/tampilemp";
     }
     @RequestMapping(value = "/tampilemp/", method = RequestMethod.POST)
-    public String simpanDataEmployee(Employee employee){
-        employeeService.save(employee);
-        return "redirect:/tampilemp";
+    public String simpanDataEmployee(Model model, Employee employee){
+        return employeeService.save(model, employee);
+//        return "redirect:/tampilemp";
     }
+
     @RequestMapping(value = "/tampilemp/search", method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("searchKey") String searchKey){
         model = employeeService.searchCategoryByKeyword(model, searchKey);

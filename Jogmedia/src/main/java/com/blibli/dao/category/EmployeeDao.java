@@ -133,7 +133,31 @@ public class EmployeeDao extends My_Connection implements EmployeeDaoInterface {
         String psql="Select * from Employee where employee_id='"+idEmployee+"';";
         Employee employee=new Employee();
         try{
-            System.out.println("test3");
+            this.makeConnection();
+            Statement statement= this.con.createStatement();
+            ResultSet rs= statement.executeQuery(psql);
+            if(rs!=null){
+                while (rs.next()){
+                    employee.setEmployee_id(rs.getInt("employee_id"));
+                    employee.setEmployee_name(rs.getString("employee_name"));
+                    employee.setEmployee_uname(rs.getString("employee_uname"));
+                    employee.setPassword(rs.getString("password"));
+                    employee.setRole(rs.getString("role"));
+                    employee.setStatus(rs.getInt("status"));
+                }
+            }
+            this.disconnect();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return employee;
+    }
+    @Override
+    public Employee getEmployeeByUname(String uname){
+        String psql="Select * from Employee where employee_uname='"+uname+"';";
+        Employee employee=new Employee();
+        try{
             this.makeConnection();
             Statement statement= this.con.createStatement();
             ResultSet rs= statement.executeQuery(psql);

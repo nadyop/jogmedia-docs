@@ -9,5 +9,6 @@ public interface EmployeeDaoInterface {
     List<Employee> search(String searchKey);
     void insertCategory(Employee E);
     Employee getIdEmployee(int idEmployee);
+    Employee getEmployeeByUname(String uname);
     void softDeleteEmployee(int id);
 }

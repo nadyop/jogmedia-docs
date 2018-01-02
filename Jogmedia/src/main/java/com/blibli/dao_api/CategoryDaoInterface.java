@@ -10,6 +10,7 @@ public interface CategoryDaoInterface {
     List<Category> getAllActive();
     List<Category> search(String searchKey);
     Category getIdCategory(int idCategory);
+    Category getCategoryByName(String name);
     void insertCategory(Category C);
     void softDeleteCategory(int id);
     void delete (int id);
