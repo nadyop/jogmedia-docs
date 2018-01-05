@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="context-type" content="text/html; charset=UTF-8"/>
+    <title>Jogmedia</title>
+    <!--bootstrap, icon, font-->
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{//cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
+
+    <!--data-Table-->
+    <link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.10.16/css/jquery.dataTables.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css}"/>
+
+    <!--creation-->
+    <link th:href="@{/css/manager.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar" data-color="green">
+        <div class="logo">
+            <a href="/home" class="simple-text">
+                <strong>JOGMEDIA</strong>
+            </a>
+            <center>
+                <span th:inline="text"> Hi, [[${#httpServletRequest.remoteUser}]]!</span>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-white btn-round">
+                        <i class="fa fa-sign-out fa-1"></i>&nbsp;Signout
+                        <div class="ripple-container"></div>
+                    </button>
+                </form>
+            </center>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li>
+                    <a href="/store">
+                        <i class="fa fa-home fa-1"></i>
+                        <p>Store</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/book">
+                        <i class="fa fa-book fa-1"></i>
+                        <p>Book</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/category">
+                        <i class="fa fa-th-list fa-1"></i>
+                        <p>Category</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/report">
+                        <i class="fa fa-file fa-1"></i>
+                        <p>Report</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/tampilemp">
+                        <i class="fa fa-user fa-1"></i>
+                        <p>Employee</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <nav class="navbar navbar-transparent navbar-absolute">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"> LEDGER MASTER - Detail Transaction</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <center>
+                            <ul class="nav nav-pills nav-pills-warning">
+                                <li>
+                                    <a href="/report">
+                                        <i class="fa fa-line-chart fa-1"></i>
+                                        General Ledger
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="/report-detail">
+                                        <i class="fa fa-ellipsis-v fa-1"></i>
+                                        Detail Transaction
+                                    </a>
+                                </li>
+                            </ul>
+                        </center>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row" style="margin-top: 3%">
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-body table-responsive" style="max-height:430px;overflow:auto">
+                            <form th:method="get" th:action="@{/report-detail/search}">
+                                <td>Select Date: </td>
+                                <p><input th:type="date"  name="dateFrom" th:value="${dateFrom}" />Until
+                                    <input th:type="date" name="dateUntil" th:value="${dateUntil}" />
+                                    <input th:type="submit" class="btn btn-sm btn-primary"/></p>
+
+                            </form>
+                            <div th:if="${not #lists.isEmpty(detil)}">
+                                <table class="table table-striped" id="showTable">
+                                    <thead>
+                                        <th>ISBN</th>
+                                        <th>Book Title</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Price</th>
+                                        <th>Sub Total</th>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr th:each="detil: ${detil}">
+                                        <!--<td th:text="${book.book_id}"></td>-->
+                                        <td th:text="${detil.isbn}"></td>
+                                        <td th:text="${detil.book_title}"></td>
+                                        <td th:text="${detil.quantity}"></td>
+                                        <td th:text="${detil.unit_price}"></td>
+                                        <td th:text="${detil.subTotal}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    <a href="/home">JOGMEDIA</a>&nbsp; Desain by <a href="getbootstrap.com">Bootstrap </a>with modification
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+<!--core-->
+<script type="text/javascript" th:inline="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" th:inline="javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" th:inline="javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--dataTables-->
+<script type="text/javascript" th:inline="javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript" th:inline="javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" th:inline="javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/dataTables.material.min.js"></script>
+<script type="text/javascript" th:inline="javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<!--jQuery navbar phone-->
+<script type="text/javascript" th:inline="javascript" charset="utf8" th:src="@{js/perfect-scrollbar.jquery.min.js}"></script>
+<script type="text/javascript" th:inline="javascript" charset="utf8" th:src="@{js/material-dashboard.js}"></script>
+
+<!--creation-->
+<script>
+    $(document).ready(function() {
+        $('#showTable').DataTable( {
+            columnDefs: [
+                {
+                    targets: [ 0, 1, 2 ],
+                    className: 'mdl-data-table__cell--non-numeric'
+                }
+            ]
+        } );
+    } );
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#showTable').DataTable();
+    } );
+</script>
+</html>
